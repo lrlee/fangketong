@@ -34,9 +34,10 @@
 					证件类型
 				</view>
 				<view class="recommend-input">
-					<picker @change="bindCardTypeChange" :value="cardTypeIndex" :range="cardType">
+					<view style="padding-left:40rpx;text-align: left;">身份证</view>
+					<!-- <picker @change="bindCardTypeChange" :value="cardTypeIndex" :range="cardType">
 				        <view class="uni-input">{{cardType[cardTypeIndex]}}</view>
-				    </picker>
+				    </picker> -->
 				</view>
 			</view>
 			<view class="recommend-item">
@@ -53,6 +54,16 @@
 				</view>
 				<view class="recommend-input">
 					<input class="tel-input" v-model="address"/>
+				</view>
+			</view>
+			<view class="recommend-item">
+				<view class="recommend-title">
+					所属项目
+				</view>
+				<view class="recommend-input">
+					<picker @change="bindProjectChange"  :value="projectIndex" :range-key="'projectname'" :range="projects">
+				        <view class="uni-input">{{projects[projectIndex].projectname}}</view>
+				    </picker>
 				</view>
 			</view>
 			<view class="recommend-item">
@@ -85,27 +96,42 @@
 				address: "",
 				smscode: "",
 				djs: "",
-				sendOff: true
+				sendOff: true,
+				projects:[],
+				projectIndex:0,
+				projectId:null
 			};
 		},
 		onLoad() {
+			//获取当前项目id
+			let pid = uni.getStorageSync('projectid');
+			this.projectId = pid
 			// 请求个人资料
 			return tki.req.post('member/index',{}).then(d => {
 				if (d.code === 200) {
 					// 处理数据
-					console.log(d.data)
 					if(d.data.member.papertype == "") {
 						this.cardTypeIndex = 0
 					} else {
 						this.cardTypeIndex = this.cardType.indexOf(d.data.member.papertype)
+					
+					if(!this.projectId){
+						this.projectId = d.data.project[0].id
 					}
+					this.projects = d.data.project
 					this.name = d.data.member.realname
 					this.tel = d.data.member.mobile
 					this.cardNumber = d.data.member.papernumber
 					this.address = d.data.member.location
+					this.projects.map((v,i)=>{
+						if(v.id==this.projectId){
+							this.projectIndex = i
+						}
+					})
 					if(d.data.member.is_adviser) {
 						this.sfType[0] = "置业顾问"
 					}
+				}
 				}
 			}).catch(e => {
 				tki.ui.showToast(e.message)
@@ -113,6 +139,16 @@
 			})
 		},
 		methods: {
+			//项目
+			bindProjectChange:function(e){
+				this.projectIndex = e.target.value
+				this.projects.map((v,i)=>{
+					if(i==this.projectIndex){
+						this.projectId = v.id
+					}
+				})
+				
+			},
 			// 证件类型
 			bindCardTypeChange: function(e) {
 				this.cardTypeIndex = e.target.value
@@ -141,11 +177,14 @@
 					return tki.req.post('member/rf', {
 						realname: this.name,
 						mobile: this.tel,
-						papertype: this.cardType[this.cardTypeIndex],
+						// papertype: this.cardType[this.cardTypeIndex],
+						papertype:'身份证',
 						papernumber: this.cardNumber,
 						location: this.address,
 						identitytype: Number(this.sfTypeIndex) + 1,
-						smscode: this.smscode			
+						smscode: this.smscode,
+						projectid:this.projectId
+							
 					}).then(d => {
 						if (d.code === 200) {
 							tki.ui.showToast("提交成功")
@@ -167,7 +206,6 @@
 						tki.ui.showToast("电话号码有误")
 					} else {
 						this.sendOff = false
-						console.log(this.tel)
 						return tki.req.post('util/sysset', {}).then(d => {
 							if (d.code === 200) {
 								// console.log(d.data.system.opensms)

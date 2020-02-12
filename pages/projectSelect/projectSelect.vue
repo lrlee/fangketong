@@ -163,7 +163,7 @@
 			};
 		},
         onLoad(){
-            this.getList();
+            this.getHotList();
         },
 		components: {
 			tkiAuthorize
@@ -171,7 +171,12 @@
         methods:{
 			changeStatus(index){
 				this.city = this.cityArr[index]
-				this.getList(this.cityArr[index])
+				if(index){
+					this.getList(this.cityArr[index],index)
+				}else{
+					this.getHotList()
+				}
+				
 				for(var key in this.flagArr){
 					if(key ==index){
 						this.flagArr[index] = !this.flagArr[index]
@@ -185,8 +190,6 @@
 						this.classArr[key]=''
 					}
 				}
-				
-				console.log(this.flagArr,"flagarr")
 			},
             goSelectAddr(){
                 uni.navigateTo({
@@ -202,9 +205,19 @@
                 this.city = city;
                 this.getList(city);
             },
+			getHotList(){
+				tki.req.get('index/projectlist', {viewcount:1}).then(d => {
+				    if (d.code == 200) {
+				       this.list = d.data.list;
+				    } else {
+				        tki.ui.showToast(d.message)
+				    }
+				}).catch(e => {
+				    tki.ui.showToast(e.message)
+				})
+			},
             getList(city){
                 let data = {
-                    // page: this.page
                 };
                 if(city) data.city = city;
                 tki.req.get('index/index', data).then(d => {

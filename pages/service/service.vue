@@ -55,6 +55,7 @@ export default {
 		};
 	},
 	onShow() {
+		
 		// 请求顾问列表数据
 		return tki.req.post('index/adviserlist').then(d => {
 			if (d.code === 200) {
