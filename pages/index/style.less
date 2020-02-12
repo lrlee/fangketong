@@ -1,14 +1,14 @@
 @import "../../components/TikiUI/common/style/userCom.less";
 page {
-	.b-c(#f7f7f7);
+	.b-c(#f8f8f8);
 }
 // 轮播图
 .banner {
 	// width: 100rpx;
-	.b-c(#222222);
-	.p-bot(24);
+	// .b-c(#222222);
+    .b-c(#fff);
 	swiper {
-		.wh(714,375);
+		.wh(750,385);
 		margin: 0 auto;
 	}
 	swiper-item, image {
@@ -17,60 +17,92 @@ page {
 }
 // 项目简介
 .project-desc {
-	.b-c(#222222);
-	.p(0, 33, 47, 33);
+    .b-c(#fff);
+	// .b-c(#222222);
+	.p(0, 33, 20, 33);
 	border-bottom: 15rpx solid #ffffff;
 	.project-name {
 		.rel();
-		.font(30, #eebc84);
+		.font(30, #373737);
+        font-weight: 400;
 		.l-h(56rpx);
 	}
 	.want {
 		&-avatar {
-			.p-top(10);
-			.p-bot(10);
+            display: flex;
+            justify-content: space-between;
+            >view:first-of-type{
+                display: flex;
+            }
+			.p-top(15);
+			.p-bot(15);
 			.f();
 			.f-i-center();
-			.p-left(10);
+			// .p-left(10);
 			&-item {
 				image {
-					.wh(36, 36);
+					.wh(45, 45);
 					.r(50%);
 				}
-				.m-left(-10);
+				.m-right(8);
 			}
 		}
+        .want-avatar-omit{
+            width: 45rpx;
+            height: 45rpx;
+            border: 1rpx solid #a1a1a1;
+            border-radius: 50%;
+            text-align: center;
+            margin-left: 10rpx;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 8rpx;
+            box-sizing: border-box;
+            text{
+                width: 5rpx;
+                height: 5rpx;
+                display: inline-block;
+                border-radius: 50%;
+                background-color: #a1a1a1;
+            }
+        }
 		&-num {
-			font-size: 18rpx;
-			color: #a5a5a5;
+			font-size: 20rpx;
+			color: #3f3f3f;
 			.m-left(11);
+            float: right;
 			text {
-				color: #eebc84;
+				// color: #eebc84;
 			}
 		}
 	}
 	.project-price {
-		.font(24, #ff0000);
+		.font(24, #373737);
 		.l-h(57rpx);
 	}
 	.project-loac {
 		.rel();
-		.font(24, #ffffff);
+		.font(24, #373737);
 		.m-top(8);
+        display: flex;
+        align-items: center;
 		&-icon {
-			.abs();
-			right: 0;
-			top: 0;
-			.p(10);
-			.m(-10);
+            display: inline-block;
+			// .abs();
+			// right: 0;
+			// top: 0;
+			// .p(10);
+			.m-right(10);
 			image {
-				.wh(27, 33);
+				width: 20rpx;
 			}
 		}
 	}
 }
 // 菜单按钮
 .home-menu-warp {
+    background: #f6f6f6;
 	.rel();
 	.bg {
 		.wh(100%, 100%);
@@ -82,8 +114,12 @@ page {
 		}
 		z-index: -1;
 	}
-	.p(32, 45, 32, 45);
+	.p(0, 90, 0, 90);
 	.home-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 214rpx;
 		.f();
 		.f-between();
 		.menu-item {
@@ -92,9 +128,13 @@ page {
 			.f-i-center();
 			.font(18, #ae905f);
 			image {
-				.wh(54, 54);
+				.wh(92, 92);
 				.m-bot(18);
 			}
+            view{
+                 font-size: 24rpx;
+                 color: #3a3a3a;
+            }
 		}
 	}
 }
@@ -108,7 +148,13 @@ page {
 	.title {
 		.p-left(0);
 		.rel();
-		.p-top(37rpx)
+		.p-top(37rpx);
+        &::before{
+            width: 6rpx;
+            border: 3rpx;
+            height: 32rpx;
+            background: linear-gradient(180deg,rgba(28,121,235,1),rgba(0,104,231,1));
+        }
 	}
 	.p-bot(37);
 	.introduce-pic {
@@ -122,7 +168,8 @@ page {
 	.introduce-txt {
 		.font(20, #4c4c4c);
 		.l-h(32rpx);
-		.p(30, 24, 58, 30);
+		.p(30, 0, 30, 0);
+        text-indent: 2em;
 	}
 	.atlas-warp {
 		.w(100%);
@@ -148,8 +195,9 @@ page {
 			.apartment-pic {
 				.wh(333, 336);
 				.rel();
-				border: 1px solid #b39867;
-				.r(5rpx);
+				border: 1px solid rgba(206, 206, 206, 1);
+				.r(16rpx);
+                overflow: hidden;
 				image {
 					.wh(100%, 100%);
 				}
@@ -196,4 +244,17 @@ page {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+.more{
+    background-color: rgba(240,243,248,1);
+    border-radius: 8rpx;
+    color: rgba(58,58,58,1) !important;
+    border: none;
+    line-height: 38rpx !important;
+    height: 38rpx !important;
+    padding: 0 10rpx;
+}
+.title{
+    padding-top: 60rpx !important;
+    padding-bottom: 50rpx;
 }

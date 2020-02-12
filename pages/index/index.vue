@@ -1,7 +1,7 @@
 <template>
 	<view class="content-warp">
 		<view class="banner">
-			<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#f09727'" :autoplay="true">
+			<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="true">
 				<swiper-item v-for="(item, index) in banner" :key="index">
 					<image :src="item.thumb" mode="aspectFill" />
 				</swiper-item>
@@ -16,61 +16,66 @@
 				   </view>
 				</navigator>
 			</view>
+			<view class="project-price">
+				{{project.price_range ? project.price_range : "暂无价格"}}
+			</view>
 			<view class="want">
 				<view class="want-avatar">
-					<view class="want-avatar-item" v-for="(v, i) in history">
-						<image :src="v.avatar" mode=""></image>
-					</view>
+					<view>
+                        <view class="want-avatar-item" v-for="(v, i) in history">
+                        	<image :src="v.avatar" mode=""></image>
+                        </view>
+                        <view class="want-avatar-omit">
+                            <text></text><text></text><text></text>
+                        </view>
+                    </view>
 					<view class="want-num">
 						<text>{{project.viewcount ? project.viewcount : ""}}</text>人想买
 					</view>
 				</view>
 			</view>
-			<view class="project-price">
-				{{project.price_range ? project.price_range : "暂无价格"}}
-			</view>
 			<view class="project-loac">
-				地址：{{project.address ? project.address : ""}}
 				<view class="project-loac-icon" @tap="getMap()">
-					<image v-if='imgUrl' :src="imgUrl + 'home/daohang.png'" mode=""></image>
+					<image src="../../static/icons/daohang.png" mode="widthFix"></image>
 				</view>
+				地址：{{project.address ? project.address : ""}}
 			</view>
 		</view>
 		<view class="home-menu-warp">
-			<view class="bg">
+			<!-- <view class="bg">
 				<image v-if='imgUrl' :src="imgUrl + 'home/munu_bg.png'" mode=""></image>
-			</view>
+			</view> -->
 			<view class="home-menu">
 				<!-- <navigator url="/pages/myCustomer/myCustomer" hover-class="navigator-hover"> -->
                     <view class="menu-item" @tap="myCustomer()">
-                    	<image v-if='imgUrl' :src="imgUrl + 'home/my-customer.png'" mode="" />
+                    	<image src="../../static/icons/kehu.png" mode="" />
                     	<view class="">我的客户</view>
                     </view>
                 <!-- </navigator> -->
 				<navigator url="/pages/coupon/coupon" hover-class="navigator-hover">
 				    <view class="menu-item">
-				    	<image v-if='imgUrl' :src="imgUrl + 'home/coupon.png'" mode="" />
-				    	<view class="">优惠券</view>
-				    </view>
-				</navigator>
-				<navigator url="/pages/message/list/message" hover-class="navigator-hover">
-				    <view class="menu-item">
-				    	<image v-if='imgUrl' :src="imgUrl + 'home/dynamic.png'" mode="" />
-				    	<view class="">楼盘动态</view>
+				    	<image src="../../static/icons/youhuiquan.png" mode="" />
+				    	<view class="">优惠政策</view>
 				    </view>
 				</navigator>
 				<navigator url="/pages/service/service" open-type="switchTab" hover-class="navigator-hover">
 				    <view class="menu-item">
-				    	<image v-if='imgUrl' :src="imgUrl + 'home/adviser.png'" mode="" />
+				    	<image src="../../static/icons/zhiyeguwen.png" mode="" />
 				    	<view class="">置业顾问</view>
 				    </view>
 				</navigator>
-				<navigator url="/pages/counter/counter" hover-class="navigator-hover">
+				<navigator url="/pages/message/list/message" hover-class="navigator-hover">
+				    <view class="menu-item">
+				    	<image v-if='imgUrl' src="../../static/icons/loupandongtai.png" mode="" />
+				    	<view class="">楼盘动态</view>
+				    </view>
+				</navigator>
+				<!-- <navigator url="/pages/counter/counter" hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image v-if='imgUrl' :src="imgUrl + 'home/calculator.png'" mode="" />
 				    	<view class="">房贷计算器</view>
 				    </view>
-				</navigator>
+				</navigator> -->
 			</view>
 		</view>
 		<view class="contant">
