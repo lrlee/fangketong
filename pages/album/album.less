@@ -1,0 +1,31 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.album-warp {
+	.b-c(#ffffff);
+	.w(100%);
+	// margin: 0 auto;
+	.f();
+	.f-d-col();
+	.f-i-center();
+	.m-bot(10);
+	.p-bot(23);
+	.title {
+		.p-left(0);
+		font-size: 30rpx;
+		.m-bot(10);
+	}
+	.album-item {
+		.w(678);
+		swiper {
+			.h(272);
+		}
+		image {
+			.wh(641, 272);
+			display: block;
+			margin: 0 auto;
+		}
+	}
+}

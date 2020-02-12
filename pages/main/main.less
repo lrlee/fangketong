@@ -1,0 +1,65 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.user-info {
+	.b-bot(2, #cbcbcb, solid);
+	.b-c(#222222);
+	.f();
+	.h(240);
+	.f();
+	.f-i-center();
+	view {
+		text-align: left;
+	}
+	.avatar {
+		image {
+			.wh(97, 97);
+			.r(50%);
+			.m-left(33);
+		}
+	}
+	.nick-name {
+		.font(30, #ffffff);
+		.m-left(20);
+	}
+}
+.main-warp {
+	.p-top(19);
+	.main-title {
+		image {
+			.wh(70, 70);
+		}
+		.f();
+		.f-i-center();
+		&-txt {
+			.m-left(25);
+		}
+		
+	}
+	.main-item {
+		.font(30, #626262);
+		.f();
+		.f-between();
+		.wh(674, 84);
+		.l-h(84rpx);
+		.b-c(#ffffff);
+		.p-left(23);
+		.p-right(23);
+		margin: 0 auto;
+		.m-bot(48);
+		.text {
+			.h(84);
+		}
+	}
+	.to-login {
+		.wh(308, 62);
+		.b-c(#c0000e);
+		.font(28, #ffffff);
+		.p(0);
+		.l-h(62rpx);
+		.m-top(33rpx);
+		letter-spacing: 10rpx;
+	}
+}

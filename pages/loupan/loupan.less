@@ -1,0 +1,132 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+@bg: #ffffff;
+@btnBg: #be1304;
+@partBg: #222222;
+.loupan-banner {
+	.b-c(@partBg);
+	image {
+		.wh(714, 375);
+		display: block;
+		margin: 0 auto;
+	}
+}
+.loupan-title {
+	.wh(750, 148);
+	.b-c(@partBg);
+	color: #eebc84;
+	.f();
+	.f-i-center();
+	.f-between();
+	border-bottom: 12px solid #ffffff;
+	&-name {
+		font-size: 30rpx;
+		.bl();
+		.m-left(36);
+	}
+	&-info {
+		.m-right(36);
+		.b-c(@partBg);
+		&-price {
+			font-size: 22rpx;
+			.f();
+			.f-i-center();
+			.bl();
+			image {
+				.wh(33, 33);
+				.m-left(10);
+			}
+		}
+		&-tel {
+			font-size: 18rpx;
+			.wh(160, 25);
+			border: 1px solid #eebc84;
+			.r(5);
+			.text-center();
+			.l-h(25rpx);
+			.m-top(9);
+			image {
+				.wh(13, 13);
+				.m-right(7);
+			}
+		}
+	}
+}
+.loupan-item {
+	&.loupan-info {
+		.b-c(@partBg);
+	}
+	.title {
+		.p-left(0);
+		.rel();
+		color: #252525 !important;
+	}
+	.b-c(@bg);
+	.p-left(36);
+	.p-right(36);
+	.p-bot(47);
+	.font(26);
+	.loupan-info-title {
+		.font(30, #ff0000);
+		.p-top(33);
+		.p-bot(41);
+		image {
+			.wh(40, 40);
+			.m-right(10);
+		}
+	}
+	.loupan-info-item {
+		.f();
+		color: #ffffff;
+		.m-bot(30);
+		&-left {
+			.w(132);
+			.text-no-wrap();
+		}
+		&-right {
+			.m-left(35);
+			.text-wrap();
+			.w(508);
+			&.loupan-desc {
+				.l-h(35rpx);
+			}
+		}
+	}
+}
+.loupan-price {
+	.loupan-info-item-right {
+		color: #be1304;
+	}
+}
+.hot-hx-warp {
+	.f();
+	.f-between();
+	image {
+		.wh(332, 336);
+		border: 1px solid #b39766;
+		.r(6);
+	}
+	.hot-hx-left-name {
+		.font(18, #161616);
+		text-align: center;
+		.m-top(19);
+	}
+}
+.zhoubian-warp {
+	image {
+		.wh(677, 393);
+	}
+	map {
+		.w(100%);
+	}
+}
+.jt-warp {
+	.p-left(40);
+	.m-bot(52);
+	view {
+		.l-h(50rpx);
+	}
+}

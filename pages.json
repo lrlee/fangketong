@@ -1,0 +1,230 @@
+{
+	"pages": [
+		{
+            "path" : "pages/projectSelect/projectSelect",
+            "style" : {
+                "navigationBarTitleText": "线上看房通",
+				"navigationBarTextStyle": "#f6f6f6",
+				"navigationBarBackgroundColor":"#f6f6f6",
+				"navigationBarTextStyle":"black"
+            }
+        },{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/recommend/recommend",
+			"style": {
+				"navigationBarTitleText": "我要推荐"
+			}
+		},
+		{
+			"path": "pages/main/main",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/message/list/message",
+			"style": {
+				"navigationBarTitleText": "资讯中心"
+			}
+		},
+		{
+			"path": "pages/service/service",
+			"style": {
+				"navigationBarTitleText": "置业顾问"
+			}
+		},
+		{
+			"path": "pages/myCustomer/myCustomer",
+			"style": {
+				"navigationBarTitleText": "我的客户"
+			}
+		},
+		{
+			"path": "pages/coupon/coupon",
+			"style": {
+				"navigationBarTitleText": "领券中心"
+			}
+		},
+		{
+			"path": "pages/addCustomer/addCustomer",
+			"style": {
+				"navigationBarTitleText": "添加客户"
+			}
+		},
+		{
+			"path": "pages/loupan/loupan",
+			"style": {
+				"navigationBarTitleText": "楼盘资料"
+			}
+		},
+		{
+			"path": "pages/album/album",
+			"style": {
+				"navigationBarTitleText": "项目图册"
+			}
+		},
+		{
+			"path": "pages/moreHx/moreHx",
+			"style": {
+				"navigationBarTitleText": "户型鉴赏"
+			}
+		},
+		{
+			"path": "pages/hxDetails/hxDetails",
+			"style": {
+				"navigationBarTitleText": "户型鉴赏"
+			}
+		},
+		{
+			"path": "pages/myInfo/myInfo",
+			"style": {
+				"navigationBarTitleText": "我的资料"
+			}
+		},
+		{
+			"path": "pages/customerManage/customerManage",
+			"style": {
+				"navigationBarTitleText": "客户管理"
+			}
+		},
+		{
+			"path": "pages/myRecommend/myRecommend",
+			"style": {
+				"navigationBarTitleText": "我的推荐"
+			}
+		},
+		{
+			"path": "pages/myCommission/myCommission",
+			"style": {
+				"navigationBarTitleText": "我的佣金"
+			}
+		},
+		{
+			"path": "pages/commissionRule/commissionRule",
+			"style": {
+				"navigationBarTitleText": "佣金规则"
+			}
+		},
+		{
+			"path": "pages/bankCard/bankCard",
+			"style": {
+				"navigationBarTitleText": "银行卡信息"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},{
+            "path" : "pages/message/newsCon/newsCon",
+            "style" : {
+				"navigationBarTitleText": "消息"
+			}
+        },{
+            "path" : "pages/main/myCoupon/coupon",
+            "style" : {
+				"navigationBarTitleText": "我的优惠券"
+			}
+        },{
+            "path" : "pages/webView/webView",
+            "style" : {
+				"navigationBarTitleText": ""
+			}
+        },{
+            "path" : "pages/counter/counter",
+            "style" : {
+                "navigationBarTitleText": "房贷计算器"
+            }
+        },{
+            "path" : "pages/chooseRoom/chooseRoom",
+            "style" : {
+                "navigationBarTitleText": "在线选房",
+                "navigationBarBackgroundColor": "#222222",
+                "navigationBarTextStyle": "white"
+            }
+        },{
+            "path" : "pages/location/location",
+            "style" : {
+                "navigationBarTitleText": "选择城市",
+                "navigationBarBackgroundColor": "#222222",
+                "navigationBarTextStyle": "white"
+            }
+        }
+        ,{
+            "path" : "pages/projectSearch/projectSearch",
+            "style" : {
+                "navigationBarTitleText": "项目搜索",
+                "navigationBarBackgroundColor": "#222222",
+                "navigationBarTextStyle": "white"
+            }
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "#ffffff",
+		"navigationBarTitleText": "古怪房客通",
+		"navigationBarBackgroundColor": "#222222",
+		"backgroundColor": "#ffffff"
+	},
+	"tabBar": {
+		"color": "#707070",
+		"selectedColor": "#f09727",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/tab/index.png",
+				"selectedIconPath": "static/img/tab/index_active.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/service/service",
+				"iconPath": "static/img/tab/service.png",
+				"selectedIconPath": "static/img/tab/service_active.png",
+				"text": "服务"
+			},
+			{
+				"pagePath": "pages/recommend/recommend",
+				"iconPath": "static/img/tab/recommend.png",
+				"selectedIconPath": "static/img/tab/recommend.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/chooseRoom/chooseRoom",
+				"iconPath": "static/img/tab/xf.png",
+				"selectedIconPath": "static/img/tab/xf_active.png",
+				"text": "在线选房"
+			},
+			{
+				"pagePath": "pages/main/main",
+				"iconPath": "static/img/tab/main.png",
+				"selectedIconPath": "static/img/tab/main_active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"permission": {
+	    "scope.userLocation": {
+	      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+	    }
+	 },
+	"condition": { //模式配置，仅开发期间生效
+	    "current": 0, //当前激活的模式（list 的索引项）
+	    "list": [{
+	            "name": "登录", //模式名称
+	            "path": "pages/login/login" //启动页面，必选
+	        },
+			{
+				"name": "客户管理", //模式名称
+				"path": "pages/customerManage/customerManage", //启动页面，必选
+				"query": "id=1"
+			}
+	    ]
+	}
+}

@@ -1,0 +1,67 @@
+@import "../common/style/frameworkCom.less";
+
+// 加载中
+.tki-pk {
+    &-mask {
+        .fix();
+        .a(0);
+        z-index: 9998;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: all 0.3s ease;
+        visibility: hidden;
+    }
+    &-mask.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    &-cnt{
+        .fix();
+        .a(0);
+        z-index: 9999;
+        top: auto;
+        transition: all 0.3s ease;
+        transform: translateY(100%);
+    }
+    &-cnt.show{
+        transform: translateY(0);
+    }
+    &-bar{
+        background-color: #fff;
+        .h(72);
+        .p-left(20);
+        .p-right(20);
+        .f();
+        .f-between();
+        .f-i-center();
+        .box();
+        .b-bot(1,#f5f5f5);
+        .font(@fontSizeMax,@colorFontMain);
+        &-confirm{
+            color: @colorSuccess;
+        }
+    }
+    &-view{
+        .h(80*5);
+        background-color: #fff;
+        .indicator-class{
+            .h(80);
+        }
+        .item{
+            .box();
+            .font(@fontSizeMain,@colorFontTitle);
+            .center();
+            text-align: center;
+            line-height: 1.4;
+            .ellipsis-m(2);
+            .p-left(2);
+            .p-right(2);
+        }
+        .picker-view{
+            .h(100%);
+        }
+    }
+}
+.hover-c{
+    opacity: .6;
+}

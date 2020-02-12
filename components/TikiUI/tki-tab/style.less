@@ -1,0 +1,57 @@
+@import "../common/style/frameworkCom.less";
+.tki-tab{
+    .wh(100%,80);
+    .f();
+    background-color: #fff;
+    .b-bot(1,#fff);
+    &-i{
+        .rel();
+        .center();
+        .f-f(1);
+        &-name{
+            .h(100%);
+            .center();
+            .font(@fontSizeMain,@colorFontMain);
+            .rel();
+            .tr(0.3);
+        }
+        &-name:after{
+            content: " ";
+            .abs();
+            .a-bot(0);
+            .a-left(0);
+            .a-right(0);
+            .tr(0.3);
+        }
+        &-name.on{
+            color: @colorSuccess;
+        }
+        &-name.on:after{
+            .h(4);
+            .w(100%);
+            background-color: @colorSuccess;
+        }
+        &-tips{
+            .abs();
+            .min-wh(14,14);
+            border-radius: 50%;
+            background-color: #f43530;
+            .a-right(-16);
+            .a-top(4);
+            .font(@fontSizeMin,#fff);
+        }
+        &-num{
+            .abs();
+            .min-wh(14,14);
+            border-radius: 1em;
+            background-color: #f43530;
+            .a-right(-100%);
+            .a-top(4);
+            .font(@fontSizeMin,#fff);
+            .p-left(6);
+            .p-right(6);
+            .p-top(4);
+            .p-bot(4);
+        }
+    }
+}

@@ -1,0 +1,128 @@
+page,.container{
+    height: 100%;
+}
+.header{
+    background-color: #222;
+    height: 150rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-box{
+    width: 690rpx;
+    height: 60rpx;
+    background-color: #333;
+    border-radius: 10rpx;
+    display: flex;
+    align-items: center;
+}
+.search{
+    font-size: 20rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20rpx;
+    image{
+        width: 30rpx;
+        height: 30rpx;
+        margin-right: 20rpx;
+    }
+    input{
+        width: 620rpx;
+        color: #fff;
+    }
+}
+.content{
+    height: calc(100% - 190rpx);
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    width: calc(100% - 50rpx);
+}
+.title1{
+    line-height: 50rpx;
+    font-size: 24rpx;
+}
+.location-box{
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    >view{
+        display: flex;
+        align-items: center;
+    }
+    image{
+        width: 30rpx;
+        height: 30rpx;
+        margin-right: 15rpx;
+    }
+    .title1{
+        display: inline-block;
+    }
+}
+.btn{
+    background: transparent;
+    padding: 0;
+    padding-left: 36rpx !important;
+    padding-right: 36rpx !important;
+    margin: 0;
+}
+.hot-city{
+    margin: 20rpx 0;
+    .title1{
+        background-color: #ddd;
+        padding:  0 20rpx;
+    }
+}
+.btn-box{
+    padding-left: 20rpx;
+    padding-top: 20rpx;
+    bottom: 20rpx;
+    .btn{
+        margin-top: 5rpx;
+        margin-right: 10px;
+    }
+}
+.city-list{
+    position: relative;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    height: calc(100% - 300rpx);
+}
+.uni-indexed-list__title-wrapper{
+    background-color: #ddd !important;
+}
+.uni-indexed-list__menu{
+    background-color: transparent !important;
+}
+.indexes{
+    background-color: #ddd;
+    line-height: 40rpx;
+    width: 100%;
+    padding: 0 20rpx;
+}
+.city-item{
+    line-height: 70rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 0 20rpx;
+}
+.indexBox{
+    position: fixed;
+    top: 180rpx;
+    right: 0;
+    width: 50rpx;
+    height: calc(100% - 190rpx);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.index-item{
+    width: 50rpx;
+    max-height: 40rpx;
+    text-align: center;
+    font-size: 20rpx;
+    color: #333;
+    flex: 1;
+}

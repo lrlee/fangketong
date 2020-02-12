@@ -1,0 +1,69 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+@bgGra: linear-gradient(#f74a3c, #bb1102);
+.summary-warp {
+	.f();
+	.f-between();
+	.f-i-center();
+	.p(30, 77, 21, 77);
+	.font(34, #333333);
+	.summary-num {
+		view {
+			.l-h(52rpx);
+		}
+	}
+	button {
+		.wh(144, 54);
+		background-image: @bgGra;
+		.p(0);
+		.font(24, #ffffff);
+		.l-h(54rpx);
+		letter-spacing: 5rpx;
+	}
+	
+}
+.customer-list {
+	.p(51, 60, 56, 23);
+	margin: 0 auto;
+	.m-left(38);
+	.m-right(38);
+	.b-c(#ffffff);
+	& > view {
+		.f();
+		text-align: left;
+	}
+	.list-one {
+		.w(125);
+	}
+	.list-two {
+		.w(175);
+	}
+	.list-three {
+		.w(117);
+	}
+	.list-four {
+		.w(108);
+	}
+	.list-five {
+		.w(69);
+		text-align: center;
+	}
+	&-title {
+		.font(26,333333);
+		.m-bot(48);
+		font-weight: bold;
+	}
+	&-item {
+		.font(24,333333);
+		.m-bot(56);
+		button {
+			.wh(69, 36);
+			background-image: @bgGra;
+			.font(24, #ffffff);
+			.l-h(36rpx);
+		}
+	}
+}

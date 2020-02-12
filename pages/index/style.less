@@ -1,0 +1,199 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+}
+// 轮播图
+.banner {
+	// width: 100rpx;
+	.b-c(#222222);
+	.p-bot(24);
+	swiper {
+		.wh(714,375);
+		margin: 0 auto;
+	}
+	swiper-item, image {
+		.wh-a;
+	}
+}
+// 项目简介
+.project-desc {
+	.b-c(#222222);
+	.p(0, 33, 47, 33);
+	border-bottom: 15rpx solid #ffffff;
+	.project-name {
+		.rel();
+		.font(30, #eebc84);
+		.l-h(56rpx);
+	}
+	.want {
+		&-avatar {
+			.p-top(10);
+			.p-bot(10);
+			.f();
+			.f-i-center();
+			.p-left(10);
+			&-item {
+				image {
+					.wh(36, 36);
+					.r(50%);
+				}
+				.m-left(-10);
+			}
+		}
+		&-num {
+			font-size: 18rpx;
+			color: #a5a5a5;
+			.m-left(11);
+			text {
+				color: #eebc84;
+			}
+		}
+	}
+	.project-price {
+		.font(24, #ff0000);
+		.l-h(57rpx);
+	}
+	.project-loac {
+		.rel();
+		.font(24, #ffffff);
+		.m-top(8);
+		&-icon {
+			.abs();
+			right: 0;
+			top: 0;
+			.p(10);
+			.m(-10);
+			image {
+				.wh(27, 33);
+			}
+		}
+	}
+}
+// 菜单按钮
+.home-menu-warp {
+	.rel();
+	.bg {
+		.wh(100%, 100%);
+		.abs();
+		top: 0;
+		left: 0;
+		image {
+			.wh(100%, 100%);
+		}
+		z-index: -1;
+	}
+	.p(32, 45, 32, 45);
+	.home-menu {
+		.f();
+		.f-between();
+		.menu-item {
+			.f();
+			.f-d-col();
+			.f-i-center();
+			.font(18, #ae905f);
+			image {
+				.wh(54, 54);
+				.m-bot(18);
+			}
+		}
+	}
+}
+// 项目内容
+.contant {
+	& > view {
+		.b-c(#ffffff);
+		.p-left(38);
+		.p-right(38);
+	}
+	.title {
+		.p-left(0);
+		.rel();
+		.p-top(37rpx)
+	}
+	.p-bot(37);
+	.introduce-pic {
+		.wh(672, 308);
+		// .m-top(29);
+		.r(12);
+		image {
+			.wh-a;
+		}
+	}
+	.introduce-txt {
+		.font(20, #4c4c4c);
+		.l-h(32rpx);
+		.p(30, 24, 58, 30);
+	}
+	.atlas-warp {
+		.w(100%);
+		// .m-top(30);
+		.p-bot(45);
+		.rel();
+		swiper {
+			.wh(690, 338);
+			image {
+				.wh(100%, 100%);
+			}
+		}
+	}
+	.hx-pic {
+		.wh(670, 367);
+		.m-top(48);
+	}
+	.index-hx {
+		.f();
+		.f-between();
+		navigator {
+			.w(333);
+			.apartment-pic {
+				.wh(333, 336);
+				.rel();
+				border: 1px solid #b39867;
+				.r(5rpx);
+				image {
+					.wh(100%, 100%);
+				}
+			}
+			.apartment-name {
+				text-align: center;
+				.font(18, #161616);
+				.m-top(20);
+				.m-bot(35);
+			}
+			
+			
+		}
+		.apartment-tip {
+			.wh(61, 28);
+			.b-c(#b39867);
+			.r(0, 0, 8, 0);
+			.abs();
+			.a-top(0);
+			.a-left(0);
+			.font(20, #ffffff);
+			text-align: center;
+			.l-h(28rpx);
+		}
+	}
+}
+.more-hx {
+	// .pubbtn();
+	.btnpub;
+	.m-bot(69);
+	.m-top(33);
+}
+#to-select {
+	background: #987b46;
+	position: fixed;
+	bottom: 50rpx;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	color: #ffffff;
+	font-size: 26rpx;
+	line-height: 1.2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

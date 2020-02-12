@@ -1,0 +1,91 @@
+@import "../font/tikifont.css";
+.tki-nav-bar-h ._bar-h-status {
+  height: var(--status-bar-height);
+}
+.tki-nav-bar-h ._bar-h-title {
+  height: 44px;
+}
+.tki-nav-bar-body {
+  z-index: 999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.tki-nav-bar-body ._bar-body-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--status-bar-height);
+  will-change: opacity,transition,transform;
+  transition: opacity .1s linear;
+}
+.tki-nav-bar-body ._bar-body-title {
+  position: fixed;
+  top: var(--status-bar-height);
+  left: 0;
+  right: 0;
+  height: 44px;
+  padding-left: 20upx;
+  padding-right: 20upx;
+  display: flex;
+  box-sizing: border-box;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title {
+  height: 100%;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-back,
+.tki-nav-bar-body ._bar-body-title ._body-title-more {
+  width: 160upx;
+  display: flex;
+  align-items: center;
+  font-size: 26upx;
+  color: #161616;
+  line-height: 1;
+  line-height: 1.4;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-back-ic,
+.tki-nav-bar-body ._bar-body-title ._body-title-more-ic {
+  transition: color .3s;
+  font-size: 40upx;
+  color: #161616;
+  line-height: 1;
+  margin-right: 6upx;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-back-txt,
+.tki-nav-bar-body ._bar-body-title ._body-title-more-txt {
+  transition: color .3s;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-title {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-title-txt {
+  transition: color .3s;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 30upx;
+  color: #161616;
+  line-height: 1;
+}
+.tki-nav-bar-body ._bar-body-title ._body-title-more-ic {
+  margin-right: 0upx;
+}
+.tki-nav-bar-body ._bar-body-title-bg {
+  position: fixed;
+  top: var(--status-bar-height);
+  left: 0;
+  right: 0;
+  height: 44px;
+  will-change: opacity,transition,transform;
+  transition: opacity .1s linear;
+}
+.tki-nav-bar .nav-bar-hover {
+  opacity: .5;
+}

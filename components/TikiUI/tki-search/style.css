@@ -1,0 +1,97 @@
+/* 定位 */
+/* 工具 */
+/* 位置 */
+/* 大小 */
+/* 边框 */
+/* 圆角 */
+/* 阴影 */
+/* 过度 */
+/* flex 布局 */
+/* flex 常用集合 */
+/* 其它常用*/
+@import "../font/tikifont.css";
+.text-wrap {
+  word-wrap: break-word;
+  word-break: keep-all;
+}
+.tki-search {
+  padding-top: 20upx;
+  padding-right: 20upx;
+  padding-bottom: 20upx;
+  padding-left: 20upx;
+  height: 60upx;
+  display: flex;
+  background-color: #fff;
+}
+.tki-search-input {
+  display: flex;
+  /*占比*/
+  flex: 1;
+  border-bottom-width: 1upx !important;
+  border-bottom-style: solid;
+  border-bottom-color: #e1e3e2;
+  border-top-width: 1upx !important;
+  border-top-style: solid;
+  border-top-color: #e1e3e2;
+  border-left-width: 1upx !important;
+  border-left-style: solid;
+  border-left-color: #e1e3e2;
+}
+.tki-search-input input {
+  /*占比*/
+  flex: 1;
+  height: 100%;
+  font-size: 26upx;
+  color: #757575;
+  line-height: 1;
+}
+.tki-search-input-ic {
+  padding-left: 6upx;
+  padding-right: 6upx;
+  font-size: 26upx;
+  color: #b1b1b1;
+  line-height: 1;
+  display: flex;
+  /*居中*/
+  justify-content: center;
+  /*交叉轴的中点对齐*/
+  align-items: center;
+}
+.tki-search-input-empty {
+  /*居中*/
+  /*交叉轴的中点对齐*/
+  margin-right: 10upx;
+  margin-left: 10upx;
+  width: 45upx;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  /*居中*/
+  justify-content: center;
+  /*交叉轴的中点对齐*/
+  align-items: center;
+}
+.tki-search-input-empty .empty-ic {
+  margin-top: -6upx;
+  font-size: 36upx;
+  color: #b1b1b1;
+  line-height: 1;
+}
+.tki-search-input-plc {
+  font-size: 26upx;
+  color: #b1b1b1;
+  line-height: 1;
+}
+.tki-search-btn {
+  width: 124upx;
+  background-color: #07bb07;
+  font-size: 26upx;
+  color: #FFFFFF;
+  line-height: 1;
+  display: flex;
+  /*居中*/
+  justify-content: center;
+  /*交叉轴的中点对齐*/
+  align-items: center;
+}

@@ -1,0 +1,119 @@
+// out:false
+page{
+    background-color: #f8f8f8;
+}
+.top-pic {
+	background: #222222;
+	padding: 20rpx 0;
+	border-bottom: ;
+	image {
+		width: 714rpx;
+		height: 254rpx;
+		display: block;
+		margin: 0 auto;
+	}
+}
+.head{
+	margin-top: 12rpx;
+    background-color: #222222;
+    padding: 30rpx;
+    display: flex;
+    &-l{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        &-i{
+            font-size: 60rpx;
+            color: #b39766;
+        }
+        &-i:nth-child(1){
+			font-size: 24rpx;
+            margin-bottom: 30rpx;
+			color: #ffffff;
+        }
+    }
+    &-r{
+        display: flex;
+        align-items: center;
+        &-btn{
+			background: #987b46;
+            font-size: 18rpx;
+            color: #fff;
+            padding: 10rpx 20rpx;
+            border-radius: 15rpx;
+			image {
+				width: 28rpx;
+				height: 28rpx;
+				margin-right: 10rpx;
+				vertical-align: middle;
+			}
+        }
+    }
+}
+.list{
+    margin-top: 2rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+	#contact-btn::after {
+		content: none;
+	}
+    &-i{
+        display: flex;
+        align-items: center;
+		padding: 20rpx 30rpx;
+        &-head{
+            height: 85rpx;
+            width: 85rpx;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20rpx;
+        }
+        &-name{
+            flex: 1;
+            font-size: 24rpx;
+            color: rgb(25, 25, 25);
+        }
+        &-ic{
+            width: 66rpx;
+            height: 54rpx;
+			position: relative;
+			z-index: 99;
+            image{
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+        &-ic:nth-last-child(1){
+			width: 46rpx;
+			height: 46rpx;
+        }
+		.part-line {
+			width: 1rpx;
+			height: 41rpx;
+			background: #b39766;
+			margin: 0 20rpx;
+		}
+    }
+    &-i:nth-last-child(1){
+        border-bottom: 0;
+    }
+}
+.hover-c{
+    opacity: .7;
+}
+#contact-btn {
+	background: #987b46;
+	position: fixed;
+	bottom: 50rpx;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	color: #ffffff;
+	font-size: 26rpx;
+	line-height: 1.2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

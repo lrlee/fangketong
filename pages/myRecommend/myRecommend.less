@@ -1,0 +1,54 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.tab {
+	&-title {
+		.p-left(52);
+		.p-right(52);
+		.font(26, #ffffff);
+		.p-top(27);
+		.p-bot(28);
+		.f-between();
+		.b-c(#222222);
+		&-item {
+			.p-top(15);
+			.p-bot(15);
+		}
+	}
+}
+.active {
+	// .b-bot(2, #ca1f11, solid) !important;
+	color: #b39766 !important;
+}
+.item {
+	.f();
+	.f-between();
+}
+.tab-con {
+	.b-c(#ffffff);
+	.p(45, 14, 40, 14);
+	text-align: center;
+	&-title {
+		.font(26);
+	}
+	&-list {
+		.font(24);
+		.m-top(46);
+		.m-bot(40);
+	}
+	.item0 {
+		.w(112);
+	}
+	.item1 {
+		.w(189);
+	}
+	.item2 {
+		.w(105);
+	}
+	.item3 {
+		.w(135);
+		.ellipsis();
+	}
+}

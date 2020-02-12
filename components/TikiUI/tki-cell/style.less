@@ -1,0 +1,74 @@
+@import "../common/style/frameworkCom.less";
+@import "../font/tikifont.css";
+.tki-cell{
+    .rel();
+    .p-left(20);
+    .p-right(20);
+    .p-top(20);
+    .p-bot(20);
+    box-sizing: border-box;
+    background-color: #fff;
+    .f();
+    .f-d-col();
+    &-i{
+        // .b-bot(1,@ColorInputBorder);
+        .f-f(1);
+        .f();
+        .f-between();
+        .f-i-center();
+    }
+    &-p{
+        .f();
+        .f-i-center();
+    }
+    &-ic{
+        .font(@fontSizeMax,@colorFontMain);
+        .m-right(14);
+    }
+    &-title{
+        .font(@fontSizeMax,@colorFontMain);
+        line-height: 1.4;
+    }
+    &-tips{
+        .wh(36,36);
+        background-color: @colorWarning;
+        .font(20,@colorFontAc);
+        .center();
+        border-radius: 50%;
+    }
+    &-red{
+        .wh(16,16);
+        background-color: @colorWarning;
+        border-radius: 50%;
+    }
+    &-ric{
+        .font(@fontSizeMax,@colorFontMinor);
+        .m-left(14);
+    }
+    &-value{
+        .font(@fontSizeMax,@colorFontMinor);
+        .m-left(14);
+        line-height: 1.4;
+    }
+    &-label{
+        .m-top(4);
+        .font(@fontSizeMain,@colorFontMinor);
+        line-height: 1.4;
+    }
+    &-hover{
+        .hover-c;
+    }
+}
+.tki-cell::after{
+    content: "";
+    .abs();
+    .a-left(20);
+    .a-right(20);
+    .a-bot(0);
+    height: 1px;
+    background-color: rgb(245, 245, 245);
+}
+.tki-cell:nth-last-child(1)::after{
+    content: "";
+    height: 0;
+}

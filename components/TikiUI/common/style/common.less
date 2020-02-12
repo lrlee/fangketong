@@ -1,0 +1,645 @@
+//out: false
+@import "color.less";
+// @charset 'utf-8';
+@unit: rpx;
+@devicePx: 750; // 屏幕基准宽度 不用改，uni-app 默认就是这个尺寸
+
+// 定位
+.abs() {
+    position: absolute;
+}
+
+.rel() {
+    position: relative;
+}
+
+.fix() {
+    position: fixed;
+}
+
+// 工具
+// 单位转换 px2upx
+.setunit(@name, @px) {
+
+    .run() when (isunit(@px, '%')),
+    (ispixel(@px)) {
+        @{name}: @px;
+    }
+
+    .run() when (default()) {
+        @{name}: unit(@devicePx * @px / @designPx, @unit);
+    }
+
+    .run();
+}
+
+// 位置 
+// margin
+.m(@t: 0, @r: 0, @b: 0, @l: 0) {
+
+    .rr() when (@r > 0),
+    (@b > 0),
+    (@l > 0) {
+        .setunit(margin-top, @t);
+        .setunit(margin-right, @r);
+        .setunit(margin-bottom, @b);
+        .setunit(margin-left, @l);
+    }
+
+    .rr() when(default()) {
+        .setunit(margin-top, @t);
+        .setunit(margin-right, @t);
+        .setunit(margin-bottom, @t);
+        .setunit(margin-left, @t);
+    }
+
+    .rr();
+}
+
+.m-top(@px: 0) {
+    .setunit(margin-top, @px);
+}
+
+.m-top-var(@px: 0) {
+    margin-top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-top)");
+}
+
+.m-top-bar(@px: 0) {
+    margin-top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--status-bar-height)");
+}
+
+.m-bot(@px: 0) {
+    .setunit(margin-bottom, @px);
+}
+
+.m-bot-var(@px: 0) {
+    margin-bottom: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-bottom)");
+}
+
+.m-left(@px: 0) {
+    .setunit(margin-left, @px);
+}
+
+.m-right(@px: 0) {
+    .setunit(margin-right, @px);
+}
+
+// padding
+.p(@t: 0, @r: 0, @b: 0, @l: 0) {
+
+    .rr() when (@r > 0),
+    (@b > 0),
+    (@l > 0) {
+        .setunit(padding-top, @t);
+        .setunit(padding-right, @r);
+        .setunit(padding-bottom, @b);
+        .setunit(padding-left, @l);
+    }
+
+    .rr() when(default()) {
+        .setunit(padding-top, @t);
+        .setunit(padding-right, @t);
+        .setunit(padding-bottom, @t);
+        .setunit(padding-left, @t);
+    }
+
+    .rr();
+}
+
+.p-top(@px: 0) {
+    .setunit(padding-top, @px);
+}
+
+.p-top-var(@px: 0) {
+    padding-top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-top)");
+}
+
+.p-top-bar(@px: 0) {
+    padding-top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--status-bar-height)");
+}
+
+.p-bot(@px: 0) {
+    .setunit(padding-bottom, @px);
+}
+
+.p-bot-var(@px: 0) {
+    padding-bottom: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-bottom)");
+}
+
+.p-left(@px: 0) {
+    .setunit(padding-left, @px);
+}
+
+.p-right(@px: 0) {
+    .setunit(padding-right, @px);
+}
+
+// absolute
+.a(@px: 0) {
+    .setunit(top, @px);
+    .setunit(left, @px);
+    .setunit(right, @px);
+    .setunit(bottom, @px);
+}
+
+.a-top(@px: 0) {
+    .setunit(top, @px);
+}
+
+.a-top-var(@px: 0) {
+    top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-top)");
+}
+
+.a-top-bar(@px: 0) {
+    top: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--status-bar-height)");
+}
+
+.a-bot(@px: 0) {
+    .setunit(bottom, @px);
+}
+
+.a-bot-var(@px: 0) {
+    bottom: calc(unit(@devicePx * @px / @designPx, @unit) ~" + var(--window-bottom)");
+}
+
+.a-left(@px: 0) {
+    .setunit(left, @px);
+}
+
+.a-right(@px: 0) {
+    .setunit(right, @px);
+}
+
+// 大小
+.wh(@w: 0, @h: 0) {
+    .setunit(width, @w);
+    .setunit(height, @h);
+}
+// 宽高百分百
+.wh-a {
+	width: 100%;
+	height: 100%;
+}
+.w(@px: 0) {
+    .setunit(width, @px);
+}
+
+.h(@px: 0) {
+    .setunit(height, @px);
+}
+
+.min-wh(@w: 0, @h: 0) {
+    .setunit(min-width, @w);
+    .setunit(min-height, @h);
+}
+
+.min-w(@px: 0) {
+    .setunit(min-width, @px);
+}
+
+.min-h(@px: 0) {
+    .setunit(min-height, @px);
+}
+
+.max-wh(@w: 0, @h: 0) {
+    .setunit(max-width, @w);
+    .setunit(max-height, @h);
+}
+
+.max-w(@px: 0) {
+    .setunit(max-width, @px);
+}
+
+.max-h(@px: 0) {
+    .setunit(max-height, @px);
+}
+
+// 行高
+.l-h(@px: 0) {
+    line-height: @px;
+    // .setunit(line-height, @px);
+}
+
+// 字体大小和颜色
+.font(@px: 0, @c: #000) {
+    .setunit(font-size, @px);
+    color: @c;
+    line-height: 1;
+}
+
+// 颜色
+.c(@c: #000) {
+    color: @c;
+}
+
+// 字体大小
+.f-s(@px: 20) {
+    .setunit(font-size, @px);
+}
+
+//  背景颜色
+.b-c(@c: #fff) {
+    background-color: @c;
+}
+
+//  背景图片
+.b-img(@url) {
+    background-image: url(@url);
+}
+
+// 边框 
+.b(@px: 0, @c: #000, @s: solid) {
+    .setunit(border-top-width, @px);
+    .setunit(border-left-width, @px);
+    .setunit(border-bottom-width, @px);
+    .setunit(border-right-width, @px);
+    border-style: @s;
+    border-color: @c;
+}
+
+.b-top(@px: 0, @c: #000, @s: solid) {
+    // border: 0;
+    .setunit(border-top-width, @px) !important;
+    border-top-style: @s;
+    border-top-color: @c;
+}
+
+.b-bot(@px: 0, @c: #000, @s: solid) {
+    // border: 0;
+    .setunit(border-bottom-width, @px) !important;
+    border-bottom-style: @s;
+    border-bottom-color: @c;
+}
+
+.b-left(@px: 0, @c: #000, @s: solid) {
+    // border: 0;
+    .setunit(border-left-width, @px) !important;
+    border-left-style: @s;
+    border-left-color: @c;
+}
+
+.b-right(@px: 0, @c: #000, @s: solid) {
+    // border: 0;
+    .setunit(border-right-width, @px) !important;
+    border-right-style: @s;
+    border-right-color: @c;
+}
+
+// 圆角
+
+.r(@t: 0, @r: 0, @b: 0, @l: 0) {
+
+    .rr() when (@r > 0),
+    (@b > 0),
+    (@l > 0) {
+        .setunit(border-top-left-radius, @t);
+        .setunit(border-top-right-radius, @r);
+        .setunit(border-bottom-right-radius, @b);
+        .setunit(border-bottom-left-radius, @l);
+    }
+
+    .rr() when(default()) {
+        .setunit(border-top-left-radius, @t);
+        .setunit(border-top-right-radius, @t);
+        .setunit(border-bottom-right-radius, @t);
+        .setunit(border-bottom-left-radius, @t);
+    }
+
+    .rr();
+}
+
+// 阴影
+
+.box-s(@x: 0, @y: 0, @b: 0, @s: 0, @c: black, @u: @unit) {
+    box-shadow: unit(@x, @u) unit(@y, @u) unit(@b, @u) unit(@s, @u) @c;
+}
+
+.box-s-i(@x: 0, @y: 0, @b: 0, @s: 0, @c: black, @u: @unit) {
+    box-shadow: unit(@x, @u) unit(@y, @u) unit(@b, @u) unit(@s, @u) @c inset;
+}
+
+// 过度 
+
+.tr(@t: 0.1) {
+    transition: all unit(@t, s);
+    transform-origin: center center;
+}
+
+// flex 布局
+
+.f() {
+    display: flex;
+}
+
+// flex-direction属性决定主轴的方向（即项目的排列方向）。
+.f-d-row() {
+    // 主轴为水平方向，起点在左端
+    flex-direction: row;
+}
+
+.f-d-row-r() {
+    // 主轴为水平方向，起点在右端
+    flex-direction: row-reverse;
+}
+
+.f-d-col() {
+    // 主轴为垂直方向，起点在上沿
+    flex-direction: column;
+}
+
+.f-d-col-r() {
+    // 主轴为垂直方向，起点在下沿
+    flex-direction: column-reverse;
+}
+
+// 默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+.f-w-no() {
+    // 不换行
+    flex-wrap: nowrap;
+}
+
+.f-w() {
+    // 换行，第一行在下方
+    flex-wrap: wrap;
+}
+
+.f-w-r() {
+    // 换行，第一行在上方
+    flex-wrap: wrap-reverse;
+}
+
+// 项目在主轴上的对齐方式。
+.f-start() {
+    // 左对齐
+    justify-content: flex-start;
+}
+
+.f-end() {
+    // 右对齐
+    justify-content: flex-end;
+}
+
+.f-center() {
+    // 居中
+    justify-content: center;
+}
+
+.f-between() {
+    // 两端对齐，项目之间的间隔都相等。
+    justify-content: space-between;
+}
+
+.f-around() {
+    // 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+    justify-content: space-around;
+}
+
+// 项目在交叉轴上如何对齐。
+.f-i-start() {
+    // 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+    align-items: flex-start;
+}
+
+.f-i-end() {
+    // 交叉轴的起点对齐
+    align-items: flex-end;
+}
+
+.f-i-center() {
+    // 交叉轴的中点对齐
+    align-items: center;
+}
+
+.f-i-baseline() {
+    // 项目的第一行文字的基线对齐。
+    align-items: baselines;
+}
+
+.f-i-stretch() {
+    // （默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+    align-items: stretchs;
+}
+
+// align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+.f-c-start() {
+    // 与交叉轴的起点对齐
+    align-content: flex-start;
+}
+
+.f-c-end() {
+    // 与交叉轴的终点对齐
+    align-content: flex-end;
+}
+
+.f-c-center() {
+    // 与交叉轴的中点对齐
+    align-content: center;
+}
+
+.f-c-between() {
+    // 与交叉轴两端对齐，轴线之间的间隔平均分布
+    align-content: space-between;
+}
+
+.f-c-around() {
+    // 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+    align-content: space-around;
+}
+
+.f-c-stretch() {
+    // 轴线占满整个交叉轴。 默认值
+    align-content: stretch;
+}
+
+// align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+.f-s-start() {
+    // 起点
+    align-self: flex-start;
+}
+
+.f-s-end() {
+    // 终点
+    align-self: flex-end;
+}
+
+.f-s-center() {
+    // 居中
+    align-self: center;
+}
+
+.f-s-baseline() {
+    // 项目的第一行文字的基线对齐
+    align-self: baseline;
+}
+
+.f-s-stretch() {
+    // 轴线占满整个交叉轴
+    align-self: stretch;
+}
+
+// forder属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+.f-o(@i: 0) {
+    // 占比
+    order: @i;
+}
+
+//  flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+.f-g(@i: 0) {
+    // 占比
+    flex-grow: @i;
+}
+
+//  flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+.f-s(@i: 0) {
+    // 占比
+    flex-shrink: @i;
+}
+
+//  flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+.f-b(@i: 0) {
+    // 占比
+    flex-basis: @i;
+}
+
+// flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+.f-f(@i: 0) {
+    // 占比
+    flex: @i;
+}
+
+//  flex 常用集合 
+
+// 垂直水平居中
+.center() {
+    .f();
+    .f-center();
+    .f-i-center();
+}
+
+// 盒模型
+.box() {
+    box-sizing: border-box;
+}
+
+//  其它常用
+
+// 隐藏
+.ovhide() {
+    overflow: hidden;
+}
+
+.hide() {
+    display: none !important;
+}
+
+.vhide() {
+    visibility: hidden !important;
+}
+
+.show() {
+    display: block !important;
+}
+
+.vshow() {
+    visibility: visible !important;
+}
+
+.fshow() {
+    .f();
+}
+
+// 文本换行
+.text-wrap() {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+// 文本不换行
+.text-no-wrap() {
+    white-space: nowrap;
+}
+
+// 单行文本省略号...
+.ellipsis () {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 多行文本省略号...
+.ellipsis-m (@l: 2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @l;
+    overflow: hidden;
+    .text-wrap();
+}
+// 文字加粗
+.bl() {
+	font-weight: bold;
+}
+// 文字居中
+.text-center() {
+	text-align: center;
+}
+// 禁止选中
+.no-select() {
+    user-select: none;
+}
+
+// 可以选中
+.auto-select() {
+    user-select: auto;
+}
+
+// 清除浮动
+.clearfix() {
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+.title {
+	.font(26);
+	text {
+		.m(0, 7, 0, 7);
+	}
+	.line{
+		display: inline-block;
+		.wh(2, 21);
+		.b-c(#959595);
+	}
+}
+.more-title {
+	.w(100%);
+	.rel();
+}
+.more {
+	.font(20, #c91000);
+	.abs();
+	right: 0;
+	.l-h(26rpx);
+	top: 0;
+}
+// .pubbtn(@w: 308, @h: 62, @c: #c0000e, @fc: #ffffff) {
+//     .setunit(width, @w);
+//     .setunit(height, @h);
+//     background-color: @c;
+//     color: @fc;
+// }
+.btnpub {
+	width: 308rpx;
+	height: 62rpx;
+	background-color: #c0000e;
+	color: #ffffff;
+	padding: 0;
+	line-height: 62rpx;
+	font-size: 28rpx;
+	letter-spacing: 10rpx;
+}

@@ -1,0 +1,72 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.coupon-top-pic {
+	// .p-top(19);
+	.p-bot(19);
+	.b-c(#222222);
+	image {
+		.wh(732, 297);
+		display: block;
+		margin: 0 auto;
+	}
+}
+.coupon-list {
+	.box();
+	.f();
+	.f-center();
+	.f-d-col();
+	.b-c(#ffffff);
+	.h(125);
+	.m-top(18);
+	.p-top(50);
+	.p-left(28);
+	.p-right(28);
+	&-title {
+		.f();
+		.f-i-center();
+		.title-line {
+			.wh(190, 1);
+			.b-c(#ca1f11);
+		}
+		.title-txt {
+			color: #ca1f11;
+			letter-spacing: 7rpx;
+			font-weight: bold;
+			.m-left(10);
+			.m-right(10);
+		}
+	}
+	&-item {
+		.f();
+		.f-between();
+		.h(99);
+		.r(10);
+		.f-i-center();
+		.p-left(30);
+		.m-bot(54);
+		.p-right(30);
+		&-price {
+			.font(36, #f4483a);
+			font-weight: bold;
+		}
+		&-detail {
+			.font(30, #5a5a5a);
+		}
+		button {
+			.wh(176, 72);
+			.r(15);
+			.font(36, #ffffff);
+			.l-h(72rpx);
+			.b-c(#b39766);
+		}
+	}
+}
+button.prohibit {
+	background: none;
+}
+.prohibit {
+	.b-c(#ccc) !important;
+}

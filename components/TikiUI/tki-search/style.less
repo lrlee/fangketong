@@ -1,0 +1,48 @@
+@import "../common/style/frameworkCom.less";
+@import "../font/tikifont.css";
+.tki-search{
+    .p(20);
+    .h(60);
+    .f();
+    background-color: #fff;
+    &-input{
+        .f();
+        .f-f(1);
+        .b-bot(1,@ColorInputBorder);
+        .b-top(1,@ColorInputBorder);
+        .b-left(1,@ColorInputBorder);
+        input{
+            .f-f(1);
+            .h(100%);
+            .font(@fontSizeMain,@ColorInput);
+        }
+        &-ic{
+            .p-left(6);
+            .p-right(6);
+            .font(@fontSizeMain,@ColorInputPlc);
+            .center();
+        }
+        &-empty{
+            .center();
+            .m-right(10);
+            .m-left(10);
+            .wh(45,100%);
+            border-radius: 50%;
+            background-color: #fff;
+            .center();
+            .empty-ic{
+                .m-top(-6);
+                .font(36,@ColorInputPlc);
+            }
+        }
+        &-plc{
+            .font(@fontSizeMain,@ColorInputPlc);
+        }
+    }
+    &-btn{
+        .w(124);
+        background-color: @btnBgColor;
+        .font(@fontSizeMain,@btnColor);
+        .center();
+    }
+}

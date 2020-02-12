@@ -1,0 +1,40 @@
+@import "../common/style/frameworkCom.less";
+.tki-at{
+    .fix();
+    .a(0);
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    .center();
+    &-b{
+        width: 80%;
+        background-color: #fff;
+        &-t{
+            .h(100);
+            .font(@fontSizeMax,@colorFontTitle);
+            .center();
+            .b-bot(1,@ColorInputBorder);
+        }
+        &-b{
+            .p(20);
+            .font(@fontSizeMain,@colorFontMain);
+            line-height: 1.4;
+        }
+        &-btn{
+            border: 0;
+            border-radius: 0 ;
+            .p(0);
+            .m(20);
+            .m-top(0);
+            .h(80);
+            .center();
+            .font(32,#fff);
+            color: #fff !important;
+            background-color: @colorSuccess !important;
+        }
+        &-btn::before,
+        &-btn::after {
+            .b(0);
+            .r(0, 0, 0, 0);
+        }
+    }
+}

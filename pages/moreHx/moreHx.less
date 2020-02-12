@@ -1,0 +1,41 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.hx-list-warp {
+	navigator {
+		background: #ffffff;
+	}
+	.hx-list {
+		.p-left(58);
+		.p-bot(22);
+		&-area {
+			.font(18, #555555);
+			.m-bot(25);
+		}
+		&-info {
+			.f();
+			&-pic {
+				.m-right(40);
+				image {
+					.wh(347, 237);
+				}
+			}
+			&-txt {
+				&-price {
+					.font(30, #c20000);
+					.m-top(20);
+				}
+				&-priceDesc {
+					.font(18, #555555);
+					.m-top(23);
+				}
+				&-name {
+					.font(24, #555555);
+					.m-top(20);
+				}
+			}
+		}
+	}
+}

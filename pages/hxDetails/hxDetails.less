@@ -1,0 +1,165 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.hx-pic-warp, .hx-txt {
+	.b-c(#ffffff);
+	margin: 0 auto;
+	.r(5);
+}
+.hx-pic-warp {
+	.w(674);
+	.m-top(40);
+	.p-bot(48);
+	.p-top(55);
+	swiper {
+		.h(540rpx);
+	}
+	.hx-pic {
+		.f();
+		.f-center();
+		image {
+			.w(663);
+		}
+	}
+	.hx-name {
+		.font(45);
+		font-weight: bold;
+		.m-left(40);
+		.m-top(20);
+	}
+	.hx-item {
+		.font(26, #be1304);
+		.m-left(40);
+		.m-right(40);
+		.f();
+		// .f-between();
+		.m-top(30);
+		view {
+			.m-right(20rpx);
+		}
+	}
+	.hx-price {
+		font-size: 30rpx;
+		text-align: right;
+		display: block;
+	}
+}
+.hx-txt {
+	.w(602);
+	.m-top(37);
+	.m-bot(150);
+	.p(35, 36, 50, 36);
+	&-title {
+		.font(30);
+	}
+	&-con {
+		.font(26);
+		.m-top(27);
+		.l-h(36rpx);
+	}
+}
+.btn-warp {
+	.fix();
+	.wh(750, 112);
+	.b-c(#ffffff);
+	bottom: 0%;
+	left: 0;
+	z-index: 99;
+	.f();
+	.f-i-center();
+	.font(32, #666666);
+	view {
+		flex: 1;
+		text-align: center;
+		.b-right(1px, #808080, solid);
+	}
+	view:last-child {
+		border-right: none;
+		color: #be1304;
+	}
+}
+.calculator{
+    position: fixed;
+    bottom: 120rpx;
+    right: 30rpx;
+    z-index: 2;
+    image{
+        width: 80rpx;
+        height: 80rpx;
+    }
+}
+.shareImg{
+    background: #fff;
+    padding: 30rpx 30rpx;
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+    height: 85vh;
+    position: relative;
+    >text{
+        font-size: 36rpx;
+        color: #000;
+    }
+    image{
+        width: 80%;
+        height: 80%;
+        margin-left: 10%;
+        margin-bottom: 40rpx;
+        margin-top: 30rpx;
+    }
+    >view{
+        width: 60rpx;
+        height: 60rpx;
+        border-top-right-radius: 30rpx;
+        border-bottom-left-radius: 30rpx;
+        background: #c91000;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+        display: flex;
+        view{
+            font-size: 50rpx;
+            transform: rotate(45deg);
+            width: 60rpx;
+            height: 60rpx;
+            text-align: center;
+            line-height: 60rpx;
+        }
+    }
+}
+.confirm{
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    overflow: hidden;
+    .content{
+        padding: 80rpx;
+        border-bottom: 1rpx solid #f1f1f1;
+        text-align: center;
+    }
+    .btn-box{
+        display: flex;
+        justify-content: center;
+        button{
+            width: 50%;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 0;
+            &:first-of-type{
+                border-right: 1rpx solid #f1f1f1;
+            }
+            &:after{
+                color: #000;
+                border: none;
+                border-radius: 0;
+            }
+            &:last-of-type{
+                color: #c91000;
+            }
+        }
+    }
+}

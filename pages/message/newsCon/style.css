@@ -1,0 +1,36 @@
+.h {
+  padding-left: 40upx;
+  padding-right: 40upx;
+  padding-top: 28upx;
+  padding-bottom: 28upx;
+  border-bottom-width: 1upx !important;
+  border-bottom-style: solid;
+  border-bottom-color: #f5f9ff;
+}
+.h-title {
+  font-size: 30upx;
+  color: #333333;
+  line-height: 1;
+  margin-bottom: 16upx;
+  line-height: 1.2;
+}
+.h-dw {
+  font-size: 24upx;
+  color: #999999;
+  line-height: 1;
+  margin-bottom: 16upx;
+}
+.h-time {
+  font-size: 24upx;
+  color: #999999;
+  line-height: 1;
+}
+.b {
+  box-sizing: border-box;
+  padding-top: 40upx;
+  padding-right: 40upx;
+  padding-bottom: 40upx;
+  padding-left: 40upx;
+  padding-top: 28upx;
+  padding-bottom: 28upx;
+}

@@ -1,0 +1,87 @@
+@import "../common/style/frameworkCom.less";
+@import "../font/tikifont.css";
+.tki-nav-bar{
+    &-h{
+        ._bar-h-status{
+            height: var(--status-bar-height);
+        }
+        ._bar-h-title{
+            height: 44px;
+        }
+    }
+    &-body{
+        z-index: 999999;
+        .fix();
+        top: 0;
+        left: 0;
+        right: 0;
+        ._bar-body{
+            &-status{
+                .fix();
+                top: 0;
+                left: 0;
+                right: 0;
+                height: var(--status-bar-height);
+                will-change: opacity,transition,transform;
+                transition: opacity .1s linear;
+            }
+            &-title{
+                .fix();
+                top: var(--status-bar-height);
+                left: 0;
+                right: 0;
+                height: 44px;
+                .p-left(20);
+                .p-right(20);
+                .f();
+                box-sizing: border-box;
+                ._body-title{
+                    height: 100%;
+                    &-back,&-more{
+                        .w(160);
+                        .f();
+                        .f-i-center();
+                        .font(@fontSizeMain,@colorFontTitle);
+                        line-height: 1.4;
+                        &-ic{
+                            transition: color .3s;
+                            .font(40,@colorFontTitle);
+                            .m-right(6);
+                        }
+                        &-txt{
+                            transition: color .3s;
+                        }
+                    }
+                    &-title{
+                        .f-f(1);
+                        .ovhide;
+                        .center();
+                        &-txt{
+                            transition:color .3s;
+                            display: inline-block;
+                            .ellipsis;
+                            .font(30,@colorFontTitle);
+                        }
+                    }
+                    &-more{
+                        &-ic{
+                            .m-right(0);
+                        }
+                    }
+                }
+            }
+            &-title-bg{
+                .fix();
+                top: var(--status-bar-height);
+                left: 0;
+                right: 0;
+                height: 44px;
+                will-change: opacity,transition,transform;
+                transition: opacity .1s linear;
+            }
+        }
+    }
+    .nav-bar-hover{
+        opacity: .5;
+    }
+}

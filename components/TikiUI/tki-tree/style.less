@@ -1,0 +1,116 @@
+@import "../common/style/frameworkCom.less";
+
+.tki-tree {
+    &-mask {
+        .fix();
+        .a(0);
+        z-index: 9998;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: all 0.3s ease;
+        visibility: hidden;
+    }
+    &-mask.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    &-cnt{
+        .fix();
+        .a(0);
+        z-index: 9999;
+        // top: auto;
+        .a-top(160);
+        transition: all 0.3s ease;
+        transform: translateY(100%);
+    }
+    &-cnt.show{
+        transform: translateY(0);
+    }
+    &-bar{
+        background-color: #fff;
+        .h(72);
+        .p-left(20);
+        .p-right(20);
+        .f();
+        .f-between();
+        .f-i-center();
+        .box();
+        .b-bot(1,#f5f5f5);
+        .font(@fontSizeMax,@colorFontMain);
+        &-confirm{
+            color: @colorSuccess;
+        }
+    }
+    &-view{
+        .abs();
+        .a();
+        .a-top(72);
+        // .h(80*12);
+        background-color: #fff;
+        .p(20);
+        &-sc{
+            .h(100%);
+            overflow: hidden;
+        }
+    }
+    &-item{
+        .f();
+        .f-between();
+        .f-i-center();
+        .font(@fontSizeMain,@colorFontMain);
+        height: 0;
+        opacity: 0;
+        transition: 0.2s;
+        position: relative;
+        .ovhide();
+    }
+    &-item.show{
+        .h(80);
+        opacity: 1;
+    }
+    &-item.showchild:before{
+        transform: rotate(90deg);
+    }
+    &-item.last:before{
+        opacity: 0;
+    }
+    &-icon{
+        .wh(26,26);
+        .m-right(8);
+    }
+    &-label{
+        .f-f(1);
+        .f();
+        .f-i-center();
+        .h(100%);
+        line-height: 1.2;
+    }
+    &-check{
+        width: 40px;
+        height: 40px;
+        .center();
+        &-yes,&-no{
+            width: 20px;
+            height: 20px;
+            .r(20%);
+            .b(1,#07bb07);
+            .center();
+            .box();
+        }
+        &-yes-b{
+            width: 12px;
+            height: 12px;
+            .r(20%);
+            background-color: #07bb07;
+        }
+        .radio{
+            .r(50%);
+            .tki-tree-check-yes-b{
+                .r(50%);
+            }
+        }
+    }
+}
+.hover-c{
+    opacity: .6;
+}

@@ -1,0 +1,44 @@
+@import "../../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.news-warp {
+	.p-top(40);
+	.news-item {
+		.w(700);
+		.b-c(#ffffff);
+		.p-top(20);
+		.p-bot(20);
+		margin: 0 auto;
+		.m-bot(20);
+		navigator {
+			.wh(100%, 100%);
+			.p-left(18);
+			.p-right(35);
+			.r(5);
+			.font(26);
+			.f();
+			.f-between();
+			.f-i-center();
+			.news-left {
+				.f();
+				.f-i-center();
+				.news-title {
+					.w(510);
+					// .ellipsis();
+					.ellipsis-m();
+					.l-h(1.2);
+				}
+				image {
+					.wh(100, 100);
+					.m-right(13);
+				}
+			}
+		}
+		.news-time {
+			.font(22);
+			.m-top(10rpx);
+		}
+	}
+}

@@ -1,0 +1,294 @@
+@import "../common/style/color.less";
+@import "../common/style/frameworkCom.less";
+.tki {
+    // Flex 盒子
+    &-flex{
+        .f()
+    }
+    &-in-flex{
+        display: inline-flex;
+    }
+    &-flex,&-in-flex {
+        // .f();
+        // 主轴排列方向 - 水平方向
+        &.row {
+            // 起点在左端
+            .f-d-row();
+        };
+        &.row-r {
+            // 起点在右边
+            .f-d-row-r();
+        };
+        // 主轴排列方向 - 垂直方向
+        &.col {
+            // 起点在上沿
+            .f-d-col();
+        };
+        &.col-r {
+            // 起点在下沿
+            .f-d-col-r();
+        };
+        // 换行
+        &.wrap {
+            // 换行，第一行在下方
+            .f-w();
+        };
+        &.wrap-r {
+            // 换行，第一行在上方
+            .f-w-r();
+        };
+        // 主轴对齐方式
+        &.start {
+            // 左对齐
+            .f-start();
+        };
+        &.center {
+            // 居中对齐
+            .f-center();
+        };
+        &.end {
+            // 右对齐
+            .f-end();
+        };
+        &.between {
+            // 两端对齐/分散对齐
+            .f-between();
+        };
+        &.around {
+            // 两侧间隔相等
+            .f-around();
+        };
+        // 一条交叉与主轴的对齐方式
+        &.a-start {
+            // 起点对齐
+            .f-i-start();
+        };
+        &.a-center {
+            // 居中对齐
+            .f-i-center();
+        };
+        &.a-end {
+            // 终点对齐
+            .f-i-end();
+        };
+        &.a-baseline {
+            // 基线对齐
+            .f-i-baseline();
+        };
+        &.a-stretch {
+            // 满整个交叉轴
+            .f-i-stretch();
+        };
+        // 多条交叉轴与主轴对齐方式
+        &.am-start {
+            // 起点对齐
+            .f-c-start();
+        };
+        &.am-center {
+            // 居中对齐
+            .f-c-center();
+        };
+        &.am-end {
+            // 终点对齐
+            .f-c-end();
+        };
+        &.am-between {
+            // 两端对齐/分散对齐
+            .f-c-between();
+        };
+        &.am-around {
+            // 两侧间隔相等
+            .f-c-around();
+        };
+        &.am-stretch {
+            // 占满整个交叉轴
+            .f-c-stretch();
+        };
+        // 自身与轴对齐方式
+        &.e-start {
+            // 起点对齐
+            .f-s-start();
+        };
+        &.e-center {
+            // 居中对齐
+            .f-s-center();
+        };
+        &.e-end {
+            // 终点对齐
+            .f-s-end();
+        };
+        &.e-baseline {
+            // 基线对齐
+            .f-s-baseline();
+        };
+        &.e-stretch {
+            // 占满整个轴
+            .f-s-stretch();
+        };
+    };
+    // Grid 栅格布局
+    // 居中换行什么的配合 flex 使用
+    &-row {
+        .f();
+        .tki-col{
+            word-break:break-all;
+            box-sizing: border-box;
+            .f-f(1);
+            // for Span
+            .forSpan(@i:1) when (@i <= 12){
+                &.span-@{i}{
+                    .f-f(0 0 unit(@i/12 * 100, e('%')));
+                }
+                .forSpan(@i+1);
+            }
+            .forSpan(1);
+            // 平5等分
+            &.span-2-4{
+                .f-f(0 0 unit(2.4/12 * 100, e('%')));
+            }
+            // for offset
+            .forOffset(@i:1) when (@i <= 12){
+                &.offset-@{i}{
+                    margin-left: unit(@i/12 * 100, e('%'))
+                }
+                .forOffset(@i+1);
+            }
+            .forOffset(1);
+        }
+    };
+    // Cell 单元格
+    &-cell {};
+    // Padding 内边距
+    &-padding {};
+    // Margin 外边距
+    &-margin {};
+    // Border 边框
+    &-border {};
+    // Shadown 阴影
+    &-shadown {};
+    // Icon 图标
+    &-icon {};
+    // Tag 标记
+    &-tag {
+        display: inline-block;
+        .font(@fontSizeMin,@colorFontAc);
+        line-height: 1.4;
+        padding: .2em .4em;
+        background-color: @colorGray;
+        .b(1,@colorGray);
+        &.plain{
+            background-color: rgba(255, 255, 255, 0) !important;
+            color: @colorGray;
+        }
+        &.round{
+            border-radius: 1em;
+        }
+        &.mark-left{
+            border-radius: 1em 0 0 1em;
+        }
+        &.mark-right{
+            border-radius: 0 1em 1em 0;
+        }
+        &.success{
+            background-color: @colorSuccess;
+            color: @colorFontAc;
+            border-color: @colorSuccess;
+        }
+        &.success.plain{
+            border-color: @colorSuccess;
+            color: @colorSuccess;
+        }
+        &.warning{
+            background-color: @colorWarning;
+            color: @colorFontAc;
+            border-color: @colorWarning;
+        }
+        &.warning.plain{
+           border-color: @colorWarning;
+            color: @colorWarning;
+        }
+        &.primary{
+            background-color: @colorPrimary;
+            color: @colorFontAc;
+            border-color: @colorPrimary;
+        }
+        &.primary.plain{
+           border-color: @colorPrimary;
+            color: @colorPrimary;
+        }
+        &.wait{
+            background-color: @colorWait;
+            color: @colorFontAc;
+            border-color: @colorWait;
+        }
+        &.wait.plain{
+           border-color: @colorWait;
+            color: @colorWait;
+        }
+        &.msg{
+            background-color: @colorMsg;
+            color: @colorFontAc;
+            border-color: @colorMsg;
+        }
+        &.msg.plain{
+           border-color: @colorMsg;
+           color: @colorMsg;
+        }
+        &.user{
+            .font(@fontSizeMinUser,@colorFontAcUser);
+            background-color: @colorUser;
+            border-color: @colorUser;
+        }
+        &.user.plain{
+           border-color: @colorUser;
+           color: @colorUser;
+        }
+        &.max{
+            font-size: unit(@fontSizeMax,upx);
+        }
+        &.main{
+            font-size: unit(@fontSizeMain,upx);
+        }
+        &.no{
+            .p(0);
+            border: 0;
+        }
+        &.nopd{
+            .p(0);
+        }
+        &.nobd{
+            border: 0;
+        }
+    };
+    // Badge 徽章
+    &-badge {};
+    // 1px 1像素
+    &-px {};
+    // list 列表
+    &-list {};
+    // Panel 面板
+    &-panel {};
+    // card 卡片
+    &-card {};
+    // Button 按钮
+    &-button {};
+    // input 输入框
+    &-input {};
+    // textarea 多行输入框
+    &-textarea {};
+    // Slider 滑块
+    &-slider {};
+    // Radio 单选框
+    &-radio {};
+    // checkBox 多选框
+    &-checkBox {};
+    // image 图片
+    &-image {};
+    // hover 点击态
+    &-hover {};
+}
+
+// 点击态
+.hover-c{
+    opacity: .5;
+}

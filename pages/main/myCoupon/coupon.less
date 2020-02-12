@@ -1,0 +1,68 @@
+@import "../../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.coupon-top-pic {
+	.m-top(45);
+	.m-bot(54);
+	image {
+		.wh(750, 406);
+	}
+}
+.coupon-list {
+	.box();
+	.f();
+	.f-d-col();
+	.b-c(#ffffff);
+	.m(0, 38, 55, 38);
+	.p-top(50);
+	.p-left(28);
+	.p-right(28);
+	&-title {
+		.f();
+		.f-i-center();
+		.m-bot(75);
+		.title-line {
+			.wh(190, 1);
+			.b-c(#ca1f11);
+		}
+		.title-txt {
+			color: #ca1f11;
+			letter-spacing: 7rpx;
+			font-weight: bold;
+			.m-left(10);
+			.m-right(10);
+		}
+	}
+	&-item {
+		.f();
+		.f-between();
+		.h(99);
+		.b(1, #000000, solid);
+		.r(10);
+		.f-i-center();
+		.p-left(30);
+		.m-bot(54);
+		.p-right(30);
+		&-price {
+			.font(36, #f4483a);
+			font-weight: bold;
+		}
+		&-detail {
+			.font(26);
+		}
+		button {
+			.wh(132, 44);
+			.r(10);
+			.font(26, #ffffff);
+			.l-h(44rpx);
+		}
+	}
+}
+button.prohibit {
+	background-image: none;
+}
+.prohibit {
+	.b-c(#ccc) !important;
+}

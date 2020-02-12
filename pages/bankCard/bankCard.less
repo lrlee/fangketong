@@ -1,0 +1,48 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#f7f7f7);
+	.h(100%);
+}
+.bank-tip {
+	.font(24, #666666);
+	.m(38, 38, 35, 38);
+	.l-h(40rpx);
+}
+.bank-info {
+	.w(674);
+	.p-bot(70);
+	.b-c(#ffffff);
+	.r(5);
+	margin: 0 auto;
+	&-item {
+		.m-left(16);
+		.m-right(16);
+		.font(26);
+		.b-bot(1px, #cccccc, solid);
+		.h(90);
+		.f();
+		.f-i-center();
+		// .p-top(42);
+		// .p-bot(25);
+		&-left {
+			.w(105);
+			.f-between();
+			.p-left(50);
+			.m-right(69);
+		}
+	}
+	.bank-info-item-title {
+		.font(30, #ca1f11);
+		image {
+			.wh(32, 35);
+			.m-right(15rpx);
+		}
+	}
+	.submit {
+		.wh(304, 86);
+		.m-top(62);
+		.font(36, #ffffff);
+		letter-spacing: 21rpx;
+		.l-h(86rpx);
+	}
+}

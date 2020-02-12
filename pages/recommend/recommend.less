@@ -1,0 +1,63 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#ffffff);
+	.h(100%);
+}
+.title {
+	.font(30, #525252);
+	.m-bot(20);
+}
+.recommend-warp {
+	.wh(627, 645);
+	margin: 0 auto;
+	.p-top(57);
+	.p-left(63);
+	.p-bot(90);
+	.font(26);
+	color: #ffffff;
+	background: url("http://h5.kmguguan.com/Syx/fkt/img/recommend/bg.png");
+	.recommend-item {
+		.f();
+		.f-i-center();
+		.h(94);
+		view {
+			.m-top(12);
+		}
+		.recommend-icon {
+			image {
+				.wh(32, 35);
+			}
+			.m-right(10);
+			
+		}
+		.recommend-title {
+			.w(115);
+			text-align-last:justify; 
+			text-align:justify;
+		}
+		.recommend-input {
+			.m-left(5);
+			.wh(447,48);
+			.b-bot(1, #b39766, solid);
+			text-align: center;
+			picker {
+				.wh(100%, 100%);
+			}
+		}
+		
+	}
+	
+}
+.recommend-btn {
+		.wh(231, 72);
+		.font(36, #ffffff);
+		margin: 0 auto;
+		font-weight: bold;
+		.l-h(72rpx);
+		letter-spacing: 30rpx;
+		background: #b39766 !important;
+		.r(10rpx);
+		.m-top(75);
+		color: #ffffff;
+		.p-left(15);
+	}
