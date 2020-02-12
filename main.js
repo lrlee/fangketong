@@ -9,7 +9,7 @@ req.setConfig({
 	header:{
 		'content-type':'application/x-www-form-urlencoded',
 		'authentication': user.uToken("get")
-	},
+	}, 
     resInterceptors: res => {
         // 响应拦截器
         // 没有登录跳去登录页面
