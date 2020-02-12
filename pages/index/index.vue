@@ -183,14 +183,13 @@ export default {
 		tki.req.post('index/popupadv',{}).then(d => {
 			if (d.code === 200) {
 				// 处理数据
-				if(d.data.banner.length != 0) {
+				if(d.data.banner && d.data.banner.length != 0) {
 					this.popupadv = d.data.banner[0].thumb
 					this.$refs.popup.open()
 				}
 			}
 		}).catch(e => {
 			tki.ui.showToast(e.msg)
-			console.log(e)
 		})
 	},
 	onShow() {

@@ -206,7 +206,6 @@
 			// 请求数据
 			return tki.req.post('commission/customer').then(d => {
 				if (d.code === 200) {
-					console.log(d.data)
 					// 处理数据
 					this.list = d.data.list
 					// 未到访

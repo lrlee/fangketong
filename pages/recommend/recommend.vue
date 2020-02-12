@@ -30,17 +30,27 @@
 			</view>
 			<view class="recommend-item">
 				<view class="recommend-title">
+					所属项目
+				</view>
+				<view class="recommend-input">
+					<picker @change="bindProjectChange"  :value="projectIndex" :range-key="'projectname'" :range="projects">
+				        <view class="uni-input">{{projects[projectIndex].projectname}}</view>
+				    </picker>
+				</view>
+			</view>
+			<!-- <view class="recommend-item">
+				<view class="recommend-title">
 					楼盘
 				</view>
 				<view class="recommend-input">
 					<input class="beizhu-input" v-model="loupanText" placeholder="意向楼盘" />
 				</view>
-				<!-- <view  class="recommend-input">
+				 <view  class="recommend-input">
 					<picker @change="bindLoupanChange" :value="lpIndex" :range="loupan">
                         <view class="uni-input">{{loupan[lpIndex]}}</view>
                     </picker>
-				</view> -->
-			</view>
+				</view>
+			</view> -->
 			<view class="recommend-item">
 				<view class="recommend-title">
 					意向户型
@@ -97,24 +107,42 @@
 				name: '',
 				tel: '',
 				note: '',    // 备注
-				special: ''
+				special: '',
+				projects:[],
+				projectId:null,
+				projectIndex:0,
+				projectText:null
 			};
+		},
+		onLoad(){
+			const pid = uni.getStorageSync('projectid');
+			this.projectId  = pid
 		},
 		onShow() {
 			// 请求数据
 			return tki.req.post('index/relation').then(d => {
-				if (d.code === 200 && d.data.length) {
+				if (d.code === 200) {
 					// 处理数据
-					// 楼盘
-					this.loupan = d.data.map(item => {
-						return item.title
-					}) 
-					// 楼层
-					this.floor = Object.values(d.data[this.lpIndex].floor_array)
-					// 户型
-					this.huxing = d.data[this.lpIndex].project_apartment.map(item => {
-						return item.title
-					}) 
+					this.projects = d.data.project
+					this.projectText = d.data.project[0].projectname
+					if(!this.projectId){
+						this.projectId = d.data.project[0].id
+					}
+					this.projects.map((v,i)=>{
+						if(v.id==this.projectId){
+							this.projectIndex = i
+						}
+					})
+					// // 楼盘
+					// this.loupan = d.data.map(item => {
+					// 	return item.title
+					// }) 
+					// // 楼层
+					// this.floor = Object.values(d.data[this.lpIndex].floor_array)
+					// // 户型
+					// this.huxing = d.data[this.lpIndex].project_apartment.map(item => {
+					// 	return item.title
+					// }) 
 				}
 			}).catch(e => {
 				tki.ui.showToast(e.message)
@@ -122,6 +150,17 @@
 			})
 		},
 		methods: {
+			//项目
+			bindProjectChange:function(e){
+				this.projectIndex = e.target.value
+				this.projects.map((v,i)=>{
+					if(i==this.projectIndex){
+						this.projectId = v.id
+						this.projectText = v.projectname
+					}
+				})
+				
+			},
 			bindLoupanChange: function(e) {
 				this.lpIndex = e.target.value
 			},
@@ -143,11 +182,12 @@
 						// intention1: this.loupan[this.lpIndex],  // 楼盘
 						// intention2: this.huxing[this.hxIndex],   // 户型
 						// intention3: this.floor[this.floorIndex],   // 楼层
-						intention1:this.loupanText,
-						intention2:this.huxingText,
-						intention3:this.floorText,
+						intention1:this.projectText,  //项目
+						intention2:this.huxingText,  //户型
+						intention3:this.floorText,  //楼层
 						intention4: this.special,  // 特殊需求
 						remark: this.note,   // 推荐备注
+						projectId:this.projectId
 					}).then(d => {
 						if (d.code === 200) {
 							tki.ui.showToast(d.message)
