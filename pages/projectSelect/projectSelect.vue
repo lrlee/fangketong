@@ -19,6 +19,7 @@
             <!-- <view class="advertising">
                 <image v-if='imgUrl' :src="imgUrl + 'projectSelect/advertising.png'" mode="widthFix"></image>
             </view> -->
+			
 			<view class="advertising">
 				<swiper class="swiper imagesList"   :autoplay="true">
 					<swiper-item class="imagesItem" v-for="(item, index) in adImages" :key="index"  >
