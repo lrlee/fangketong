@@ -92,6 +92,7 @@
 
 <script>
 	import * as tki from "../../components/TikiUI/common/js/index.js";
+	import {nav} from '../../components/TikiUI/common/js/index'
 	export default {
 		data() {
 			return {
@@ -111,7 +112,8 @@
 				projects:[],
 				projectId:null,
 				projectIndex:0,
-				projectText:null
+				projectText:null,
+				identitytype:null, //当前用户身份
 			};
 		},
 		onLoad(){
@@ -125,6 +127,7 @@
 					// 处理数据
 					this.projects = d.data.project
 					this.projectText = d.data.project[0].projectname
+					this.identitytype = d.data.identitytype
 					if(!this.projectId){
 						this.projectId = d.data.project[0].id
 					}
@@ -171,12 +174,22 @@
 				this.floorIndex = e.target.value
 			},
 			submitRecommend() {
+				let url = null
+				if(this.identitytype==1){//经纪人
+					url = 'commission/recom'
+				}else if(this.identitytype==2){//顾问
+					url = 'adviser/customeradd'
+				}else{//游客
+					nav.navTo('/pages/myInfo/myInfo')
+					return false;
+				}
 				if(this.name == "") {
 					tki.ui.showToast("姓名不能为空")
 				}else if(!/^(1)((3)|(4)|(5)|(7)|(8)|(9))\d{9}$/.test(this.tel)) {
 					tki.ui.showToast("电话号码有误")
 				} else {
-					return tki.req.post('commission/recom', {
+					
+					return tki.req.post(url, {
 						realname: this.name,
 						mobile: this.tel,
 						// intention1: this.loupan[this.lpIndex],  // 楼盘
@@ -187,7 +200,7 @@
 						intention3:this.floorText,  //楼层
 						intention4: this.special,  // 特殊需求
 						remark: this.note,   // 推荐备注
-						projectId:this.projectId
+						identitytype:this.identitytype
 					}).then(d => {
 						if (d.code === 200) {
 							tki.ui.showToast(d.message)

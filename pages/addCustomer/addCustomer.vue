@@ -181,7 +181,8 @@
 						intention4: this.special,  // 特殊需求
 						remark: this.note,   // 推荐备注
 						projectId:this.projectId,
-						location: ""			
+						location: "",
+						identitytype:2 //顾问
 					}).then(d => {
 						if (d.code === 200) {
 							tki.ui.showToast("提交成功")
