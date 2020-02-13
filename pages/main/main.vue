@@ -16,7 +16,7 @@
 			    		<view class="main-title-txt">我的资料</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>
@@ -27,7 +27,7 @@
 			    		<view class="main-title-txt">我的优惠券</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>
@@ -41,7 +41,7 @@
 			    		<view class="main-title-txt">我的消息</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>
@@ -52,7 +52,7 @@
 			    		<view class="main-title-txt">我的推荐</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>
@@ -63,7 +63,7 @@
 			    		<view class="main-title-txt">我的佣金</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>
@@ -74,7 +74,7 @@
 			    		<view class="main-title-txt">我的客户管理</view>
 			    	</view>
 			    	<view class="main-more">
-			    		>
+			    		<image src="../../static/icons/right.png" mode=""></image>
 			    	</view>
 			    </view>
 			</navigator>

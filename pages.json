@@ -248,6 +248,11 @@
 				"name": "户型鉴赏", //模式名称
 				"path": "pages/moreHx/moreHx", //启动页面，必选
 				"query": ""
+			},
+			{
+				"name": "我的推荐", //模式名称
+				"path": "pages/myRecommend/myRecommend", //启动页面，必选
+				"query": ""
 			}
 	    ]
 	}

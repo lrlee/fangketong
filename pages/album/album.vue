@@ -3,12 +3,12 @@
 		<view class="not" v-if="!picList || picList.length==0">
 		    暂无内容
 		</view>
-		<view class="album-warp" v-for="(v, i) in picList" :key="i"">
+		<view class="album-warp" v-for="(v, i) in picList" :key="i">
 			<view class="album-item">
 				<view class="title">
 					{{v[0].cate}}
 				</view>
-				<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#f09727'" :autoplay="true">
+				<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="true">
 					<swiper-item v-for="(item, index) in v" :key="index">
 						<image :src="item.thumb" mode="aspectFill"></image>
 					</swiper-item>
