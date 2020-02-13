@@ -144,6 +144,21 @@
 					</navigator>
 				</view>
 			</view>
+			<view class="zhoubian">
+				<view class="more-title">
+					<view class="title">
+						<text>项目周边</text>
+						<!-- <navigator url="/pages/moreHx/moreHx" hover-class="navigator-hover">
+						    <view class="more">
+						    	查看更多
+						    </view>
+						</navigator> -->
+					</view>
+				</view>
+				<view class="index-hx">
+					<s-around style="width: 100%;" :coordinates="{latitude: project.lat, longitude: project.lng}"></s-around>
+				</view>
+			</view>
 		</view>
 		<uni-popup ref="popup" type="center">
 			<image :src="popupadv" mode="widthFix"></image>
@@ -162,6 +177,7 @@
 <script>
 import * as tki from '../../components/TikiUI/common/js/index.js';
 import {uniPopup} from '@dcloudio/uni-ui';
+import sAround from '../../components/s-around/index.vue';
 export default {
 	data() {
 		return {
@@ -176,7 +192,7 @@ export default {
 		};
 	},
 	components: {
-		uniPopup 
+		uniPopup, sAround
 	},
 	onLoad() {
 		// 请求弹窗广告
