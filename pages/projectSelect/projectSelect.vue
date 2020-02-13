@@ -43,12 +43,16 @@
 				    	<view class="">优惠政策</view>
 				    </view>
 				</navigator>
-				<navigator url="/pages/message/list/message" hover-class="navigator-hover">
+				<!-- <navigator url="/pages/message/list/message" hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/lianxiwomen.png" mode="" />
 				    	<view class="">联系我们</view>
 				    </view>
-				</navigator>
+				</navigator> -->
+				<view class="menu-item" @tap="toPhoen()">
+					<image  src="../../static/icons/lianxiwomen.png" mode="" />
+					<view class="">联系我们</view>
+				</view>
 				<navigator url="/pages/message/list/message"  hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/huodongzixun.png" mode="" />
@@ -230,6 +234,15 @@
                     tki.ui.showToast(e.message)
                 })
             },
+			toPhoen(t) {
+				if(t == "" || !t) {
+					tki.ui.showToast("暂无电话号码")
+				} else {
+					uni.makePhoneCall({
+						phoneNumber: String(t)
+					});
+				}
+			},
 			toProject(id) {
 				uni.setStorageSync('projectid', id);
 				tki.req.setConfig({
