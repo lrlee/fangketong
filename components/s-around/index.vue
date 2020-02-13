@@ -1,5 +1,7 @@
 <template>
 	<view class="QS-tabs-c">
+        <map class="map" scale="15" :latitude="coordinates.latitude" :longitude="coordinates.longitude" :markers="[{latitude:coordinates.latitude,longitude:coordinates.longitude}]">
+        </map>
 		<view class="QS-tabs-box">
 			<QSTabs 
                 ref="tabs" 
@@ -130,6 +132,10 @@
 </script>
 
 <style scoped>
+    .map{
+        width: 100%;
+        height: 360rpx;
+    }
     .QS-tabs-c{
         width: 100%;
         position: relative;
