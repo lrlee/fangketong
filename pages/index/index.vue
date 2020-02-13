@@ -149,7 +149,7 @@
 			<view class="zhoubian">
 				<view class="more-title">
 					<view class="title">
-						<text>项目周边</text>
+						<text>周边配套</text>
 						<!-- <navigator url="/pages/moreHx/moreHx" hover-class="navigator-hover">
 						    <view class="more">
 						    	查看更多
