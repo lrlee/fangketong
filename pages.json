@@ -169,7 +169,6 @@
             }
         }
         ,{
-<<<<<<< HEAD
             "path" : "pages/news/news",
             "style" : {
 				"navigationBarTitleText":"资讯活动"
@@ -180,11 +179,11 @@
             "style" : {
 				"navigationBarTitleText":"资讯详情"
 			}
-=======
-            "path" : "pages/contactUs/contactUs",
-            "style" : {}
->>>>>>> 4b8b451384f19a69f46c75bd68535c383fd6434c
-        }
+        },
+		{
+			"path" : "pages/contactUs/contactUs",
+			"style" : {}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
