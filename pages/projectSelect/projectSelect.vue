@@ -50,13 +50,6 @@
 				    	<view class="">联系我们</view>
 				    </view>
 				</navigator> -->
-<<<<<<< HEAD
-				<view class="menu-item" @tap="toPhoen()">
-					<image  src="../../static/icons/lianxiwomen.png" mode="" />
-					<view class="">联系我们</view>
-				</view>
-				<navigator url="/pages/news/news"  hover-class="navigator-hover">
-=======
                 <navigator url="/pages/contactUs/contactUs"  hover-class="navigator-hover">
                     <view class="menu-item">
                         <image  src="../../static/icons/lianxiwomen.png" mode="" />
@@ -64,7 +57,6 @@
                     </view>
 				</navigator>
 				<navigator url="/pages/message/list/message"  hover-class="navigator-hover">
->>>>>>> 4b8b451384f19a69f46c75bd68535c383fd6434c
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/huodongzixun.png" mode="" />
 				    	<view class="">资讯活动</view>
