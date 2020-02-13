@@ -29,7 +29,7 @@
 				</swiper>
 				<swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
 					<swiper-item class="adText-item" v-for="(item, index) in adText" :key="index"  >
-						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover">
+						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover" style="height:90rpx">
 							<view class="adBox" >
 								<image class="notice" src="../../static/icons/laba.png"/>
 								<view class="noticeText" style="padding-left: 30rpx;">{{item.title}}</view>
