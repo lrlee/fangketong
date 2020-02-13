@@ -18,22 +18,31 @@ page {
 			.f();
 			&-pic {
 				.m-right(40);
+                border:1px solid rgba(27, 120, 234, 1);
+                border-radius:8px;
+                overflow: hidden;
+                width: 450rpx;
+                text-align: center;
+                padding: 30rpx 0;
 				image {
 					.wh(347, 237);
 				}
 			}
 			&-txt {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 				&-price {
-					.font(30, #c20000);
+					.font(30, #2C61AD);
 					.m-top(20);
 				}
 				&-priceDesc {
-					.font(18, #555555);
+					.font(18, #3a3a3a);
 					.m-top(23);
 				}
 				&-name {
-					.font(24, #555555);
-					.m-top(20);
+					.font(24, #3a3a3a);
+					.m-top(50);
 				}
 			}
 		}

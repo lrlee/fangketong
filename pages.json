@@ -12,7 +12,7 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"navigationBarBackgroundColor":"#f6f6f6",
+				"navigationBarBackgroundColor":"#fff",
 				"navigationBarTextStyle":"black"
 			}
 		},
@@ -141,36 +141,38 @@
         },{
             "path" : "pages/counter/counter",
             "style" : {
-                "navigationBarTitleText": "房贷计算器"
+                "navigationBarTitleText": "房贷计算器",
+				"navigationBarBackgroundColor":"#ffff",
+				"navigationBarTextStyle":"black"
             }
         },{
             "path" : "pages/chooseRoom/chooseRoom",
             "style" : {
                 "navigationBarTitleText": "在线选房",
-                "navigationBarBackgroundColor": "#222222",
-                "navigationBarTextStyle": "white"
+				"navigationBarBackgroundColor":"#ffff",
+				"navigationBarTextStyle":"black"
             }
         },{
             "path" : "pages/location/location",
             "style" : {
                 "navigationBarTitleText": "选择城市",
-                "navigationBarBackgroundColor": "#222222",
-                "navigationBarTextStyle": "white"
+				"navigationBarBackgroundColor":"#ffff",
+				"navigationBarTextStyle":"black"
             }
         }
         ,{
             "path" : "pages/projectSearch/projectSearch",
             "style" : {
                 "navigationBarTitleText": "项目搜索",
-                "navigationBarBackgroundColor": "#222222",
-                "navigationBarTextStyle": "white"
+				"navigationBarBackgroundColor":"#ffff",
+				"navigationBarTextStyle":"black"
             }
         }
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "#ffffff",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "古怪房客通",
-		"navigationBarBackgroundColor": "#222222",
+		"navigationBarBackgroundColor": "#fff",
 		"backgroundColor": "#ffffff"
 	},
 	"tabBar": {
@@ -231,6 +233,21 @@
 				"name": "首页", //模式名称
 				"path": "pages/index/index", //启动页面，必选
 				"query": "id=17"
+			},
+			{
+				"name": "房贷计算器", //模式名称
+				"path": "pages/counter/counter", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "楼盘资料", //模式名称
+				"path": "pages/loupan/loupan", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "户型鉴赏", //模式名称
+				"path": "pages/moreHx/moreHx", //启动页面，必选
+				"query": ""
 			}
 	    ]
 	}
