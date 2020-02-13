@@ -169,6 +169,7 @@
             }
         }
         ,{
+<<<<<<< HEAD
             "path" : "pages/news/news",
             "style" : {
 				"navigationBarTitleText":"资讯活动"
@@ -179,6 +180,10 @@
             "style" : {
 				"navigationBarTitleText":"资讯详情"
 			}
+=======
+            "path" : "pages/contactUs/contactUs",
+            "style" : {}
+>>>>>>> 4b8b451384f19a69f46c75bd68535c383fd6434c
         }
     ],
 	"globalStyle": {
@@ -269,6 +274,11 @@
 			{
 				"name": "服务", //模式名称
 				"path": "pages/service/service", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "联系我们", //模式名称
+				"path": "pages/contactUs/contactUs", //启动页面，必选
 				"query": ""
 			}
 	    ]
