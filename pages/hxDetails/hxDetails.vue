@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<view class="hx-pic-warp">
-			<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#f09727'" :autoplay="true">
+			<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="true">
 				<swiper-item v-for="(item, index) in hxInfo.thumb_url" :key="index"  >
 					<movable-area scale-area>
 						<movable-view direction="all"  scale="true" scale-min="1" scale-max="4" :scale-value="scale">
-							<image :src="item" mode="" :data-src="item" @tap="e=>previewImg(e)" />
+							<image :src="item" mode="aspectFit" :data-src="item" @tap="e=>previewImg(e)" />
 						</movable-view>
 					</movable-area>
 				</swiper-item>
