@@ -27,7 +27,7 @@
 						<image v-if="item.thumb" :src="item.thumb" mode="" :data-src="item.thumb"  />
 					</swiper-item>
 				</swiper>
-				<swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
+				<!-- <swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
 					<swiper-item class="adText-item" v-for="(item, index) in adText" :key="index"  >
 						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover" style="height:90rpx">
 							<view class="adBox" >
@@ -37,7 +37,7 @@
 							</view>
 						</navigator>
 					</swiper-item>
-				</swiper>
+				</swiper> -->
 			</view>
 			<view class="home-menu">
 				<navigator url="/pages/coupon/coupon" hover-class="navigator-hover">
@@ -175,11 +175,36 @@
         onLoad(){
             this.getHotList();
 			this.getNewsList()
+			this.getUserLocation()
         },
 		components: {
 			tkiAuthorize
 		},
         methods:{
+			getUserLocation() {
+			    var qqmapsdk;  
+			    var me = this;
+			    wx.getSetting({    //判断是否授权
+			      success(res) {
+			        wx.getLocation({  
+			          type: 'wgs84', 			//返回可以用于wx.openLocation的经纬度
+			          success(res) {
+			            console.log(res,'已授权')
+			            var latitude = res.latitude
+						var longitude = res.longitude
+						var speed = res.speed
+						var accuracy = res.accuracy
+						// var position = me.getLocal(latitude,longitude)
+						// console.log(position,"position")
+			          },
+			          fail(res) {
+			            console.log('未授权')
+			            console.log(res)
+			          }
+			        })
+			      }
+			    })
+			  },
 			//播放视频
 			play(){
 				this.videoFlag = false
