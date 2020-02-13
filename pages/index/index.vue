@@ -1,9 +1,11 @@
 <template>
 	<view class="content-warp">
 		<view class="banner">
-			<swiper class="swiper banner-swiper" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="true">
+			<swiper class="swiper banner-swiper" :circular="true" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="true">
 				<swiper-item v-for="(item, index) in banner" :key="index">
-					<image :src="item.thumb" mode="aspectFill" />
+				<!-- 	<image :src="item.thumb" mode="aspectFill" /> -->
+					<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true" :src="'https://zhongtie.h-passer.com/'+item.video"></video>
+					<image v-if="item.thumb" :src="item.thumb" mode="aspectFill" :data-src="item.thumb"  />
 				</swiper-item>
 			</swiper>
 		</view>
@@ -188,7 +190,8 @@ export default {
 			sf: "",
 			popupadv: "",
 			history: [],
-			projectId: ""
+			projectId: "",
+			videoFlag:true
 		};
 	},
 	components: {
@@ -225,6 +228,16 @@ export default {
 		})
 	},
 	methods: {
+		//播放视频
+		play(){
+			this.videoFlag = false
+		},
+		pause(){
+			this.videoFlag = true
+		},
+		end(){
+			this.videoFlag = true
+		},
 		myCustomer() {
 			return tki.req.post('member/index',{}).then(d => {
 				if (d.code === 200) {

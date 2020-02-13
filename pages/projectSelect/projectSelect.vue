@@ -21,15 +21,17 @@
             </view> -->
 			
 			<view class="advertising">
-				<swiper class="swiper imagesList"   :autoplay="true">
+				<swiper class="swiper imagesList" :circular="true"  :autoplay="videoFlag">
 					<swiper-item class="imagesItem" v-for="(item, index) in adImages" :key="index"  >
-						<image :src="item.thumb" mode="" :data-src="item.thumb"  />
+						<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true" :src="'https://zhongtie.h-passer.com/'+item.video"></video>
+						<image v-if="item.thumb" :src="item.thumb" mode="" :data-src="item.thumb"  />
 					</swiper-item>
 				</swiper>
 				<swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
 					<swiper-item class="adText-item" v-for="(item, index) in adText" :key="index"  >
-						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover">
-							<view>
+						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover" style="height:90rpx">
+							<view class="adBox" >
+								<image class="notice" src="../../static/icons/laba.png"/>
 								<view class="noticeText" style="padding-left: 30rpx;">{{item.title}}</view>
 								<image class="rightArrow" src="../../static/icons/jiantouright.png"/>
 							</view>
@@ -56,7 +58,7 @@
                         <view class="">联系我们</view>
                     </view>
 				</navigator>
-				<navigator url="/pages/message/list/message"  hover-class="navigator-hover">
+				<navigator url="/pages/news/news"  hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/huodongzixun.png" mode="" />
 				    	<view class="">资讯活动</view>
@@ -154,6 +156,7 @@
 				projectid: "",
 				adImages:[],
 				adText:[],
+				videoFlag:true,
 				flagArr:{
 					0:true,
 					1:false,
@@ -177,6 +180,16 @@
 			tkiAuthorize
 		},
         methods:{
+			//播放视频
+			play(){
+				this.videoFlag = false
+			},
+			pause(){
+				this.videoFlag = true
+			},
+			end(){
+				this.videoFlag = true
+			},
 			changeStatus(index){
 				this.city = this.cityArr[index]
 				if(index){

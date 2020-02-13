@@ -63,7 +63,10 @@
 					if (d.code == 200) {
 						let info = d.data
 						const regex = new RegExp('<img', 'gi');
+						const reg = new RegExp('/Uploads','gi')
 						info.detail = info.detail.replace(regex, `<img style="max-width: 100%;height:auto;object-fit: cover"`);
+						info.detail = info.detail.replace(reg,'https://zhongtie.h-passer.com/Uploads')
+						console.log(info.detail,"detail")
 						let tp = {
 							content:info.detail,
 							time: new Date(Number(info.createtime * 1000)).format("yyyy-MM-dd"),
