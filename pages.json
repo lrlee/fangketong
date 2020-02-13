@@ -168,6 +168,18 @@
 				"navigationBarTextStyle":"black"
             }
         }
+        ,{
+            "path" : "pages/news/news",
+            "style" : {
+				"navigationBarTitleText":"资讯活动"
+			}
+        }
+        ,{
+            "path" : "pages/news/newsDetails",
+            "style" : {
+				"navigationBarTitleText":"资讯详情"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

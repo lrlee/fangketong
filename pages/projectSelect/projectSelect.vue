@@ -23,16 +23,17 @@
 			<view class="advertising">
 				<swiper class="swiper imagesList"   :autoplay="true">
 					<swiper-item class="imagesItem" v-for="(item, index) in adImages" :key="index"  >
-						<image :src="item" mode="" :data-src="item"  />
+						<image :src="item.thumb" mode="" :data-src="item.thumb"  />
 					</swiper-item>
 				</swiper>
 				<swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
 					<swiper-item class="adText-item" v-for="(item, index) in adText" :key="index"  >
-						<view>
-							<image class="notice" src="../../static/icons/laba.png"/>
-							<view class="noticeText">{{item}}</view>
-							<image class="rightArrow" src="../../static/icons/jiantouright.png"/>
-						</view>
+						<navigator :url=" '/pages/news/newsDetails?type=1&id='+ item.id" hover-class="navigator-hover">
+							<view>
+								<view class="noticeText" style="padding-left: 30rpx;">{{item.title}}</view>
+								<image class="rightArrow" src="../../static/icons/jiantouright.png"/>
+							</view>
+						</navigator>
 					</swiper-item>
 				</swiper>
 			</view>
@@ -53,7 +54,7 @@
 					<image  src="../../static/icons/lianxiwomen.png" mode="" />
 					<view class="">联系我们</view>
 				</view>
-				<navigator url="/pages/message/list/message"  hover-class="navigator-hover">
+				<navigator url="/pages/news/news"  hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/huodongzixun.png" mode="" />
 				    	<view class="">资讯活动</view>
@@ -149,8 +150,8 @@
                 page: 1,
 				list: [],
 				projectid: "",
-				adImages:['../../static/icons/ad1.png'],
-				adText:['公告1','公告2'],
+				adImages:[],
+				adText:[],
 				flagArr:{
 					0:true,
 					1:false,
@@ -168,6 +169,7 @@
 		},
         onLoad(){
             this.getHotList();
+			this.getNewsList()
         },
 		components: {
 			tkiAuthorize
@@ -209,10 +211,23 @@
                 this.city = city;
                 this.getList(city);
             },
+			//获取轮播的新闻数据
+			getNewsList(){
+				tki.req.get('index/news').then(d=>{
+					if(d.code==200){
+						this.adText = d.data.list
+					}else {
+				        tki.ui.showToast(d.message)
+				    }
+				}).catch(e => {
+				    tki.ui.showToast(e.message)
+				})
+			},
 			getHotList(){
 				tki.req.get('index/projectlist', {viewcount:1}).then(d => {
 				    if (d.code == 200) {
 				       this.list = d.data.list;
+					   this.adImages = d.data.banner
 				    } else {
 				        tki.ui.showToast(d.message)
 				    }
@@ -235,17 +250,15 @@
                 })
             },
 			toPhoen(t) {
-				uni.navigateTo({
-				    url: '/pages/webView/webView?url=http://www.crerg.com/'
+				// uni.navigateTo({
+				//     url: '/pages/webView/webView?url=http://www.crerg.com/'
+				// })
+				tki.ui.showModal('提示', '你还不是全民经纪人', res => {
+					tki.nav.navTo('/pages/myInfo/myInfo')
+				},{
+					showCancel:true,
+					confirmText:'去注册'
 				})
-				// nav.navTo('/pages/webView/webView?url=https://www.crerg.com/')
-				// if(t == "" || !t) {
-				// 	tki.ui.showToast("暂无电话号码")
-				// } else {
-				// 	uni.makePhoneCall({
-				// 		phoneNumber: String(t)
-				// 	});
-				// }
 			},
 			toProject(id) {
 				uni.setStorageSync('projectid', id);
