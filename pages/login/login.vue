@@ -45,7 +45,6 @@ export default {
 			tki.user.wxMpLogin(
 				"login/login",
 				(res,user) => {
-					console.log(res,user,this,"userrrr")
 					tki.ui.hideLoading();
 					tki.user.uToken("set",res.data.access_token);
 					// 设置请求头
@@ -68,7 +67,6 @@ export default {
 					        tki.ui.showToast(d.message)
 					    }
 					}).catch(e => {
-						console.log(e,"eeeee")
 					    tki.ui.showToast(e.message)
 					})
 					uni.navigateBack({
@@ -83,7 +81,6 @@ export default {
 			);
 		},
 		getPhoneNumber(e) {
-			console.log(e.detail,"detail")
 			this.iv = e.detail.iv
 			this.encryptedData = e.detail.encryptedData
 			this.toLogin()

@@ -4,7 +4,6 @@
             "path" : "pages/projectSelect/projectSelect",
             "style" : {
                 "navigationBarTitleText": "线上看房通",
-				"navigationBarTextStyle": "#f6f6f6",
 				"navigationBarBackgroundColor":"#f6f6f6",
 				"navigationBarTextStyle":"black"
             }
