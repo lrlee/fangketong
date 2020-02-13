@@ -67,7 +67,7 @@
 						<view class="">地图选房</view>
 					</view>
 				</navigator> -->
-			<!-- 	<navigator url="/pages/news/news" hover-class="navigator-hover">
+				<!-- 	<navigator url="/pages/news/news" hover-class="navigator-hover">
 					<view class="menu-item">
 						<image src="../../static/icons/huodongzixun.png" mode="" />
 						<view class="">资讯活动</view>
@@ -95,7 +95,7 @@
 				</view>
 				<view class="hotContentBox">
 					<navigator :url="'/pages/news/newsDetails?type=2&id='+ activity.id" hover-class="navigator-hover">
-						<image class="hotImage" :src="activity.thumb"/>
+						<image class="hotImage" :src="activity.thumb" />
 						<view class="hotContent">
 							<view class="hotTitle">
 								<image src="../../static/icons/new.png" />
@@ -110,56 +110,56 @@
 				</view>
 			</view>
 			<view class="project-box">
-				
-					<view class="regionBox">
-						<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
-						                @scroll="scroll">
-										<view class="topList">
-						                <view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
-						                	<view class="itemText">热门盘</view>
-						                	<view class="itemIcon">
-						                		<image v-if="!flagArr[0]" class="hotImage" src="../../static/icons/hotgray.png" />
-						                		<image v-else class="hotImage" src="../../static/icons/hot.png" />
-						                		<view>HOT</view>
-						                	</view>
-						                </view>
-						                <view class="topItem" :class="classArr[1]" @tap="()=>this.changeStatus(1)">
-						                	<view class="itemText">成都区域</view>
-						                	<view class="itemIcon">
-						                		<image v-if="!flagArr[1]" class="position" src="../../static/icons/daohanggray.png" />
-						                		<image v-else class="position" src="../../static/icons/daohangblue.png" />
-						                		<view>CHENGDU</view>
-						                	</view>
-						                </view>
-						                <view class="topItem" :class="classArr[2]" @tap="changeStatus(2)">
-						                	<view class="itemText">福州区域</view>
-						                	<view class="itemIcon">
-						                		<image v-if="!flagArr[2]" class="position" src="../../static/icons/daohanggray.png" />
-						                		<image v-else class="position" src="../../static/icons/daohangblue.png" />
-						                		<view>FUZHOU</view>
-						                	</view>
-						                </view>
-						                <view class="topItem" :class="classArr[3]" @tap="changeStatus(3)">
-						                	<view class="itemText">珠海区域</view>
-						                	<view class="itemIcon">
-						                		<image v-if="!flagArr[3]" class="position" src="../../static/icons/daohanggray.png" />
-						                		<image v-else class="position" src="../../static/icons/daohangblue.png" />
-						                		<view>ZHOUHAI</view>
-						                	</view>
-						                </view>
-						                <view class="topItem" :class="classArr[4]" @tap="changeStatus(4)">
-						                	<view class="itemText">达州区域</view>
-						                	<view class="itemIcon">
-						                		<image v-if="!flagArr[4]" class="position" src="../../static/icons/daohanggray.png" />
-						                		<image v-else class="position" src="../../static/icons/daohangblue.png" />
-						                		<view>DAZHOU</view>
-						                	</view>
-						                </view>
-										</view>
-						                </scroll-view>
-					</view>
-					
-				
+
+				<view class="regionBox">
+					<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
+					 @scroll="scroll">
+						<view class="topList">
+							<view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
+								<view class="itemText">热门盘</view>
+								<view class="itemIcon">
+									<image v-if="!flagArr[0]" class="hotImage" src="../../static/icons/hotgray.png" />
+									<image v-else class="hotImage" src="../../static/icons/hot.png" />
+									<view>HOT</view>
+								</view>
+							</view>
+							<view class="topItem" :class="classArr[1]" @tap="()=>this.changeStatus(1)">
+								<view class="itemText">成都区域</view>
+								<view class="itemIcon">
+									<image v-if="!flagArr[1]" class="position" src="../../static/icons/daohanggray.png" />
+									<image v-else class="position" src="../../static/icons/daohangblue.png" />
+									<view>CHENGDU</view>
+								</view>
+							</view>
+							<view class="topItem" :class="classArr[2]" @tap="changeStatus(2)">
+								<view class="itemText">福州区域</view>
+								<view class="itemIcon">
+									<image v-if="!flagArr[2]" class="position" src="../../static/icons/daohanggray.png" />
+									<image v-else class="position" src="../../static/icons/daohangblue.png" />
+									<view>FUZHOU</view>
+								</view>
+							</view>
+							<view class="topItem" :class="classArr[3]" @tap="changeStatus(3)">
+								<view class="itemText">珠海区域</view>
+								<view class="itemIcon">
+									<image v-if="!flagArr[3]" class="position" src="../../static/icons/daohanggray.png" />
+									<image v-else class="position" src="../../static/icons/daohangblue.png" />
+									<view>ZHOUHAI</view>
+								</view>
+							</view>
+							<view class="topItem" :class="classArr[4]" @tap="changeStatus(4)">
+								<view class="itemText">达州区域</view>
+								<view class="itemIcon">
+									<image v-if="!flagArr[4]" class="position" src="../../static/icons/daohanggray.png" />
+									<image v-else class="position" src="../../static/icons/daohangblue.png" />
+									<view>DAZHOU</view>
+								</view>
+							</view>
+						</view>
+					</scroll-view>
+				</view>
+
+
 				<view class="title1">
 					<view></view>
 					<text>推荐项目</text>
@@ -187,12 +187,12 @@
 				</view>
 			</view>
 
-			<view class="introBox">
+			<!-- <view class="introBox">
 				<image src="../../static/icons/company.png" />
 				<view class="introText">
 					中铁二局房地产集团有限公司是中国中铁二局的全资控股子公司，全面负责中铁二局一级土地整理和房地产开发业务。中铁二局房地产集团有限公司的控股股东中铁二局工程有限公司是世界企业500强、世界品牌500强中国中铁股份有限公司的成员企业。中铁二局房地产集团有限公司开发业务已布局四川、福建、海南、贵州、北京、浙江等全国10余个省（市、自治区）。
 				</view>
-			</view>
+			</view> -->
 		</scroll-view>
 		<tki-authorize ref="wxat" @result="wxResult" />
 	</view>
@@ -202,9 +202,6 @@
 	import * as tki from '../../components/TikiUI/common/js/index.js';
 	import tkiAuthorize from "../../components/TikiUI/tki-authorize/tki-authorize";
 	import QQMapWX from "../../utils/mapSdk.min.js";
-	const Map = new QQMapWX({
-		key: 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG' // 必填
-	});
 	const tencentMapKey = 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG'
 	export default {
 		data() {
@@ -228,20 +225,19 @@
 					1: '',
 					2: '',
 					3: '',
-					4:''
+					4: ''
 				},
-				cityArr: ['', '成都', '福州', '珠海','达州'],
+				cityArr: ['', '成都', '福州', '珠海', '达州'],
 				currentCity: null,
-				activity:[]
+				activity: []
 			};
 		},
 		onLoad() {
-			console.log(1111)
 			this.getLocation()
-			
+
 
 		},
-		onShow(){
+		onShow() {
 			this.getNewsList()
 			this.getHotList()
 			this.getActivity()
@@ -251,23 +247,23 @@
 		},
 		methods: {
 			//活动
-			getActivity(){
+			getActivity() {
 				tki.req.get('index/activity').then(d => {
-				    if (d.code == 200) {
+					if (d.code == 200) {
 						this.activity = d.data.list[0]
-						this.activity.createtime =new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
-				    } else {
-				        tki.ui.showToast(d.message)
-				    }
+						this.activity.createtime = new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
+					} else {
+						tki.ui.showToast(d.message)
+					}
 				}).catch(e => {
-				    tki.ui.showToast(e.message)
+					tki.ui.showToast(e.message)
 				})
 			},
 			//筛选
-			filter(){
+			filter() {
 				tki.ui.showToast('正在开发中...')
 			},
-			selectHomeByMap(){
+			selectHomeByMap() {
 				tki.ui.showToast('正在开发中...')
 			},
 			getLocation() {
@@ -447,9 +443,8 @@
 						projectid: id
 					}
 				})
-				uni.switchTab({
-					url: `/pages/index/index?id=${id}`
-				});
+				tki.nav.navTo(`/pages/index/index?id=${id}`)
+				
 			}
 		},
 	}

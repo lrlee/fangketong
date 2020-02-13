@@ -43,18 +43,15 @@
 				地址：{{project.address ? project.address : ""}}
 			</view>
 		</view>
-		<view class="home-menu-warp">
-			<!-- <view class="bg">
-				<image v-if='imgUrl' :src="imgUrl + 'home/munu_bg.png'" mode=""></image>
-			</view> -->
+		<!-- <view class="home-menu-warp">
 			<view class="home-menu">
 				<!-- <navigator url="/pages/myCustomer/myCustomer" hover-class="navigator-hover"> -->
-                    <view class="menu-item" @tap="myCustomer()">
+                    <!-- <view class="menu-item" @tap="myCustomer()">
                     	<image src="../../static/icons/kehu.png" mode="" />
                     	<view class="">我的客户</view>
-                    </view>
+                    </view> -->
                 <!-- </navigator> -->
-				<navigator url="/pages/coupon/coupon" hover-class="navigator-hover">
+			<!-- 	<navigator url="/pages/coupon/coupon" hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image src="../../static/icons/youhuiquan.png" mode="" />
 				    	<view class="">优惠政策</view>
@@ -71,14 +68,50 @@
 				    	<image v-if='imgUrl' src="../../static/icons/loupandongtai.png" mode="" />
 				    	<view class="">楼盘动态</view>
 				    </view>
-				</navigator>
+				</navigator> -->
 				<!-- <navigator url="/pages/counter/counter" hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image v-if='imgUrl' :src="imgUrl + 'home/calculator.png'" mode="" />
 				    	<view class="">房贷计算器</view>
 				    </view>
-				</navigator> -->
+				</navigator> 
 			</view>
+		</view> -->
+		<view class="hotActivity">
+			<view class="topBox">
+				<view class="title1">
+					<view></view>
+					<text>热门活动</text>
+				</view>
+				<navigator url="/pages/news/news" hover-class="navigator-hover">
+					<view class="moreBtn">查看更多</view>
+				</navigator>
+			</view>
+			<view class="hotContentBox">
+				<navigator :url="'/pages/news/newsDetails?type=2&id='+ activity.id" hover-class="navigator-hover">
+					<image class="hotImage" :src="activity.thumb" />
+					<view class="hotContent">
+						<view class="hotTitle">
+							<image src="../../static/icons/new.png" />
+							<view class="titleText">{{activity.title}}</view>
+						</view>
+						<view class="dateBox">
+							<view class="date">活动截止：{{activity.createtime}}</view>
+							<view class="joinBtn">马上参与</view>
+						</view>
+					</view>
+				</navigator>
+			</view>
+		</view>
+		<view class="contactBox">
+			<view class="home" @tap="toService()">
+				<image src="../../static/icons/zhiyeguwen.png"/>
+			</view>
+			<navigator url="/pages/myCustomer/myCustomer">
+				<view class="wholePeople">
+					<image src="../../static/icons/quanminyingxiao.png"/>
+				</view>
+			</navigator>
 		</view>
 		<view class="contant">
 			<view class="introduce">
@@ -173,6 +206,7 @@
 				项目
 			</view>
 		</button>
+		<tabbar></tabbar>
 	</view>
 </template>
 
@@ -180,6 +214,7 @@
 import * as tki from '../../components/TikiUI/common/js/index.js';
 import {uniPopup} from '@dcloudio/uni-ui';
 import sAround from '../../components/s-around/index.vue';
+import tabbar from '../../components/tabbar/tabbar.vue'
 export default {
 	data() {
 		return {
@@ -191,11 +226,12 @@ export default {
 			popupadv: "",
 			history: [],
 			projectId: "",
-			videoFlag:true
+			videoFlag:true,
+			activity: []
 		};
 	},
 	components: {
-		uniPopup, sAround
+		uniPopup, sAround,tabbar
 	},
 	onLoad() {
 		// 请求弹窗广告
@@ -212,6 +248,7 @@ export default {
 		})
 	},
 	onShow() {
+		this.getActivity()
 		// 请求首页数据
 		tki.req.post('index/projectindex',{}).then(d => {
 			if (d.code === 200) {
@@ -228,6 +265,25 @@ export default {
 		})
 	},
 	methods: {
+		toService(){
+			uni.switchTab({
+			    url: '/pages/service/service'
+			})
+		},
+		//活动
+		getActivity() {
+			let projectId = uni.getStorageSync('projectid')
+			tki.req.get('index/activity',{projectid:projectId}).then(d => {
+				if (d.code == 200) {
+					this.activity = d.data.list[0]
+					this.activity.createtime = new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
+				} else {
+					tki.ui.showToast(d.message)
+				}
+			}).catch(e => {
+				tki.ui.showToast(e.message)
+			})
+		},
 		//播放视频
 		play(){
 			this.videoFlag = false
