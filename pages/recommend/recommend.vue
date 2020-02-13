@@ -30,7 +30,7 @@
 			</view>
 			<view class="recommend-item">
 				<view class="recommend-title">
-					所属项目
+					意向楼盘
 				</view>
 				<view class="recommend-input">
 					<picker @change="bindProjectChange"  :value="projectIndex" :range-key="'projectname'" :range="projects">
@@ -180,7 +180,13 @@
 				}else if(this.identitytype==2){//顾问
 					url = 'adviser/customeradd'
 				}else{//游客
-					nav.navTo('/pages/myInfo/myInfo')
+					tki.ui.showModal('提示', '你还不是全民经纪人', res => {
+						tki.nav.navTo('/pages/myInfo/myInfo')
+					},{
+						showCancel:true,
+						confirmText:'去注册'
+					})
+					// nav.navTo('/pages/myInfo/myInfo')
 					return false;
 				}
 				if(this.name == "") {

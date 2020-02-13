@@ -1,6 +1,6 @@
 @import "../../components/TikiUI/common/style/userCom.less";
 page {
-	.b-c(#ffffff);
+	.b-c(#f6f6f6);
 	.h(100%);
 }
 .title {
@@ -8,18 +8,19 @@ page {
 	.m-bot(20);
 }
 .recommend-warp {
-	.wh(627, 645);
+	width: auto;
+	height: 800rpx;
 	margin: 0 auto;
-	.p-top(57);
-	.p-left(63);
-	.p-bot(90);
+	padding: 0 67rpx;
 	.font(26);
 	color: #ffffff;
-	background: url("http://h5.kmguguan.com/Syx/fkt/img/recommend/bg.png");
+	// background: url("http://h5.kmguguan.com/Syx/fkt/img/recommend/bg.png");
+	background-color: #fff;
 	.recommend-item {
 		.f();
 		.f-i-center();
-		.h(94);
+		.h(100);
+		border-bottom: 1px solid rgba(149,149,149,0.21);
 		view {
 			.m-top(12);
 		}
@@ -34,12 +35,14 @@ page {
 			.w(115);
 			text-align-last:justify; 
 			text-align:justify;
+			font-size: 24rpx;
+			color: #626262;
 		}
 		.recommend-input {
 			.m-left(5);
 			.wh(447,48);
-			.b-bot(1, #b39766, solid);
 			text-align: center;
+			color: #000;
 			picker {
 				.wh(100%, 100%);
 			}
@@ -49,15 +52,21 @@ page {
 	
 }
 .recommend-btn {
-		.wh(231, 72);
 		.font(36, #ffffff);
 		margin: 0 auto;
 		font-weight: bold;
 		.l-h(72rpx);
 		letter-spacing: 30rpx;
-		background: #b39766 !important;
-		.r(10rpx);
 		.m-top(75);
 		color: #ffffff;
 		.p-left(15);
+		width:271rpx;
+		height:61rpx;
+		background:linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
+		opacity:0.91;
+		border-radius:8rpx;
+		text-align: center;
+		line-height: 61rpx;
+		font-size: 30rpx;
+		color: #F3F3F3;
 	}

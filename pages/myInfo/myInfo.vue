@@ -248,8 +248,11 @@
 @import "../recommend/recommend.less";
 .tip {
 	.font(24, #666666);
-	.l-h(80rpx);
+	padding: 70rpx 0 40rpx;
+	font-size: 24rpx;
+	color: #525252;
 	text-align: center;
+	background-color: #fff;
 }
 .recommend-warp {
 	.m-top(0);

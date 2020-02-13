@@ -235,13 +235,17 @@
                 })
             },
 			toPhoen(t) {
-				if(t == "" || !t) {
-					tki.ui.showToast("暂无电话号码")
-				} else {
-					uni.makePhoneCall({
-						phoneNumber: String(t)
-					});
-				}
+				uni.navigateTo({
+				    url: '/pages/webView/webView?url=http://www.crerg.com/'
+				})
+				// nav.navTo('/pages/webView/webView?url=https://www.crerg.com/')
+				// if(t == "" || !t) {
+				// 	tki.ui.showToast("暂无电话号码")
+				// } else {
+				// 	uni.makePhoneCall({
+				// 		phoneNumber: String(t)
+				// 	});
+				// }
 			},
 			toProject(id) {
 				uni.setStorageSync('projectid', id);
