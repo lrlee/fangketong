@@ -2,9 +2,9 @@
     <scroll-view class="container" scroll-y>
         <view class="radio-box">
             <radio-group @change="radioChange">
-                <label for="radio1"><radio class="radio" id="radio1" value="1" :checked="mode == 1"/>商业贷款</label>
-                <label for="radio2"><radio class="radio" id="radio2" value="2" :checked="mode == 2"/>公积金贷款</label>
-                <label for="radio3"><radio class="radio" id="radio3" value="3" :checked="mode == 3"/>组合贷款</label>
+                <label for="radio1"><radio color="#3394FF" class="radio" id="radio1" value="1" :checked="mode == 1"/>商业贷款</label>
+                <label for="radio2"><radio color="#3394FF" class="radio" id="radio2" value="2" :checked="mode == 2"/>公积金贷款</label>
+                <label for="radio3"><radio color="#3394FF" class="radio" id="radio3" value="3" :checked="mode == 3"/>组合贷款</label>
             </radio-group>
         </view>
         <view v-if="mode != 3" class="formulaMode-box">
@@ -12,7 +12,7 @@
             <view class="mode-box">
                 <radio-group @change="radioChange1">
                     <view>
-                        <label for="radio4"><radio class="radio" id="radio4" value="1" :checked="formulaMode == 1"/>根据面积，单价计算</label>
+                        <label for="radio4"><radio color="#3394FF" class="radio" id="radio4" value="1" :checked="formulaMode == 1"/>根据面积，单价计算</label>
                         <view v-if="formulaMode==1">
                             <view class="input-box">
                                 单价：<input class="input" v-model="price" type="text" /> 元/平米
@@ -28,7 +28,7 @@
                         </view>
                     </view>
                     <view>
-                        <label for="radio5"><radio class="radio" id="radio5" value="2" :checked="formulaMode == 2"/>根据贷款总额计算</label>
+                        <label for="radio5"><radio color="#3394FF" class="radio" id="radio5" value="2" :checked="formulaMode == 2"/>根据贷款总额计算</label>
                         <view v-if="formulaMode==2" class="input-box">
                             贷款总额：<input class="input" v-model="totalSum" type="text" /> 万元
                         </view>
@@ -69,14 +69,14 @@
         </view>
         <view class="type">
             <text>还款方式：</text>
-            <radio-group @change="radioChange2">                <label for="radio7"><radio class="radio" id="radio7" value="1" :checked="type == 1"/>等额本息</label>                <label for="radio8"><radio class="radio" id="radio8" value="2" :checked="type == 2"/>等额本金</label>            </radio-group>
+            <radio-group @change="radioChange2">                <label for="radio7"><radio color="#3394FF" class="radio" id="radio7" value="1" :checked="type == 1"/>等额本息</label>                <label for="radio8"><radio color="#3394FF" class="radio" id="radio8" value="2" :checked="type == 2"/>等额本金</label>            </radio-group>
         </view>
         <view class="btn-box">
             <button type="default" @click="submit">开始计算</button>
             <button type="default" @click="reset">重新填写</button>
         </view>
         <view class="result">
-            <view class="title1">查看结果</view>
+            <view class="title1"><text>查看结果</text></view>
             <view class="result-item">
                 <text>房款总额：</text>
                 <input type="text" class="input" disabled :value="houseTotalSum"/> 元

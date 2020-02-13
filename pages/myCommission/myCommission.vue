@@ -150,7 +150,7 @@
 	color: #000000;
 }
 .active {
-	color: #bc1103 !important;
+	color: #3571B8 !important;
 }
 .all-commission {
 	.font(24);
@@ -169,7 +169,7 @@
 		}
 		&-right {
 			.m-left(36);
-			color: #0069a6;
+			color: #3571B8;
 		}
 		.dakuan-btn {
 			.wh(323, 54);

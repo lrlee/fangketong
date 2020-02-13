@@ -1,11 +1,12 @@
 <template xlang="wxml">
 	<view>
 		<view class="top-pic">
-			<image v-if='imgUrl' :src="imgUrl + 'service/top_pic.png'" mode=""></image>
+			<image v-if='imgUrl' :src="imgUrl + 'service/top_pic.png'" mode="widthFix"></image>
 		</view>
 		<view class="head">
 			<view class="head-l">
 				<view class="head-l-i">售楼中心</view>
+                <image src="../../static/icons/tel_icon.png" mode="widthFix"></image>
 				<view class="head-l-i">{{tel ? tel : ""}}</view>
 			</view>
 			<view class="head-r">
@@ -26,11 +27,11 @@
 				<image class="list-i-head" :src="v.avatar" />
 				<view class="list-i-name">{{v.nickname}}</view>
 				<view class="list-i-ic" hover-class="hover-c" @tap="copyWx(v.weixin)">
-					<image v-if='imgUrl' :src="imgUrl + 'service/wx.png'" />
+					<image src="../../static/icons/wx.png" mode="widthFix"/>
 				</view>
 				<view class="part-line"></view>
 				<view class="list-i-ic" hover-class="hover-c" @tap="toPhoen(v.mobile)">
-					<image v-if='imgUrl' :src="imgUrl + 'service/tel1.png'" />
+					<image src="../../static/icons/tel.png" mode="widthFix"/>
 				</view>
 			</view>
 		</view>

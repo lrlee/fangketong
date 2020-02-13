@@ -8,19 +8,20 @@
 				{{project.title ? project.title : ""}}
 			</view>
 			<view class="loupan-title-info">
-				<view class="loupan-title-info-price">
+				<!-- <view class="loupan-title-info-price">
 					{{project.price_range ? project.price_range : ""}}
 					<image v-if='imgUrl' :src="imgUrl + 'loupan/yong_icon.png'" mode=""></image>
-				</view>
+				</view> -->
 				<view class="loupan-title-info-tel" @click="takePhone()">
-					<image v-if='imgUrl' :src="imgUrl + 'loupan/tel_icon.png'"></image>
+                    <text>售楼中心</text>
+					<image v-if='imgUrl' src="../../static/icons/tel_icon.png"></image>
 					<text>{{project.tell ? project.tell : ""}}</text>
 				</view>
 			</view>
 		</view>
 		<view class="loupan-info loupan-item">
-			<view class="loupan-info-title">
-				<image v-if='imgUrl' :src="imgUrl + 'loupan/info_icon.png'" mode=""></image>
+			<view class="loupan-info-title title">
+				<!-- <image v-if='imgUrl' :src="imgUrl + 'loupan/info_icon.png'" mode=""></image> -->
 				<text>楼盘信息</text>
 			</view>
 			<view class="loupan-info-item loupan-price">
@@ -103,11 +104,11 @@
 		</view>
 		<view class="loupan-item jt">
 			<view class="loupan-info-title title">
-				<text>交通配套</text>
+				<text>配套信息</text>
 			</view>
 			<view class="jt-warp">
 				<view v-for="(p, i) in params" :key="i">
-					{{p.title}}: {{p.value}}
+					<text>{{p.title}}:</text> <text>{{p.value}}</text>
 				</view>
 			</view>
 		</view>
@@ -142,7 +143,7 @@ export default {
 	methods: {
 		takePhone() {
 			uni.makePhoneCall({
-				phoneNumber: this.project.tel 
+				phoneNumber: this.project.tell
 			});
 		}
 	},

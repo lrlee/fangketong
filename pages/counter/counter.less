@@ -1,11 +1,14 @@
 .container{
     font-size: 26rpx;
     height: 100%;
+    background: #f8f8f8;
 }
 .radio-box{
     line-height: 90rpx;
     padding: 0 50rpx;
-    border-bottom: 1rpx solid #b39766;
+    background: #fff;
+    // border-bottom: 1rpx solid #ddd;
+    margin-bottom: 12rpx;
     label{
         margin-right: 20rpx;
     }
@@ -16,8 +19,9 @@
 }
 .formulaMode-box{
     padding: 0 50rpx;
-    border-bottom: 1rpx solid #b39766;
+    border-bottom: 1rpx solid #ddd;
     padding-bottom: 30rpx;
+    background: #fff;
     >view:nth-child(2){
         padding-left: 30rpx;
     }
@@ -43,7 +47,7 @@
     align-items: center;
 }
 .input{
-    border: 1rpx solid #b39766;
+    border: 1rpx solid #ddd;
     border-radius: 5rpx;
     display: inline-block;
     text-align: center;
@@ -51,7 +55,7 @@
 .picker{
     width: 100rpx;
     color: #fff;
-    background-color: #b39766;
+    background: linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
     border-radius: 5rpx;
     text-align: center;
     line-height: 50rpx;
@@ -61,8 +65,9 @@
 }
 .zuhe{
     padding: 0 50rpx;
-    border-bottom: 1rpx solid #b39766;
+    border-bottom: 1rpx solid #ddd;
     padding-bottom: 30rpx;
+    background: #fff;
     .input-box{
         padding-left: 70rpx;
         height: 80rpx;
@@ -82,7 +87,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 1rpx solid #b39766;
+    border-bottom: 1rpx solid #ddd;
+    background: #fff;
     .picker{
         width: auto;
         padding: 0 20rpx;
@@ -90,7 +96,8 @@
 }
 .lilv{
     padding: 20rpx 50rpx;
-    border-bottom: 1rpx solid #b39766;
+    border-bottom: 1rpx solid #ddd;
+    background: #fff;
     .input{
         width: 100rpx;
         margin-left: 130rpx;
@@ -116,7 +123,8 @@
     justify-content: flex-start;
     align-items: center;
     height: 120rpx;
-    border-bottom: 1rpx solid #b39766;
+    border-bottom: 1rpx solid #ddd;
+    background: #fff;
     label{
         margin-right: 20rpx;
     }
@@ -126,11 +134,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #fff;
+    margin-bottom: 12rpx;
     button{
         width: 230rpx;
         height: 80rpx;
         line-height: 80rpx;
-        background: #b39766 !important;
+        background: linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1)) !important;
         color: #fff;
         border-radius: 10rpx;
         &:first-of-type{
@@ -141,10 +151,17 @@
 .result{
     padding: 0rpx 50rpx;
     padding-bottom: 40rpx;
+    background: #fff;
     .title1{
-        color: red;
-        line-height: 50rpx;
-        margin-bottom: 40rpx;
+        text{
+            color: #1C66C0;
+            line-height: 50rpx;
+            margin-bottom: 40rpx;
+            background: #F1F4F9;
+            border-radius: 5rpx;
+            padding: 0 20rpx;
+            display: inline-block;
+        }
     }
 }
 .result-item{

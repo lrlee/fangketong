@@ -9,7 +9,7 @@ Object.assign(uni, socket)
 let cf = {
     baseUrl: '',
     url: '',
-    data: {},
+    data: {projectid: 17},
     dataType: 'json',
     responseType: 'text',
     header: {},

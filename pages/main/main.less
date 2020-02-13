@@ -5,11 +5,15 @@ page {
 }
 .user-info {
 	.b-bot(2, #cbcbcb, solid);
-	.b-c(#222222);
+	.b-c(#3040B3);
 	.f();
-	.h(240);
+	.h(340);
+    .w(700);
+    margin: 0 auto;
 	.f();
 	.f-i-center();
+    border-radius: 8rpx;
+    overflow: hidden;
 	view {
 		text-align: left;
 	}
@@ -42,17 +46,27 @@ page {
 		.font(30, #626262);
 		.f();
 		.f-between();
-		.wh(674, 84);
+		.wh(700, 142);
+        margin: 0 auto;
+        box-sizing: border-box;
+        border-radius: 8rpx;
 		.l-h(84rpx);
 		.b-c(#ffffff);
 		.p-left(23);
 		.p-right(23);
 		margin: 0 auto;
-		.m-bot(48);
+		.m-bot(15);
 		.text {
 			.h(84);
 		}
 	}
+    .main-more{
+        line-height: 156rpx;
+        image{
+            width: 30rpx;
+            height: 30rpx;
+        }
+    }
 	.to-login {
 		.wh(308, 62);
 		.b-c(#c0000e);
@@ -61,5 +75,6 @@ page {
 		.l-h(62rpx);
 		.m-top(33rpx);
 		letter-spacing: 10rpx;
+        background:linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
 	}
 }
