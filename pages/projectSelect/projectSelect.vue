@@ -49,10 +49,12 @@
 				    	<view class="">联系我们</view>
 				    </view>
 				</navigator> -->
-				<view class="menu-item" @tap="toPhoen()">
-					<image  src="../../static/icons/lianxiwomen.png" mode="" />
-					<view class="">联系我们</view>
-				</view>
+                <navigator url="/pages/contactUs/contactUs"  hover-class="navigator-hover">
+                    <view class="menu-item">
+                        <image  src="../../static/icons/lianxiwomen.png" mode="" />
+                        <view class="">联系我们</view>
+                    </view>
+				</navigator>
 				<navigator url="/pages/message/list/message"  hover-class="navigator-hover">
 				    <view class="menu-item">
 				    	<image  src="../../static/icons/huodongzixun.png" mode="" />
