@@ -1,13 +1,13 @@
 <template>
 	<view class="tabbarBox">
-		<view class="wechatBox">
+		<button class="wechatBox" open-type="share">
 			<image src="../../static/icons/weixin.png"/>
 			<view class="text">分享好友</view>
-		</view>
-		<view class="advisory">
+		</button>
+		<button open-type="contact" class="advisory">
 			<image src="../../static/icons/zixun.png"/>
 			<text class="zixun">在线咨询</text>
-		</view>
+		</button>
 		<view class="reserve">
 			<image src="../../static/icons/yuyue.png"/>
 			<text class="yuyue">预约看房</text>
@@ -45,7 +45,15 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+            margin: 0;
+            background-color: transparent;
 			margin-right: 30rpx;
+            border: none;
+            line-height: 1;
+            outline: none;
+            &::after{
+                border: none;
+            }
 			image{
 				width: 79rpx;
 				height: 67rpx;
@@ -63,6 +71,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
+            margin: 0;
 			margin-right: 20rpx;
 			color: #fff;
 			border-radius: 8rpx;

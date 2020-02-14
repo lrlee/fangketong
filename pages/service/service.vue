@@ -35,14 +35,14 @@
 				</view>
 			</view>
 		</view>
-		<button open-type="contact" id="contact-btn">
+		<!-- <button open-type="contact" id="contact-btn">
 			<view class="">
 				在线
 			</view>
 			<view class="">
 				客服
 			</view>
-		</button>
+		</button> -->
 	</view>
 </template>
 
