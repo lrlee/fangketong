@@ -120,7 +120,7 @@
 				padding-left: 20rpx;
 			}
 			.btn{
-				width: 400rpx;
+				width: 420rpx;
 				height: 80rpx;
 				line-height: 80rpx;
 				text-align: center;
