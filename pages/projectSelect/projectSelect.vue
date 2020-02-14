@@ -285,11 +285,8 @@
 											icon: 'none',
 											duration: 1000
 										})
-<<<<<<< HEAD
 										self.city="成都"
 										//self.getList()
-=======
->>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 									} else if (res.confirm) {
 										wx.openSetting({
 											success: function(dataAu) {
@@ -307,11 +304,9 @@
 														icon: 'none',
 														duration: 1000
 													})
-<<<<<<< HEAD
 													self.city="成都"
 												//	self.getList()
-=======
->>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
+
 												}
 											}
 										})
@@ -338,22 +333,15 @@
 							url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${res.latitude},${res.longitude}&key=${tencentMapKey}`,
 							success: res => {
 								console.log(res, "rdddd")
-<<<<<<< HEAD
 								self.currentCity = res.data.result.address_component.city
 								self.city = res.data.result.address_component.city
 								//self.getList(self.city);
-=======
-								me.currentCity = res.data.result.address_component.city
-								me.city = res.data.result.address_component.city
-								me.getList(me.city);
->>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 							}
 						})
 					},
 					fail(res) {
 						console.log('未授权')
 						console.log(res)
-<<<<<<< HEAD
 						wx.showModal({
 							title: '请求授权当前位置',
 							content: '需要获取您的地理位置，请确认授权',
@@ -391,8 +379,6 @@
 								}
 							}
 						})
-=======
->>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 					}
 				})
 			},
