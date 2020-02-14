@@ -189,6 +189,12 @@
             "path" : "components/tabbar/tabbar",
             "style" : {}
         }
+        ,{
+            "path" : "pages/introduction/introduction",
+            "style" : {
+				"navigationBarTitleText":"走进中铁"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -283,6 +289,11 @@
 			{
 				"name": "联系我们", //模式名称
 				"path": "pages/contactUs/contactUs", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "走进中铁", //模式名称
+				"path": "pages/introduction/introduction", //启动页面，必选
 				"query": ""
 			}
 	    ]

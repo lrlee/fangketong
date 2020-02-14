@@ -75,14 +75,16 @@
 				</navigator> -->
 				<navigator url="/pages/counter/counter" hover-class="navigator-hover">
 					<view class="menu-item">
-						<image src="../../static/icons/jisuanqi.png" mode="" />
+						<image src="../../static/icons/dituxuanfang.png" mode="" />
 						<view class="">房贷计算器</view>
 					</view>
 				</navigator>
 			</view>
-			<view class="zhongtieBox">
-				<image src="../../static/icons/zoujinzhongtie.png" />
-			</view>
+            <navigator url="/pages/introduction/introduction" hover-class="navigator-hover">
+                <view class="zhongtieBox">
+                    <image src="../../static/icons/zoujinzhongtie.png" />
+                </view>
+			</navigator>
 			<view class="hotActivity">
 				<view class="topBox">
 					<view class="title1">
@@ -102,7 +104,7 @@
 								<view class="titleText">{{activity.title}}</view>
 							</view>
 							<view class="dateBox">
-								<view class="date">{{activity.description}}</view>
+								<view class="date">活动截止：{{activity.createtime}}</view>
 								<!-- <view class="joinBtn">马上参与</view> -->
 							</view>
 						</view>
@@ -112,7 +114,7 @@
 			<view class="project-box">
 
 				<view class="regionBox">
-					<scroll-view :scroll-top="scrollTop" scroll-x="true" show-scrollbar="false" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
+					<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
 					 @scroll="scroll">
 						<view class="topList">
 							<view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
@@ -283,8 +285,11 @@
 											icon: 'none',
 											duration: 1000
 										})
+<<<<<<< HEAD
 										self.city="成都"
 										//self.getList()
+=======
+>>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 									} else if (res.confirm) {
 										wx.openSetting({
 											success: function(dataAu) {
@@ -302,8 +307,11 @@
 														icon: 'none',
 														duration: 1000
 													})
+<<<<<<< HEAD
 													self.city="成都"
 												//	self.getList()
+=======
+>>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 												}
 											}
 										})
@@ -321,7 +329,7 @@
 				})
 			},
 			getUserLocation() {
-				const self = this
+				const me = this
 				wx.getLocation({
 					type: 'wgs84', //返回可以用于wx.openLocation的经纬度
 					success(res) {
@@ -330,15 +338,22 @@
 							url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${res.latitude},${res.longitude}&key=${tencentMapKey}`,
 							success: res => {
 								console.log(res, "rdddd")
+<<<<<<< HEAD
 								self.currentCity = res.data.result.address_component.city
 								self.city = res.data.result.address_component.city
 								//self.getList(self.city);
+=======
+								me.currentCity = res.data.result.address_component.city
+								me.city = res.data.result.address_component.city
+								me.getList(me.city);
+>>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 							}
 						})
 					},
 					fail(res) {
 						console.log('未授权')
 						console.log(res)
+<<<<<<< HEAD
 						wx.showModal({
 							title: '请求授权当前位置',
 							content: '需要获取您的地理位置，请确认授权',
@@ -376,6 +391,8 @@
 								}
 							}
 						})
+=======
+>>>>>>> a7d1d0d5b9ac90ceba1ed1a1e973a158a5ab40e2
 					}
 				})
 			},
@@ -453,9 +470,7 @@
 			},
 			getList(city) {
 				let data = {};
-				console.log(city,"city")
-				data.city = city || '成都'
-				//if (city) data.city = city;
+				if (city) data.city = city;
 				tki.req.get('index/index', data).then(d => {
 					if (d.code == 200) {
 						this.list = d.data.list;
