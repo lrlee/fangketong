@@ -75,14 +75,16 @@
 				</navigator> -->
 				<navigator url="/pages/counter/counter" hover-class="navigator-hover">
 					<view class="menu-item">
-						<image src="../../static/icons/jisuanqi.png" mode="" />
+						<image src="../../static/icons/dituxuanfang.png" mode="" />
 						<view class="">房贷计算器</view>
 					</view>
 				</navigator>
 			</view>
-			<view class="zhongtieBox">
-				<image src="../../static/icons/zoujinzhongtie.png" />
-			</view>
+            <navigator url="/pages/introduction/introduction" hover-class="navigator-hover">
+                <view class="zhongtieBox">
+                    <image src="../../static/icons/zoujinzhongtie.png" />
+                </view>
+			</navigator>
 			<view class="hotActivity">
 				<view class="topBox">
 					<view class="title1">
@@ -102,8 +104,8 @@
 								<view class="titleText">{{activity.title}}</view>
 							</view>
 							<view class="dateBox">
-								<view class="date">{{activity.description}}</view>
-								<!-- <view class="joinBtn">马上参与</view> -->
+								<view class="date">活动截止：{{activity.createtime}}</view>
+								<view class="joinBtn">马上参与</view>
 							</view>
 						</view>
 					</navigator>
@@ -112,7 +114,7 @@
 			<view class="project-box">
 
 				<view class="regionBox">
-					<scroll-view :scroll-top="scrollTop" scroll-x="true" show-scrollbar="false" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
+					<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
 					 @scroll="scroll">
 						<view class="topList">
 							<view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
@@ -285,8 +287,6 @@
 											icon: 'none',
 											duration: 1000
 										})
-										self.city="成都"
-										self.getList()
 									} else if (res.confirm) {
 										wx.openSetting({
 											success: function(dataAu) {
@@ -304,8 +304,6 @@
 														icon: 'none',
 														duration: 1000
 													})
-													self.city="成都"
-													self.getList()
 												}
 											}
 										})
@@ -323,7 +321,7 @@
 				})
 			},
 			getUserLocation() {
-				const self = this
+				const me = this
 				wx.getLocation({
 					type: 'wgs84', //返回可以用于wx.openLocation的经纬度
 					success(res) {
@@ -332,52 +330,15 @@
 							url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${res.latitude},${res.longitude}&key=${tencentMapKey}`,
 							success: res => {
 								console.log(res, "rdddd")
-								self.currentCity = res.data.result.address_component.city
-								self.city = res.data.result.address_component.city
-								self.getList(self.city);
+								me.currentCity = res.data.result.address_component.city
+								me.city = res.data.result.address_component.city
+								me.getList(me.city);
 							}
 						})
 					},
 					fail(res) {
 						console.log('未授权')
 						console.log(res)
-						wx.showModal({
-							title: '请求授权当前位置',
-							content: '需要获取您的地理位置，请确认授权',
-							success: function(res) {
-								if (res.cancel) {
-									wx.showToast({
-										title: '拒绝授权',
-										icon: 'none',
-										duration: 1000
-									})
-									self.city = "成都"
-									self.getList()
-								} else if (res.confirm) {
-									wx.openSetting({
-										success: function(dataAu) {
-											if (dataAu.authSetting["scope.userLocation"] == true) {
-												wx.showToast({
-													title: '授权成功',
-													icon: 'success',
-													duration: 1000
-												})
-												// self.onLoad()
-												//再次授权，调用wx.getLocation的API
-												self.getUserLocation()
-											} else {
-												wx.showToast({
-													title: '授权失败',
-													icon: 'none',
-													duration: 1000
-												})
-												self.getList()
-											}
-										}
-									})
-								}
-							}
-						})
 					}
 				})
 			},
@@ -455,9 +416,7 @@
 			},
 			getList(city) {
 				let data = {};
-				console.log(city,"city")
-				data.city = city || '成都'
-				//if (city) data.city = city;
+				if (city) data.city = city;
 				tki.req.get('index/index', data).then(d => {
 					if (d.code == 200) {
 						this.list = d.data.list;
