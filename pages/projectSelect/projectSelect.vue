@@ -234,8 +234,6 @@
 		},
 		onLoad() {
 			this.getLocation()
-
-
 		},
 		onShow() {
 			this.getNewsList()
@@ -286,7 +284,7 @@
 											duration: 1000
 										})
 										self.city="成都"
-										self.getList()
+										//self.getList()
 									} else if (res.confirm) {
 										wx.openSetting({
 											success: function(dataAu) {
@@ -305,7 +303,7 @@
 														duration: 1000
 													})
 													self.city="成都"
-													self.getList()
+												//	self.getList()
 												}
 											}
 										})
@@ -334,7 +332,7 @@
 								console.log(res, "rdddd")
 								self.currentCity = res.data.result.address_component.city
 								self.city = res.data.result.address_component.city
-								self.getList(self.city);
+								//self.getList(self.city);
 							}
 						})
 					},
@@ -371,7 +369,7 @@
 													icon: 'none',
 													duration: 1000
 												})
-												self.getList()
+											//	self.getList()
 											}
 										}
 									})
@@ -444,7 +442,7 @@
 					viewcount: 1
 				}).then(d => {
 					if (d.code == 200) {
-						// this.list = d.data.list;
+						this.list = d.data.list;
 						this.adImages = d.data.banner
 					} else {
 						tki.ui.showToast(d.message)
