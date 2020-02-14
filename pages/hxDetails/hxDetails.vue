@@ -109,8 +109,6 @@
 		},
         methods: {
 			previewImg(e){
-				console.log(e.currentTarget.dataset.src);
-				console.log(this,"this")
 				let that = this;
 				wx.previewImage({
 				   current:e.currentTarget.dataset.src,     //当前图片地址             

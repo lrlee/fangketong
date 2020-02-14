@@ -8,22 +8,65 @@
 			<image src="../../static/icons/zixun.png"/>
 			<text class="zixun">在线咨询</text>
 		</button>
-		<view class="reserve">
+		<view class="reserve" @tap="reserve()">
 			<image src="../../static/icons/yuyue.png"/>
 			<text class="yuyue">预约看房</text>
 		</view>
+		<uni-popup ref="popup" type="middle" >
+		    <view class="phoneNumber">
+				<image class="closeIcon" @tap="close()" src="../../static/icons/close.png"/>
+				<text class="titleText">预约通知</text>
+				<text class="tipsText">请静候专人来电,确认来访时间</text>
+				<input class="tel-input" type="number" v-model="tel"/>
+				<button class="btn" @tap="apply()">确定</button>
+		    </view>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import { uniPopup  } from '@dcloudio/uni-ui';
+	import * as tki from '../../components/TikiUI/common/js/index.js';
 	export default {
 		data() {
 			return {
-				
+				tel:'',
+				projectId:null
 			}
 		},
+		components:{
+			uniPopup
+		},
 		methods: {
-			
+			reserve(){
+				const phone = uni.getStorageSync('phone');
+				this.projectId = uni.getStorageSync('projectid')
+				this.tel = phone
+				this.$refs.popup.open()
+			},
+			close(){
+				this.$refs.popup.close()
+			},
+			apply(){
+				if(!/^(1)((3)|(4)|(5)|(7)|(8)|(9))\d{9}$/.test(this.tel)) {
+					tki.ui.showToast("电话号码有误")
+				}else{
+					return tki.req.post('index/orderTable', {
+						moblie:this.tel,
+						projectId:this.projectId
+					}).then(d => {
+						if (d.code === 200) {
+							tki.ui.showToast("提交成功")
+							this.$refs.popup.close()
+						}else if(d.code === 402) {
+							tki.ui.showToast(d.message)
+						}
+					}).catch(e => {
+						tki.ui.showToast(e.message)
+					})
+				}
+				
+			}
 		}
 	}
 </script>
@@ -40,6 +83,52 @@
 		left: 0;
 		background-color: #fff;
 		border: 1px solid #cdcdcf;
+		.phoneNumber{
+			width: 500rpx;
+			height: 400rpx;
+			background-color: #fff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			.closeIcon{
+				position: absolute;
+				top: 40rpx;
+				right: 40rpx;
+				width: 30rpx;
+				height: 30rpx;
+			}
+			.titleText{
+				font-size: 36rpx;
+				color: #000;
+				text-align: center;
+				padding: 30rpx 0 20rpx;
+			}
+			.tipsText{
+				font-size: 24rpx;
+				text-align: center;
+			}
+			.tel-input{
+				width: 400rpx;
+				height: 80rpx;
+				border-radius: 8rpx;
+				margin: 30rpx 0;
+				border: 1px solid #e6e6e6;
+				padding-left: 20rpx;
+			}
+			.btn{
+				width: 400rpx;
+				height: 80rpx;
+				line-height: 80rpx;
+				text-align: center;
+				background-color: #1286f3;
+				border-radius: 8rpx;
+				color: #fff;
+			}
+		}
 		.wechatBox{
 			display: flex;
 			flex-direction: column;

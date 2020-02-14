@@ -60,8 +60,9 @@ export default {
 						"sessionKey":res.data.sessionKey
 					}).then(d => {
 					    if (d.code == 200) {
-					       console.log("电话提交成功")
+					       console.log(d,"电话提交成功")
 						   // nav.navTo('../index/index')
+						   uni.setStorageSync("phone",d.data.phoneNumber)
 						   nav.navTo('/pages/projectSelect/projectSelect');
 					    } else {
 					        tki.ui.showToast(d.message)

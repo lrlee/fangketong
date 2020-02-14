@@ -112,7 +112,7 @@
 			<view class="project-box">
 
 				<view class="regionBox">
-					<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
+					<scroll-view :scroll-top="scrollTop" scroll-x="true" show-scrollbar="false" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
 					 @scroll="scroll">
 						<view class="topList">
 							<view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
