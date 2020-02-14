@@ -10,7 +10,7 @@
 				</view>
 			</view>
 			<navigator url="/pages/addCustomer/addCustomer" hover-class="navigator-hover">
-				<button type="warn">添加客户</button>
+				<button class="addClient" type="warn">添加客户</button>
 			</navigator>
 		</view>
 		<view class="customer-list">
