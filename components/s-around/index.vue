@@ -5,7 +5,7 @@
 		<view class="QS-tabs-box">
 			<QSTabs 
                 ref="tabs" 
-                :tabs="tabs" 
+                :tabs="tabsHandler" 
                 animationMode="line1" 
                 :current="current" 
                 @change="change"
@@ -13,6 +13,7 @@
                 defaultColor="#3a3a3a"
                 lineColor="#f1505c"
                 minWidth="165"
+                space="20"
             >
 			</QSTabs>
 		</view>
@@ -93,6 +94,11 @@
 				this.current = current;
 			}
 		},
+        computed: {
+            tabsHandler(){
+                return this.tabs.map(v => `${v.name}(${v.data.length})`)
+            }
+        },
         watch: {
             "coordinates": function({latitude, longitude}){
                 if(latitude && longitude){
