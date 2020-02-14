@@ -96,7 +96,7 @@
 							<view class="titleText">{{activity.title}}</view>
 						</view>
 						<view class="dateBox">
-							<view class="date">活动截止：{{activity.createtime}}</view>
+							<view class="date">{{activity.description}}</view>
 							<!-- <view class="joinBtn">马上参与</view> -->
 						</view>
 					</view>
