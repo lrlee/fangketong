@@ -110,9 +110,10 @@
 						projectid: id
 					}
 				})
-				uni.switchTab({
-				    url: `/pages/index/index?id=${id}`
-				});
+				tki.nav.navTo(`/pages/index/index?id=${id}`)
+				// uni.switchTab({
+				//     url: `/pages/index/index?id=${id}`
+				// });
 			}
         }
 	}

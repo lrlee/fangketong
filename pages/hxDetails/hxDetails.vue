@@ -183,9 +183,10 @@
                 }) 
             },
             goChooseRoom(){
-                uni.switchTab({
-                    url: '/pages/chooseRoom/chooseRoom'
-                })
+				tki.nav.navTo('/pages/chooseRoom/chooseRoom')
+                // uni.switchTab({
+                //     url: '/pages/chooseRoom/chooseRoom'
+                // })
             }
         }
 	}

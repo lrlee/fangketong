@@ -60,13 +60,37 @@ page{
     margin-top: 2rpx;
     background-color: #fff;
     box-sizing: border-box;
+	padding-bottom: 30rpx;
 	#contact-btn::after {
 		content: none;
+	}
+	.tipsList{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15rpx 40rpx 0 42rpx;
+		image{
+			width: 127rpx;
+			height: 26rpx;
+
+		}
+		.interImage{
+			width: 128rpx;
+			height: 23rpx;
+		}
 	}
     &-i{
         display: flex;
         align-items: center;
-		padding: 20rpx 30rpx;
+		height: 175rpx;
+		border:1px solid rgba(206, 206, 206, 1);
+		box-shadow:0px 1rpx 5rpx 0px rgba(6,0,1,0.12);
+		border-radius:8rpx;
+		margin: 0 auto;
+		padding: 0 22rpx 22rpx;
+		margin-bottom: 12rpx;
+		margin-top: 27rpx;
+		width: 668rpx;
         &-head{
             height: 85rpx;
             width: 85rpx;
@@ -82,8 +106,10 @@ page{
         &-ic{
 			position: relative;
 			z-index: 99;
+			align-self: flex-end;
             image{
-                width: 75rpx;
+                width: 124rpx;
+				height: 53rpx;
                 display: block;
             }
         }
@@ -100,7 +126,7 @@ page{
 		}
     }
     &-i:nth-last-child(1){
-        border-bottom: 0;
+        // border-bottom: 0;
     }
 }
 .hover-c{

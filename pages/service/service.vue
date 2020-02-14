@@ -20,18 +20,32 @@
 			<view class="title">
 				置业顾问
 			</view>
+			<view class="tipsList">
+				<view class="ensure">
+					<image mode="scaleToFill" src="../../static/icons/gfbz.png"/>
+				</view>
+				<view class="advisory">
+					<image mode="scaleToFill" src="../../static/icons/mianfeizixun.png"/>
+				</view>
+				<view class="Interpretation">
+					<image class="interImage" mode="scaleToFill" src="../../static/icons/huxingjiedu.png"/>
+				</view>
+				<view class="service">
+					<image mode="scaleToFill" src="../../static/icons/tiexinfuwu.png"/>
+				</view>
+			</view>
 			<view class="not" v-if="!list || list.length==0">
 			    暂无内容
 			</view>
 			<view class="list-i" v-for="(v,i) in list" :key="i">
 				<image class="list-i-head" :src="v.avatar" />
 				<view class="list-i-name">{{v.nickname}}</view>
-				<view class="list-i-ic" hover-class="hover-c" @tap="copyWx(v.weixin)">
-					<image src="../../static/icons/wx.png" mode="widthFix"/>
+				<view class="list-i-ic" hover-class="hover-c" @tap="toPhoen(v.mobile)">
+					<image src="../../static/icons/phone.png" mode="widthFix"/>
 				</view>
 				<view class="part-line"></view>
-				<view class="list-i-ic" hover-class="hover-c" @tap="toPhoen(v.mobile)">
-					<image src="../../static/icons/tel.png" mode="widthFix"/>
+				<view class="list-i-ic" hover-class="hover-c"@tap="copyWx(v.weixin)" >
+					<image src="../../static/icons/question.png" mode="widthFix"/>
 				</view>
 			</view>
 		</view>

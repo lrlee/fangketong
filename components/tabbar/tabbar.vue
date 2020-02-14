@@ -39,7 +39,7 @@
 		bottom: 0;
 		left: 0;
 		background-color: #fff;
-		border: 1px solid #f6f6f6;
+		border: 1px solid #cdcdcf;
 		.wechatBox{
 			display: flex;
 			flex-direction: column;
@@ -55,7 +55,7 @@
                 border: none;
             }
 			image{
-				width: 79rpx;
+				width: 72rpx;
 				height: 67rpx;
 			}
 			.text{

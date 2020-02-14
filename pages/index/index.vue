@@ -198,14 +198,14 @@
 		<uni-popup ref="popup" type="center">
 			<image :src="popupadv" mode="widthFix"></image>
 		</uni-popup>
-		<!-- <button id="to-select" @tap="toSelect">
+		<button id="to-select" @tap="toSelect">
 			<view class="">
 				切换
 			</view>
 			<view class="">
 				项目
 			</view>
-		</button> -->
+		</button>
 		<tabbar></tabbar>
 	</view>
 </template>
