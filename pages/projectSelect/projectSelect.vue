@@ -354,7 +354,7 @@
 										duration: 1000
 									})
 									self.city = "成都"
-									self.getList()
+									//self.getList()
 								} else if (res.confirm) {
 									wx.openSetting({
 										success: function(dataAu) {
