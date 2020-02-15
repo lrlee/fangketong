@@ -252,7 +252,6 @@
 				tki.req.get('index/activity').then(d => {
 					if (d.code == 200) {
 						this.activity = d.data.list[0]
-						this.activity.createtime = new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
 					} else {
 						tki.ui.showToast(d.message)
 					}

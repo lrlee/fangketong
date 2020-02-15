@@ -39,7 +39,7 @@
 			</view>
 			<view class="list-i" v-for="(v,i) in list" :key="i">
 				<image class="list-i-head" :src="v.avatar" />
-				<view class="list-i-name">{{v.nickname}}</view>
+				<view class="list-i-name">{{v.realname}}</view>
 				<view class="list-i-ic" hover-class="hover-c" @tap="toPhoen(v.mobile)">
 					<image src="../../static/icons/phone.png" mode="widthFix"/>
 				</view>
