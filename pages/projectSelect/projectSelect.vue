@@ -25,7 +25,7 @@
 					<swiper-item class="imagesItem" v-for="(item, index) in adImages" :key="index">
 						<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true"
 						 :src="'https://zhongtie.h-passer.com/'+item.video"></video>
-						<image v-if="item.thumb" :src="item.thumb" mode="" :data-src="item.thumb" />
+						<image v-if="item.thumb" :src="item.thumb" @tap="toProject(item.projectid)" mode="" :data-src="item.thumb" />
 					</swiper-item>
 				</swiper>
 				<!-- <swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
@@ -476,6 +476,7 @@
 				})
 			},
 			toProject(id) {
+				if(!id || id=="0")return;
 				uni.setStorageSync('projectid', id);
 				tki.req.setConfig({
 					data: {
