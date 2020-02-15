@@ -476,7 +476,7 @@
 				})
 			},
 			toProject(id) {
-				if(!id || id=="0")return;
+				if(!id || id==="0")return;
 				uni.setStorageSync('projectid', id);
 				tki.req.setConfig({
 					data: {
