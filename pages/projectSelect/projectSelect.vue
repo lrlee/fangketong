@@ -216,14 +216,14 @@
 				adText: [],
 				videoFlag: true,
 				flagArr: {
-					0: true,
+					0: false,
 					1: false,
 					2: false,
 					3: false,
 					4: false
 				},
 				classArr: {
-					0: 'active',
+					0: '',
 					1: '',
 					2: '',
 					3: '',
@@ -241,6 +241,7 @@
 			this.getNewsList()
 			this.getHotList()
 			this.getActivity()
+			this.changeStatus(0)
 		},
 		components: {
 			tkiAuthorize
@@ -324,7 +325,7 @@
 				})
 			},
 			getUserLocation() {
-				const me = this
+				const self = this
 				wx.getLocation({
 					type: 'wgs84', //返回可以用于wx.openLocation的经纬度
 					success(res) {
@@ -403,11 +404,7 @@
 				for (var key in this.flagArr) {
 					if (key == index) {
 						this.flagArr[index] = !this.flagArr[index]
-						if (this.classArr[key] == 'active') {
-							this.classArr[key] = ''
-						} else {
-							this.classArr[key] = 'active'
-						}
+						this.classArr[key] = 'active'
 					} else {
 						this.flagArr[key] = false
 						this.classArr[key] = ''
