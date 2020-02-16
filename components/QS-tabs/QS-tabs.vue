@@ -436,6 +436,7 @@
 		display: flex;
 		white-space: nowrap !important;
 		display: block !important;
+        text-align: center;
 	}
 
 	.QS-tabs-scroll-item {

@@ -195,6 +195,12 @@
 				"navigationBarTitleText":"走进中铁"
 			}
         }
+        ,{
+            "path" : "pages/map/map",
+            "style" : {
+				"navigationBarTitleText":"周边配套"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

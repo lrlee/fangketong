@@ -12,19 +12,19 @@
                 activeColor="#3B95F9"
                 defaultColor="#3a3a3a"
                 lineColor="#f1505c"
-                minWidth="165"
                 space="20"
+                :minWidth="minWidth"
             >
 			</QSTabs>
 		</view>
 		<swiper 
-		:style="{'height': '1200rpx'}" 
+		:style="{'height': swiperHeight + 'px'}" 
 		:current="swiperCurrent" 
 		@transition="transition"
 		@animationfinish="animationfinish">
 			<swiper-item class="swiper-item" v-for="(item, index) in tabs" :key="index">
-				<scroll-view scroll-y style="height: 100%;width: 100%;" >
-					<view class="scroll-items">
+				<scroll-view scroll-y style="height: 100%;">
+					<view class="scroll-items" :id="'scroll'+index">
 						<view class="scroll-item" v-for="(ite, ind) in item.data" :key="ind">
 							<view class="orderNum">
                                 <view>{{ind + 1}}</view>
@@ -58,7 +58,11 @@
             showNum: {
               type: Number,
               value: 20
-            }
+            },
+			minWidth: { //单个tab的最小宽度	//v1.4修改
+				type: [String, Number],
+				default: 165
+			}
         },
 		data() {
 			return {
@@ -77,10 +81,15 @@
                 }],
 				current: 0,
 				swiperCurrent: 0,
-				tabsHeight: 0,
+				swiperHeight: uni.getSystemInfoSync().windowHeight,
 				dx: 0
 			}
 		},
+        created(){
+            setTimeout(()=>{
+                this.handlerSwiperCurrent();
+            }, 1000)
+        },
 		methods: {
 			change(index) {
 				this.swiperCurrent = index;
@@ -92,7 +101,16 @@
 				this.$refs.tabs.setFinishCurrent(current);
 				this.swiperCurrent = current;
 				this.current = current;
-			}
+			},
+            handlerSwiperCurrent(){
+                const that = this;
+                const query = uni.createSelectorQuery().in(this);
+                const v = query.select('#scroll'+this.current).boundingClientRect(data => {
+                    if(data.height>0){
+                        that.swiperHeight = data.height;
+                    }
+                }).exec();
+            }
 		},
         computed: {
             tabsHandler(){
@@ -100,6 +118,9 @@
             }
         },
         watch: {
+            "swiperCurrent": function(){
+                this.handlerSwiperCurrent();
+            },
             "coordinates": function({latitude, longitude}){
                 if(latitude && longitude){
                     //搜索周边
@@ -111,7 +132,7 @@
                           latitude: latitude,
                           longitude: longitude
                         },
-                        page_size: 20,
+                        page_size: this.showNum,
                         page_index: 1,
                         success: function(res){
                            that.tabs = [...that.tabs.slice(0,i),{
@@ -121,7 +142,7 @@
                                return item;
                              })
                            },...that.tabs.slice(i+1)];
-                           console.log(that.tabs)
+                           that.handlerSwiperCurrent();
                         },
                         fail: function (res) {
                           console.log(res)
