@@ -9,6 +9,9 @@
 				</swiper-item>
 			</swiper>
 		</view>
+        <!-- <navigator :url="`../vr/vr?url=${encodeURIComponent('https://m.anjuke.com/xinfang/fuwu/vr/?loupan_id=446778&housetype_id=495221&frompm=copylink')}`">
+            <button type="primary">vr</button>
+        </navigator> -->
 		<view class="project-desc">
 			<view class="project-name">
 				{{project.projectname ? project.projectname : ""}}

@@ -201,6 +201,10 @@
 				"navigationBarTitleText":"周边配套"
 			}
         }
+        ,{
+            "path" : "pages/vr/vr",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
