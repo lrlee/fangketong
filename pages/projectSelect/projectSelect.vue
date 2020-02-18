@@ -175,7 +175,7 @@
 						</view>
 						<view class="right">
 							<view class="price">{{ item.sets&&item.sets.price_range ? item.sets.price_range : "暂无报价" }}</view>
-							<view class="num">{{ item.viewcount }}人想买</view>
+							<view class="num">{{ item.viewcount }}人关注</view>
 							<view class="address">{{ item.sets&&item.sets.address }}</view>
 							<view class="tags">
 								<view v-if="item.area" class="tag">{{ item.area }}</view>
