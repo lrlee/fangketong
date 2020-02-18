@@ -9,6 +9,9 @@
 				</swiper-item>
 			</swiper>
 		</view>
+        <!-- <navigator :url="`../vr/vr?url=${encodeURIComponent('https://m.anjuke.com/xinfang/fuwu/vr/?loupan_id=446778&housetype_id=495221&frompm=copylink')}`">
+            <button type="primary">vr</button>
+        </navigator> -->
 		<view class="project-desc">
 			<view class="project-name">
 				{{project.projectname ? project.projectname : ""}}
@@ -183,15 +186,15 @@
 				<view class="more-title">
 					<view class="title">
 						<text>周边配套</text>
-						<!-- <navigator url="/pages/moreHx/moreHx" hover-class="navigator-hover">
+						<navigator :url="`/pages/map/map?latitude=${project.lat}&longitude=${project.lng}&title=${project.title}&address=${project.address}`" hover-class="navigator-hover">
 						    <view class="more">
 						    	查看更多
 						    </view>
-						</navigator> -->
+						</navigator>
 					</view>
 				</view>
 				<view class="index-hx">
-					<s-around style="width: 100%;" :coordinates="{latitude: project.lat, longitude: project.lng}"></s-around>
+					<s-around style="width: 100%;" :showNum="3" :coordinates="{latitude: project.lat, longitude: project.lng}"></s-around>
 				</view>
 			</view>
 		</view>
