@@ -10,6 +10,7 @@
 import * as tki from "../../components/TikiUI/common/js/index.js";
 import tkiAuthorize from "../../components/TikiUI/tki-authorize/tki-authorize";
 import {nav } from '../../components/TikiUI/common/js/index'
+import socket from '../../socket/index.js';
 export default {
 	components: {
 		tkiAuthorize
@@ -70,6 +71,7 @@ export default {
 					}).catch(e => {
 					    tki.ui.showToast(e.message)
 					})
+                    socket(this.$store);
 					uni.navigateBack({
 					    delta: 1
 					});

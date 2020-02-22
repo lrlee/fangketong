@@ -1,0 +1,109 @@
+page{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background: #eee;
+}
+.scroll-list{
+    padding-top: 30rpx;
+    height: calc(100% - 100rpx);
+    box-sizing: border-box;
+}
+.list-item{
+    width: 100%;
+    padding: 15rpx;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    .headImg{
+        width: 80rpx;
+        height: 80rpx;
+        border-radius: 10rpx;
+        overflow: hidden;
+        background: #fff;
+        image{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .box{
+        max-width: 470rpx;
+        padding: 15rpx 20rpx;
+        border-radius: 10rpx;
+        line-height: 46rpx;
+        min-height: 46rpx;
+        min-width: 40rpx;
+        letter-spacing: 4rpx;
+        font-size: 30rpx;
+        color: #3a3a3a;
+        position: relative;
+        .arrows{
+            width: 16rpx;
+            height: 16rpx;
+            border-radius: 3rpx;
+            position: absolute;
+            top: 32rpx;
+            transform: rotateZ(45deg);
+        }
+    }
+    &.list-item-right{
+        flex-direction: row-reverse;
+        .box{
+            background: #5A88E4;
+            margin-right: 20rpx;
+            color: #fff;
+            .arrows{
+                right: -8rpx;
+                background: #5A88E4;
+            }
+        }
+    }
+    &.list-item-left{
+        justify-content: flex-start;
+        .box{
+            background: #fff;
+            margin-left: 20rpx;
+            .arrows{
+                left: -8rpx;
+                background: #fff;
+            }
+        }
+    }
+}
+.send-bar{
+    width: 100%;
+    height: 100rpx;
+    border-top: 1rpx solid #e1e1e1;
+    background: #f1f1f1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:  0 20rpx;
+    box-sizing: border-box;
+}
+.msg-input{
+    flex-grow: 1;
+    height: 70%;
+    background: #fff;
+    outline: none;
+    border-radius: 10rpx;
+    margin-right: 30rpx;
+    padding: 0 20rpx;
+    line-height: 70rpx;
+}
+.send-btn{
+    background: #5A88E4 !important;
+    width: 100rpx;
+    height: 60%;
+    color: #fff;
+    font-size: 26rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}

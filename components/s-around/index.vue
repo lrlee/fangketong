@@ -108,6 +108,8 @@
                 const v = query.select('#scroll'+this.current).boundingClientRect(data => {
                     if(data.height>0){
                         that.swiperHeight = data.height;
+                    }else if(data.height==0 && this.tabs[0].data.length==0){
+                        that.swiperHeight = data.height;
                     }
                 }).exec();
             }

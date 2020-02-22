@@ -1,8 +1,38 @@
 <script>
+    import socket from './socket/index.js';
+    import * as tki from './components/TikiUI/common/js/index.js'
 	export default {
 		onLaunch: function() {
-			console.log('App Launch 3')
+            socket(this.$store);
+            uni.$on('submitHistory', (data) => {
+                // 提交历史记录
+                // const list = tki.com.json2str(this.$store.state.msgList[data.targetId].read);
+                // debugger
+                if(this.$store.state.msgList[data.targetId].read.length>0){
+                    tki.req.post('consult/saveMessage',{
+                       data: JSON.stringify(this.$store.state.msgList[data.targetId].read)
+                    }).then(d => {
+                        if (d.code === 200) {
+                            this.$store.commit("submitHistory", { targetId: data.targetId })
+                        }
+                    })
+                }
+            })
 		},
+        computed: {
+            changeMsgList() {
+              return this.$store.state.msgList;
+            }
+          },
+        //监听执行
+        watch: {
+            changeMsgList(val) {
+                uni.setStorage({
+                    key: "msgList",
+                    data: val
+                })
+            }
+        },
 		onShow: function() {
 			console.log('App Show')
 		},

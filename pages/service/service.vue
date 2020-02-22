@@ -37,14 +37,14 @@
 			<view class="not" v-if="!list || list.length==0">
 			    暂无内容
 			</view>
-			<view class="list-i" v-for="(v,i) in list" :key="i">
+			<view @click="toChat(v)" class="list-i" v-for="(v,i) in list" :key="i">
 				<image class="list-i-head" :src="v.avatar" />
 				<view class="list-i-name">{{v.realname}}</view>
-				<view class="list-i-ic" hover-class="hover-c" @tap="toPhoen(v.mobile)">
+				<view class="list-i-ic" hover-class="hover-c" @tap.stop="toPhoen(v.mobile)">
 					<image src="../../static/icons/phone.png" mode="widthFix"/>
 				</view>
 				<view class="part-line"></view>
-				<view class="list-i-ic" hover-class="hover-c"@tap="copyWx(v.weixin)" >
+				<view class="list-i-ic" hover-class="hover-c" @tap.stop="copyWx(v.weixin)" >
 					<image src="../../static/icons/question.png" mode="widthFix"/>
 				</view>
 			</view>
@@ -107,7 +107,11 @@ export default {
 					phoneNumber: String(t)
 				});
 			}
-		}
+		},
+        toChat(v){
+            if(this.$store.state.user.role_type==2) return false;
+            tki.nav.navTo('/pages/chat/chat?targetId='+ v.id + '&projectid=' + v.projectid + '&realname='+ v.realname)
+        }
 	}
 }
 </script>
