@@ -51,7 +51,7 @@
 			return {
 				city: '',
                 price: [0, 500],
-                area: [[0, 50], [50, 60], [70,90],[90,110],[110,130],[130,150],[150,200],[200,-1]],
+                area: [[0, 50], [50, 70], [70,90],[90,110],[110,130],[130,150],[150,200],[200,-1]],
                 // houseType: ["不限","一室","两室","三室","四室","五室及以上"],
                 houseType: [{
                     value: -1,
@@ -80,14 +80,18 @@
                 isLastPage: false,
 			};
 		},
-        onLoad(){
-            uni.$on("changeQuery",(data) => {
-                this.city = data.city;
-                this.activeArea = data.activeArea;
-                this.activeType = data.activeType;
-                this.price = data.price;
-                this.handlerChange();
-            })
+        onLoad(e){
+            // uni.$on("changeQuery",(data) => {
+            //     this.city = data.city;
+            //     this.activeArea = data.activeArea;
+            //     this.activeType = data.activeType;
+            //     this.price = data.price;
+            //     this.handlerChange();
+            // })
+            this.city = e.city;
+            this.activeArea = e.activeArea.split(",").filter(v => (v===0 || !!v)).map(v => parseInt(v));
+            this.activeType = e.activeType.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
+            this.price = e.price.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
             this.getList();
         },
         computed:{
@@ -149,7 +153,8 @@
                 })
             },
             goPreciseQuery(){
-                tki.nav.navTo(`/pages/preciseFilter/preciseQuery?city=${this.city}&price=${this.price.join(",")}&area=${this.activeArea.join(",")}&type=${this.activeType.join(",")}`);
+                // tki.nav.navTo(`/pages/preciseFilter/preciseQuery?city=${this.city}&price=${this.price.join(",")}&area=${this.activeArea.join(",")}&type=${this.activeType.join(",")}`);
+                tki.nav.navBack();
             },
 			toProject(id) {
 				if(!id || id==="0")return;
