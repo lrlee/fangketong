@@ -199,6 +199,7 @@
 				</view>
 			</view> -->
 		</scroll-view>
+        <to-msg-list></to-msg-list>
 		<tki-authorize ref="wxat" @result="wxResult" />
 	</view>
 </template>
@@ -206,6 +207,7 @@
 <script>
 	import * as tki from '../../components/TikiUI/common/js/index.js';
 	import tkiAuthorize from "../../components/TikiUI/tki-authorize/tki-authorize";
+    import toMsgList from '../../components/to-msg-list/to-msg-list.vue';
 	import QQMapWX from "../../utils/mapSdk.min.js";
 	const tencentMapKey = 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG'
 	export default {
@@ -247,7 +249,7 @@
 			this.changeStatus(0)
 		},
 		components: {
-			tkiAuthorize
+			tkiAuthorize, toMsgList
 		},
 		methods: {
 			//活动

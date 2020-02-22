@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-        <image @click="openMap" src="../../static/icons/daozhequ.png" mode="widthFix"></image>
+        <image @click="openMap" src="../../static/icons/daohang1.png" mode="widthFix"></image>
 		<s-around style="width: 100%;" :showNum="20" :minWidth="180" :coordinates="{latitude: latitude, longitude: longitude}"></s-around>
 	</view>
 </template>

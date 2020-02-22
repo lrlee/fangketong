@@ -1,13 +1,21 @@
 <template>
 	<view class="content-warp">
 		<view class="banner">
-			<swiper class="swiper banner-swiper" :circular="true" :indicator-dots="true" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="videoFlag">
+			<swiper @change="swiperChange" class="swiper banner-swiper" :circular="true" :indicator-dots="false" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="videoFlag">
 				<swiper-item v-for="(item, index) in banner" :key="index">
 				<!-- 	<image :src="item.thumb" mode="aspectFill" /> -->
 					<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true" :src="'https://zhongtie.h-passer.com/'+item.video"></video>
 					<image v-if="item.thumb" :src="item.thumb" mode="aspectFill" :data-src="item.thumb"  />
-				</swiper-item>
+                    <navigator v-if="item.contentType == 3" :url="`../vr/vr?url=${encodeURIComponent('https://m.anjuke.com/xinfang/fuwu/vr/?loupan_id=446778&housetype_id=495221&frompm=copylink')}`">
+                        <image :src="item.thumb" mode="aspectFill"></image>
+                    </navigator>
+                </swiper-item>
 			</swiper>
+            <view class="indicator-box">
+                <view :class="{active: currentType == 3}">VR</view>
+                <view :class="{active: currentType == 2}">视频</view>
+                <view :class="{active: currentType == 1}">图片</view>
+            </view>
 		</view>
         <!-- <navigator :url="`../vr/vr?url=${encodeURIComponent('https://m.anjuke.com/xinfang/fuwu/vr/?loupan_id=446778&housetype_id=495221&frompm=copylink')}`">
             <button type="primary">vr</button>
@@ -15,11 +23,11 @@
 		<view class="project-desc">
 			<view class="project-name">
 				{{project.projectname ? project.projectname : ""}}
-				<navigator url="/pages/loupan/loupan" hover-class="navigator-hover">
+				<!-- <navigator url="/pages/loupan/loupan" hover-class="navigator-hover">
 				   <view class="more">
 				   	更多详情
 				   </view>
-				</navigator>
+				</navigator> -->
 			</view>
 			<view class="project-price">
 				{{project.price_range ? project.price_range : "暂无价格"}}
@@ -27,7 +35,7 @@
 			<view class="want">
 				<view class="want-avatar">
 					<view>
-                        <view class="want-avatar-item" v-for="(v, i) in history">
+                        <view class="want-avatar-item" v-for="(v, i) in history" :key="i">
                         	<image :src="v.avatar" mode=""></image>
                         </view>
                         <view class="want-avatar-omit">
@@ -43,8 +51,28 @@
 				<view class="project-loac-icon" @tap="getMap()">
 					<image src="../../static/icons/daohang.png" mode="widthFix"></image>
 				</view>
-				地址：{{project.address ? project.address : ""}}
+				地址：{{ (project.province ? project.province + "·": '') + (project.city ? project.city + "·":'') + (project.area ? project.area + "·":'') + project.projectname}}
 			</view>
+            <view class="project-details">
+                <view>
+                    <text>建筑面积</text><text>{{ project.area_range }}</text>
+                </view>
+                <view>
+                    <text>开盘时间</text><text>{{ project.saler_time }}</text>
+                </view>
+                <!-- <view>
+                    <text>产品类型</text><text>住宅</text>
+                </view> -->
+                <view>
+                    <text>楼盘地址</text><text>{{project.address ? project.address : ""}}</text>
+                </view>
+                <image @tap="getMap()" class="daohang1" src="../../static/icons/daohang1.png" mode="widthFix"></image>
+            </view>
+            <navigator url="/pages/loupan/loupan" hover-class="navigator-hover">
+                <view class="moreDetails">
+                    <view>查看更多信息</view>
+                </view>
+            </navigator>
 		</view>
 		<!-- <view class="home-menu-warp">
 			<view class="home-menu">
@@ -80,6 +108,59 @@
 				</navigator> 
 			</view>
 		</view> -->
+        
+        <view class="adviser-list">
+        	<view class="title">
+                <view></view>
+        		<text>置业顾问</text>
+        	</view>
+        	<view class="tipsList">
+        		<view class="ensure">
+        			<image mode="scaleToFill" src="../../static/icons/gfbz.png"/>
+        		</view>
+        		<view class="advisory">
+        			<image mode="scaleToFill" src="../../static/icons/mianfeizixun.png"/>
+        		</view>
+        		<view class="Interpretation">
+        			<image class="interImage" mode="scaleToFill" src="../../static/icons/huxingjiedu.png"/>
+        		</view>
+        		<view class="service">
+        			<image mode="scaleToFill" src="../../static/icons/tiexinfuwu.png"/>
+        		</view>
+        	</view>
+        	<view class="not" v-if="!adviserList || adviserList.length==0">
+        	    暂无内容
+        	</view>
+        	<view @click="toChat(v)" class="adviser-list-i" v-for="(v,i) in handleAdviser" :key="i">
+        		<image class="adviser-list-i-head" :src="v.avatar" />
+        		<view class="adviser-list-i-name">{{v.realname}}</view>
+        		<view class="adviser-list-i-ic" hover-class="hover-c" @tap.stop="toPhoen(v.mobile)">
+        			<image src="../../static/icons/phone.png" mode="widthFix"/>
+        		</view>
+        		<view class="part-line"></view>
+        		<!-- <view class="list-i-ic" hover-class="hover-c" @tap.stop="copyWx(v.weixin)" > -->
+        		<view class="adviser-list-i-ic" hover-class="hover-c" @click.stop="toChat(v)">
+        			<image src="../../static/icons/question.png" mode="widthFix"/>
+        		</view>
+        	</view>
+            <view @click="handleShowAdviser" v-if="adviserList.length>3" class="allAdviser">
+                <text>{{ showAllAdviser ? "收起" : "显示全部" }}</text>
+                <image :style="{transform: `rotateZ(${showAllAdviser ? '-90deg':'90deg'})`}" src="../../static/icons/right.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="tuijian-box">
+            <image class="tuijian" src="../../static/icons/tuijianjiangli.png" mode="widthFix"></image>
+            <view class="btn-box">
+                <view class="btn">
+                    <image src="../../static/icons/biandong.png" mode="widthFix"></image>
+                    <text>变价通知</text>
+                </view>
+                <view class="btn">
+                    <image src="../../static/icons/tongzhi.png" mode="widthFix"></image>
+                    <text>开盘通知</text>
+                </view>
+            </view>
+        </view>
 		<view class="hotActivity">
 			<view class="topBox">
 				<view class="title1">
@@ -106,7 +187,7 @@
 				</navigator>
 			</view>
 		</view>
-		<view class="contactBox">
+		<!-- <view class="contactBox">
 			<view class="home" @tap="toService()">
 				<image src="../../static/icons/zhiyeguwen.png"/>
 			</view>
@@ -115,7 +196,7 @@
 					<image src="../../static/icons/quanminyingxiao.png"/>
 				</view>
 			</navigator>
-		</view>
+		</view> -->
 		<view class="contant">
 			<view class="introduce">
 				<view class="title">
@@ -169,7 +250,7 @@
 				</view>
 				<!-- 有全景跳转全景 没有跳转户型详情 -->
 				<view class="index-hx">
-					<navigator v-for="(v,i) in apartment" :key=i :url="v.isquanjing ? '/pages/webView/webView?url=' + v.thumb_link : '/pages/hxDetails/hxDetails?id='+ v.id" hover-class="navigator-hover">
+					<navigator v-for="(v,i) in apartment" :key="i" :url="v.isquanjing ? '/pages/webView/webView?url=' + v.thumb_link : '/pages/hxDetails/hxDetails?id='+ v.id" hover-class="navigator-hover">
 						<view class="apartment">
 							<view class="apartment-pic">
 								<image :src="v.thumb" mode="" />
@@ -185,31 +266,36 @@
 			<view class="zhoubian">
 				<view class="more-title">
 					<view class="title">
-						<text>周边配套</text>
-						<navigator :url="`/pages/map/map?latitude=${project.lat}&longitude=${project.lng}&title=${project.title}&address=${project.address}`" hover-class="navigator-hover">
+						<text>项目周边</text>
+						<!-- <navigator :url="`/pages/map/map?latitude=${project.lat}&longitude=${project.lng}&title=${project.title}&address=${project.address}`" hover-class="navigator-hover">
 						    <view class="more">
 						    	查看更多
 						    </view>
-						</navigator>
+						</navigator> -->
 					</view>
 				</view>
 				<view class="index-hx">
 					<s-around style="width: 100%;" :showNum="3" :coordinates="{latitude: project.lat, longitude: project.lng}"></s-around>
 				</view>
+                <navigator :url="`/pages/map/map?latitude=${project.lat}&longitude=${project.lng}&title=${project.title}&address=${project.address}`" hover-class="navigator-hover">
+                    <view class="moreAddress">查看更多周边概况</view>
+                </navigator>
+                
 			</view>
 		</view>
 		<uni-popup ref="popup" type="center">
 			<image :src="popupadv" mode="widthFix"></image>
 		</uni-popup>
-		<button id="to-select" @tap="toSelect">
+		<!-- <button id="to-select" @tap="toSelect">
 			<view class="">
 				切换
 			</view>
 			<view class="">
 				项目
 			</view>
-		</button>
+		</button> -->
 		<tabbar :phoneNumber="project.tell"></tabbar>
+        <to-msg-list></to-msg-list>
 	</view>
 </template>
 
@@ -217,7 +303,8 @@
 import * as tki from '../../components/TikiUI/common/js/index.js';
 import {uniPopup} from '@dcloudio/uni-ui';
 import sAround from '../../components/s-around/index.vue';
-import tabbar from '../../components/tabbar/tabbar.vue'
+import tabbar from '../../components/tabbar/tabbar.vue';
+import toMsgList from '../../components/to-msg-list/to-msg-list.vue';
 export default {
 	data() {
 		return {
@@ -230,11 +317,14 @@ export default {
 			history: [],
 			projectId: "",
 			videoFlag:true,
-			activity: []
+			activity: [],
+            currentType: 0,
+            adviserList: [],
+            showAllAdviser: false
 		};
 	},
 	components: {
-		uniPopup, sAround,tabbar
+		uniPopup, sAround,tabbar,toMsgList
 	},
 	onLoad() {
 		// 请求弹窗广告
@@ -252,6 +342,7 @@ export default {
 	},
 	onShow() {
 		this.getActivity()
+        this.getAdviserList()
 		// 请求首页数据
 		tki.req.post('index/projectindex',{}).then(d => {
 			if (d.code === 200) {
@@ -261,7 +352,7 @@ export default {
 				this.apartment = d.data.apartment.slice(0,2)
 				this.project = d.data.project
 				this.history = d.data.history
-                
+                this.currentType = d.data.banner.length>0 ? d.data.banner[0].contentType : 1
                 uni.setNavigationBarTitle({
                     title: d.data.project.projectname
                 })
@@ -271,12 +362,34 @@ export default {
 			console.log(e)
 		})
 	},
+    computed:{
+        handleAdviser(){
+            return (!this.showAllAdviser && this.adviserList.length>3) ? this.adviserList.slice(0,3) : this.adviserList
+        },
+    },
 	methods: {
+        swiperChange(e){
+            this.currentType = this.banner[e.detail.current].contentType
+        },
 		toService(){
 			uni.navigateTo({
 			    url: '/pages/service/service'
 			})
 		},
+        handleShowAdviser(){
+             this.showAllAdviser = !this.showAllAdviser
+        },
+        getAdviserList(){
+            tki.req.post('index/adviserlist').then(d => {
+            	if (d.code === 200) {
+            		// 处理数据
+            		this.adviserList= d.data.list
+            	}
+            }).catch(e => {
+            	tki.ui.showToast(e.msg)
+            	console.log(e)
+            })
+        },
 		//活动
 		getActivity() {
 			let projectId = uni.getStorageSync('projectid')
@@ -355,7 +468,26 @@ export default {
 			// uni.navigateTo({
 			//     url: "../projectSelect/projectSelect"
 			// })
-		}
+		},
+		toPhoen(t) {
+			if(t == "" || !t) {
+				tki.ui.showToast("暂无电话号码")
+			} else {
+				uni.makePhoneCall({
+					phoneNumber: String(t)
+				});
+			}
+		},
+        toChat(v){
+            if(this.$store.state.user.role_type==2) {
+                uni.showModal({
+                    content: "置业顾问不具备此功能",
+                    showCancel: false
+                })
+                return false;
+            }
+            tki.nav.navTo('/pages/chat/chat?targetId='+ v.id + '&projectid=' + v.projectid + '&realname='+ v.realname)
+        }
 	}
 };
 </script>

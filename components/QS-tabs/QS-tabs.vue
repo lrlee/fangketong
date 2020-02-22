@@ -12,7 +12,6 @@
 				<!-- 循环tabs -->
 				<view class="QS-tabs-scroll-item" :style="{
 					'height': getHeight + 'rpx', 
-					'line-height': getHeight + 'rpx',
 					'min-width': getWidth + 'rpx',
 					'padding': '0 ' + space + 'rpx',
 					'color': index===getCurrent?getActiveColor:getDefaultColor,
@@ -23,7 +22,8 @@
 				 v-for="(item, index) in getTabs" :key="index" @tap="emit(index)" :id="preId + index">
 					<!-- line1 -->
 					<view v-if="animationMode==='line1'" class="boxStyle" :style="getDurationStyle +( index===getCurrent?getActiveStyle:getDefaultStyle)"></view>
-					{{item.name || item}}
+					<view><image style="width: 68rpx;" v-if="!!item.img" :src="item.img" mode="widthFix"></image></view>
+                    <view>{{item.name || item}}</view>
 				</view>
 				<!-- itemBackground -->
 				<view v-if="hasItemBackground" class="itemBackgroundBox" :style="{
@@ -444,6 +444,10 @@
 		display: inline-block;
 		text-align: center;
 		transition-property: background-color, color, font-weight;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 	}
 
 	.content {

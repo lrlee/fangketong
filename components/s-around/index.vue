@@ -8,6 +8,7 @@
                 :tabs="tabsHandler" 
                 animationMode="line1" 
                 :current="current" 
+                :height="160"
                 @change="change"
                 activeColor="#3B95F9"
                 defaultColor="#3a3a3a"
@@ -42,6 +43,10 @@
 <script>
 	import QSTabs from '../QS-tabs/QS-tabs.vue';
     import QQMapWX from "../../utils/mapSdk.min.js";
+    import jiaotong from '../../static/icons/jiaotong.png';
+    import jiaoyu from '../../static/icons/jiaoyu.png';
+    import yiliao from '../../static/icons/yiliao.png';
+    import shangye from '../../static/icons/shangye.png';
     const Map = new QQMapWX({
       key: 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG' // 必填
     });
@@ -68,15 +73,19 @@
 			return {
 				tabs:[{
                   name: "交通",
+                  img: jiaotong,
                   data: []
                 },{
                   name: "教育",
+                  img: jiaoyu,
                   data: []
                 },{
                   name: "医疗",
+                  img: yiliao,
                   data: []
                 },{
                   name: "商业",
+                  img: shangye,
                   data: []
                 }],
 				current: 0,
@@ -116,7 +125,7 @@
 		},
         computed: {
             tabsHandler(){
-                return this.tabs.map(v => `${v.name}(${v.data.length})`)
+                return this.tabs.map(v => v)//`${v.name}(${v.data.length})`)
             }
         },
         watch: {
@@ -139,6 +148,7 @@
                         success: function(res){
                            that.tabs = [...that.tabs.slice(0,i),{
                              name: v.name,
+                             img: v.img,
                              data: res.data.map((item,index) => {
                                item._distance = Math.round(item._distance);
                                return item;
@@ -225,14 +235,14 @@
     .orderNum view{
         width: 28rpx;
         height: 28rpx;
-        background: #3B95F9;
+        background: #0062B1;
         border-radius:50%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 14rpx;
         font-weight:400;
-        color: #fff;
+        color: #0062B1;
     }
     .name{
         flex: 8;
