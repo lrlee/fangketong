@@ -45,7 +45,7 @@
 				</view>
 				<view class="part-line"></view>
 				<!-- <view class="list-i-ic" hover-class="hover-c" @tap.stop="copyWx(v.weixin)" > -->
-				<view class="list-i-ic" hover-class="hover-c" @click="toChat(v)">
+				<view class="list-i-ic" hover-class="hover-c" @click.stop="toChat(v)">
 					<image src="../../static/icons/question.png" mode="widthFix"/>
 				</view>
 			</view>
