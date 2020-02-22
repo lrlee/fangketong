@@ -3,7 +3,7 @@
         <view class="header">
             <view class="search-box">
                 <view class="search">
-                    <image v-if='imgUrl' :src="imgUrl + 'projectSelect/search.png'" mode=""></image>
+                    <image src="../../static/icons/sousuo.png" mode=""></image>
                     <input @input="handlerChange" type="text" placeholder="请输入您要搜索的城市名称" value=""/>
                 </view>
             </view>
@@ -11,12 +11,12 @@
         <scroll-view :scroll-top="scrollTop" @scroll="scroll" class="content" scroll-y>
             <view class="location-box content-item">
                 <view>
-                    <image v-if='imgUrl' :src="imgUrl + 'projectSelect/location.png'" mode="aspectFit"></image>
-                    <view class="title1">当前城市</view>
+                    <!-- <image v-if='imgUrl' :src="imgUrl + 'projectSelect/location.png'" mode="aspectFit"></image> -->
+                    <view class="title1">当前定位</view>
                 </view>
-                <button class="btn" size="mini" @click="selectCity(currentCity || '')">{{ currentCity || "未知" }}</button>
+                <button class="btn current" size="mini" @click="selectCity(currentCity || '')">{{ currentCity || "未知" }}</button>
             </view>
-            <view class="hot-city">
+            <view class="hot-city" id="hot">
                 <view class="title1">热门城市</view>
                 <view class="btn-box">
                     <button class="btn" size="mini" @click="selectCity('')">全部</button>
@@ -24,6 +24,7 @@
                 </view>
             </view>
             <view class="city-list" scroll-y>
+                <view class="city-item">全国</view>
                 <view class="">
                     <template v-for="(item, index) in city">
                         <view :id="item.letter" class="indexes" :key="item.letter">{{ item.letter }}</view>
@@ -33,6 +34,7 @@
             </view>
         </scroll-view>
         <view class="indexBox">
+            <view class="index-item" style="margin-bottom: 20rpx;" @click="handlerIndex('hot')">热门</view>
             <view class="index-item" v-for="(item,index) in city" :key="index" @click="handlerIndex(item.letter)">
                 {{ item.letter }}
             </view>
@@ -59,6 +61,9 @@
                 currentCity: ''
 			};
 		},
+        onLoad(){
+            this.getData();
+        },
         mounted() {
         	uni.getLocation({
                 type: "wgs84",
@@ -136,6 +141,13 @@
                     data = city;
                 }
                 this.city = data;
+            },
+            getData(){
+                tki.req.get('index/projectCity').then(d => {
+                	if (d.code === 200) {
+                		this.city = d.data;
+                	}
+                })
             }
         }
 	}

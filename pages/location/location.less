@@ -2,19 +2,20 @@ page,.container{
     height: 100%;
 }
 .header{
-    background-color: #222;
+    background-color: #fff;
     height: 150rpx;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .search-box{
-    width: 690rpx;
-    height: 60rpx;
-    background-color: #333;
-    border-radius: 10rpx;
+    width: 684rpx;
+    height: 66rpx;
+    background: rgba(238,238,238,1);
+    border-radius:33px;
     display: flex;
     align-items: center;
+    line-height: 66rpx;
 }
 .search{
     font-size: 20rpx;
@@ -22,7 +23,7 @@ page,.container{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 20rpx;
+    padding-left: 50rpx;
     image{
         width: 30rpx;
         height: 30rpx;
@@ -30,28 +31,25 @@ page,.container{
     }
     input{
         width: 620rpx;
-        color: #fff;
     }
 }
 .content{
     height: calc(100% - 190rpx);
-    margin-top: 20rpx;
     margin-bottom: 20rpx;
-    width: calc(100% - 50rpx);
+    width: 100%;
 }
 .title1{
     line-height: 50rpx;
     font-size: 24rpx;
 }
 .location-box{
-    padding: 0 20rpx;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 0 30rpx;
     box-sizing: border-box;
+    background-color: #F6F6F6;
     >view{
         display: flex;
         align-items: center;
+        height: 90rpx;
     }
     image{
         width: 30rpx;
@@ -60,6 +58,8 @@ page,.container{
     }
     .title1{
         display: inline-block;
+        color: #656565;
+        font-size: 24rpx;
     }
 }
 .btn{
@@ -68,26 +68,41 @@ page,.container{
     padding-left: 36rpx !important;
     padding-right: 36rpx !important;
     margin: 0;
+    font-size: 26rpx;
+    &.current{
+        background: linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
+        border-radius: 8rpx;
+        color: #fff;
+    }
 }
 .hot-city{
-    margin: 20rpx 0;
+    background-color: #F6F6F6;
+    padding-top: 30rpx;
+    padding-bottom: 50rpx;
+    color: #656565;
     .title1{
-        background-color: #ddd;
-        padding:  0 20rpx;
+        padding: 0 30rpx;
+        line-height: 50rpx;
     }
 }
 .btn-box{
-    padding-left: 20rpx;
+    padding-left: 30rpx;
     padding-top: 20rpx;
+    padding-right: 10rpx;
     bottom: 20rpx;
+    box-sizing: border-box;
     .btn{
         margin-top: 5rpx;
         margin-right: 10px;
+        background-color: #fff;
+        padding: 0 20rpx;
+        display: inline-block;
+        min-width: 150rpx;
+        color: #656565;
     }
 }
 .city-list{
     position: relative;
-    padding: 0 20rpx;
     box-sizing: border-box;
     height: calc(100% - 300rpx);
 }
@@ -98,28 +113,29 @@ page,.container{
     background-color: transparent !important;
 }
 .indexes{
-    background-color: #ddd;
-    line-height: 40rpx;
+    background-color: #F5F5F5;
+    line-height: 95rpx;
+    line-height: 95rpx;
     width: 100%;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
 .city-item{
-    line-height: 70rpx;
+    line-height: 95rpx;
     border-bottom: 1rpx solid #f1f1f1;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
 .indexBox{
     position: fixed;
     top: 180rpx;
     right: 0;
-    width: 50rpx;
+    width: 70rpx;
     height: calc(100% - 190rpx);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 .index-item{
-    width: 50rpx;
+    width: 70rpx;
     max-height: 40rpx;
     text-align: center;
     font-size: 20rpx;

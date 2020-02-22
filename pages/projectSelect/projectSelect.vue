@@ -75,7 +75,7 @@
 				</navigator> -->
 				<navigator url="/pages/counter/counter" hover-class="navigator-hover">
 					<view class="menu-item">
-						<image src="../../static/icons/dituxuanfang.png" mode="" />
+						<image src="../../static/icons/fangdaijisuanqi.png" mode="" />
 						<view class="">房贷计算器</view>
 					</view>
 				</navigator>
@@ -95,21 +95,23 @@
 						<view class="moreBtn">查看更多</view>
 					</navigator>
 				</view>
-				<view class="hotContentBox">
-					<navigator :url="'/pages/news/newsDetails?type=2&id='+ activity.id" hover-class="navigator-hover">
-						<image class="hotImage" :src="activity.thumb" />
-						<view class="hotContent">
-							<view class="hotTitle">
-								<image src="../../static/icons/new.png" />
-								<view class="titleText">{{activity.title}}</view>
-							</view>
-							<view class="dateBox">
-								<view class="date">{{activity.description}}</view>
-								<!-- <view class="joinBtn">马上参与</view> -->
-							</view>
-						</view>
-					</navigator>
-				</view>
+				<scroll-view scroll-x="true" class="hotContentBox">
+                    <view class="activity-item" v-for="(v,i) in activity" :key="i">
+                        <navigator :url="'/pages/news/newsDetails?type=2&id='+ v.id" hover-class="navigator-hover">
+                            <image class="hotImage" :src="v.thumb" />
+                            <view class="hotContent">
+                                <view class="hotTitle">
+                                    <image src="../../static/icons/new.png" />
+                                    <view class="titleText">{{v.title}}</view>
+                                </view>
+                                <view class="dateBox">
+                                    <view class="date">{{v.description}}</view>
+                                    <!-- <view class="joinBtn">马上参与</view> -->
+                                </view>
+                            </view>
+                        </navigator>
+                    </view>
+				</scroll-view>
 			</view>
 			<view class="project-box">
 
@@ -162,20 +164,22 @@
 				</view>
 
 
-				<view class="title1">
+				<view class="title1 hotHouse">
 					<view></view>
-					<text>推荐项目</text>
+					<text>热门楼盘</text>
 				</view>
 				<view class="project-item" v-for="(item, index) in list" :key="index" @tap="toProject(item.id)">
-					<view class="name">{{ item.projectname }}</view>
 					<view class="item-content">
 						<view class="tagIcon">在售</view>
 						<view class="img-box">
 							<image :src="item.sets.logo" mode="aspectFill"></image>
 						</view>
 						<view class="right">
+                            <view class="name">{{ item.projectname }}</view>
 							<view class="price">{{ item.sets&&item.sets.price_range ? item.sets.price_range : "暂无报价" }}</view>
-							<view class="num">{{ item.viewcount }}人关注</view>
+							<view class="num">{{ item.viewcount }}人关注 
+                                <view class="yongjin"><image src="../../static/icons/yongjin.png" mode="widthFix">赚佣金</image></view>
+                            </view>
 							<view class="address">{{ item.sets&&item.sets.address }}</view>
 							<view class="tags">
 								<view v-if="item.area" class="tag">{{ item.area }}</view>
@@ -250,7 +254,7 @@
 			getActivity() {
 				tki.req.get('index/activity').then(d => {
 					if (d.code == 200) {
-						this.activity = d.data.list[0]
+						this.activity = d.data.list
 					} else {
 						tki.ui.showToast(d.message)
 					}

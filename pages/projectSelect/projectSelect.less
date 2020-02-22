@@ -96,6 +96,8 @@ page,.container{
     }
 	.swiper{
 		height: 340rpx;
+        border-radius: 8rpx;
+        box-shadow: 1rpx 1rpx 22rpx 0rpx rgba(7,0,2,0.4);
 	}
 	.imagesList{
 		.imagesItem{
@@ -166,6 +168,7 @@ page,.container{
 			font-size: 24rpx;
 			color: #3A3A3A;
 			font-family: STHeiti !important;
+            color: #005AA2;
 		}
 	}
 }
@@ -179,11 +182,12 @@ page,.container{
 }
 .hotActivity{
 	background-color: #fff;
-	padding: 35rpx 27rpx 41rpx 24rpx;
+	padding: 35rpx 0rpx 41rpx 0rpx;
 	.topBox{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+        padding: 0 27rpx 0 24rpx;
 		.title1{
 			font-size: 36rpx;
 			font-weight: 500;
@@ -215,12 +219,26 @@ page,.container{
 	}
 	
 	.hotContentBox{
-		width: 695rpx;
+		width: 100%;
 		height: 368rpx;
 		border-radius: 8rpx;
 		margin-top: 24rpx;
-		border:1px solid rgba(206, 206, 206, 1);
 		box-shadow:0px 1rpx 5rpx 0px rgba(6,0,1,0.12);
+        white-space: nowrap;
+        .activity-item{
+            width: 695rpx;
+            display: inline-block;
+            margin-right: 16rpx;
+            border: 1rpx solid rgba(206, 206, 206, 1);
+            box-shadow: 0px 0px 4rpx 0px rgba(6,0,1,0.85);
+            border-radius: 8rpx;
+            &:first-of-type{
+               margin-left: 25rpx; 
+            }
+            &:last-of-type{
+               margin-right: 25rpx; 
+            }
+        }
 		.hotImage{
 			width: 100%;
 			height: 224rpx;
@@ -350,24 +368,31 @@ page,.container{
             margin-right: 20rpx;
         }
     }
+    .hotHouse{
+        margin-bottom: 20rpx;
+    }
     .project-item{
         display: flex;
 		flex-direction: column;
-        padding: 42rpx 0;
-		border-bottom:1px solid rgba(149,149,149,.64);
+        padding: 42rpx 15rpx;
 		overflow: hidden;
+        background:rgba(255,255,255,1);
+        box-shadow:0rpx 0rpx 22rpx 0rpx rgba(7,0,2,0.4);
+        border-radius: 12rpx;
+        margin-top: 32rpx;
+        box-sizing: border-box;
         &:last-of-type{
             margin-bottom: 30rpx;
         }
 		.name{
 			font-size: 34rpx;
 			color: #373737;
-			text-indent: 23rpx;
 			margin-bottom: 18rpx;
 		}
 		.item-content{
 			display: flex;
 			position: relative;
+            align-items: center;
 			.tagIcon{
 				position: absolute;
 				top: -2rpx;
@@ -382,8 +407,8 @@ page,.container{
 				line-height: 50rpx;
 			}
 			.img-box{
-			    width:430rpx;
-			    height:273rpx;
+			    width:323rpx;
+			    height: 235rpx;
 			    background:rgba(41,52,133,1);
 			    border-radius:8rpx;
 			    flex-grow: 0;
@@ -396,8 +421,8 @@ page,.container{
 			    }
 			}
 			.right{
-				height:273rpx;
-			    width: 260rpx;
+				height: 250rpx;
+			    width: 335rpx;
 			    flex-grow: 0;
 			    flex-shrink: 0;
 			    font-size: 22rpx;
@@ -417,8 +442,21 @@ page,.container{
 			        font-weight: bold;
 			    }
 			    .price{
-			        color: #dea567;
+			        color: #C44F53;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
 			    }
+                .num{
+                    color: #9C9C9C;
+                }
+                .address{
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
 			    .tag{
 			        border: 1rpx solid #ccc;
 			        display: inline-block;
@@ -427,6 +465,18 @@ page,.container{
 			        font-size: 20rpx;
 			        border-radius: 3rpx;
 			    }
+                .yongjin{
+                    font-size: 20rpx;
+                    color: #C44F53;
+                    margin-left: 20rpx;
+                    display: inline-flex;
+                    align-items: center;
+                    image{
+                        width: 20rpx;
+                        height: 20rpx;
+                        margin-right: 6rpx;
+                    }
+                }
 			}
 		}
         
