@@ -261,7 +261,7 @@
 			//筛选
 			filter() {
 				// tki.ui.showToast('正在开发中...')
-                tki.nav.swTab("/pages/preciseFilter/preciseFilter")
+                tki.nav.swTab("/pages/preciseFilter/preciseQuery")
 			},
 			selectHomeByMap() {
 				tki.ui.showToast('正在开发中...')

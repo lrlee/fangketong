@@ -249,7 +249,7 @@
 				"text": "项目首页"
 			},
 			{
-				"pagePath": "pages/preciseFilter/preciseFilter",
+				"pagePath": "pages/preciseFilter/preciseQuery",
 				"iconPath": "static/img/tab/zhaofang.png",
 				"selectedIconPath": "static/img/tab/zhaofang_a.png",
 				"text": "找房"

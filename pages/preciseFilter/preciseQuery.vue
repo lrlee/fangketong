@@ -72,7 +72,7 @@
         },
 		data() {
 			return {
-				city: '成都',
+				city: '',
                 barHeight: 15,
                 blockSize: 30,
                 backgroundColor: '#fff',
@@ -83,7 +83,7 @@
                 activeColor: '#FFA800',
                 decorationVisible: false,
                 tipVisible: false,
-                area: [[0, 50], [50, 60], [70,90],[90,110],[110,130],[130,150],[150,200],[200,-1]],
+                area: [[0, 50], [50, 70], [70,90],[90,110],[110,130],[130,150],[150,200],[200,-1]],
                 // area: ["50以下","50-60","70-90","90-110","110-130","130-150","150-200","200以上"],
                 // houseType: ["不限","一室","两室","三室","四室","五室及以上"],
                 houseType: [{
@@ -110,10 +110,10 @@
 			};
 		},
         onLoad(e){
-            this.city = e.city;
-            this.activeArea = e.area.split(",").filter(v => (v===0 || !!v)).map(v => parseInt(v));
-            this.activeType = e.type.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
-            this.rangeValue = e.price.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
+            // this.city = e.city;
+            // this.activeArea = e.area.split(",").filter(v => (v===0 || !!v)).map(v => parseInt(v));
+            // this.activeType = e.type.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
+            // this.rangeValue = e.price.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
         },
         methods:{
             handlerArea(v){
@@ -165,13 +165,14 @@
                 }
             },
             submit(){
-                uni.$emit("changeQuery",{
-                    city: this.city,
-                    price: this.rangeValue,
-                    activeArea: this.activeArea,
-                    activeType: this.activeType
-                })
-                tki.nav.navBack();
+                // uni.$emit("changeQuery",{
+                //     city: this.city,
+                //     price: this.rangeValue,
+                //     activeArea: this.activeArea,
+                //     activeType: this.activeType
+                // })
+                // tki.nav.navBack();
+                tki.nav.navTo(`/pages/preciseFilter/preciseFilter?city=${this.city}&price=${this.rangeValue.join(",")}&activeArea=${this.activeArea.join(",")}&activeType=${this.activeType.join(",")}`);
             }
         }
 	}

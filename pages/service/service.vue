@@ -44,7 +44,8 @@
 					<image src="../../static/icons/phone.png" mode="widthFix"/>
 				</view>
 				<view class="part-line"></view>
-				<view class="list-i-ic" hover-class="hover-c" @tap.stop="copyWx(v.weixin)" >
+				<!-- <view class="list-i-ic" hover-class="hover-c" @tap.stop="copyWx(v.weixin)" > -->
+				<view class="list-i-ic" hover-class="hover-c" @click="toChat(v)">
 					<image src="../../static/icons/question.png" mode="widthFix"/>
 				</view>
 			</view>
