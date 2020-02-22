@@ -42,5 +42,8 @@ Vue.mixin({
 		return {
 			imgUrl: imgConfig.imgUrl
 		}
+	},
+    onLoad: function () {
+		wx.showShareMenu();
 	}
 })
