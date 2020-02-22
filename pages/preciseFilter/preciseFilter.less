@@ -1,0 +1,153 @@
+@import "../../components/TikiUI/common/style/userCom.less";
+page {
+	.b-c(#FAFAFA);
+	.h(100%);
+}
+.container{
+    height: 100%;
+    padding: 20rpx;
+    font-size: 30rpx;
+    box-sizing: border-box;
+}
+.query{
+}
+.headTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 37rpx;
+}
+.edit{
+    float: right;
+    color: #285AD4;
+    font-size: 24rpx;
+    image{
+        width: 27rpx;
+    }
+}
+.query-list{
+    padding: 30rpx 30rpx 40rpx 30rpx;
+}
+.query-list-item{
+    display: inline-block;
+    padding: 5rpx 20rpx;
+    background: #EBEBEB;
+    border-radius: 8rpx;
+    margin-right: 20rpx;
+    color: #666;
+    margin-bottom: 15rpx;
+    font-size: 24rpx;
+}
+.title1{
+    font-size: 36rpx;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #252525;
+    font-size: 30rpx;
+    &::before{
+        content: "";
+        display: inline-block;
+        width:6rpx;
+        height:32rpx;
+        background:linear-gradient(180deg,rgba(28,121,235,1),rgba(0,104,231,1));
+        opacity:0.91;
+        border-radius:3rpx;
+        margin-right: 20rpx;
+    }
+}
+.project-box{
+    color: #252525;
+	background-color: #fff;
+	margin-top: 9rpx;
+    padding-top: 40rpx;
+    .project-item{
+        display: flex;
+		flex-direction: column;
+        padding: 42rpx 0;
+		border-bottom:1px solid rgba(149,149,149,.64);
+		overflow: hidden;
+        &:last-of-type{
+            margin-bottom: 30rpx;
+        }
+		.name{
+			font-size: 34rpx;
+			color: #373737;
+			text-indent: 23rpx;
+			margin-bottom: 18rpx;
+		}
+		.item-content{
+			display: flex;
+			position: relative;
+			.tagIcon{
+				position: absolute;
+				top: -2rpx;
+				left: 23rpx;
+				width: 54rpx;
+				height: 60rpx;
+				font-size: 22rpx;
+				color: #fff;
+				background-image: url("../../static/icons/zaishou.png");
+				background-size: 54rpx 60rpx;
+				text-align: center;
+				line-height: 50rpx;
+			}
+			.img-box{
+			    width:430rpx;
+			    height:273rpx;
+			    background:rgba(41,52,133,1);
+			    border-radius:8rpx;
+			    flex-grow: 0;
+			    flex-shrink: 0;
+			    overflow: hidden;
+			    margin-right: 18rpx;
+			    image{
+			        width: 100%;
+			        height: 100%;
+			    }
+			}
+			.right{
+				height:273rpx;
+			    width: 260rpx;
+			    flex-grow: 0;
+			    flex-shrink: 0;
+			    font-size: 22rpx;
+			    display: flex;
+			    flex-direction: column;
+			    justify-content: space-between;
+			    >view{
+			        margin-bottom: 10rpx;
+					font-size: 24rpx;
+					color: #373737;
+			        &:last-of-type{
+			            margin-bottom: 0rpx;
+			        }
+			    }
+			    .name{
+			        font-size: 30rpx;
+			        font-weight: bold;
+			    }
+			    .price{
+			        color: #dea567;
+			    }
+			    .tag{
+			        border: 1rpx solid #ccc;
+			        display: inline-block;
+			        padding: 0 10rpx;
+			        line-height: 34rpx;
+			        font-size: 20rpx;
+			        border-radius: 3rpx;
+			    }
+			}
+		}
+        
+        
+    }
+}
+.not{
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #ddd;
+}

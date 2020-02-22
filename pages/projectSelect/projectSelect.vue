@@ -182,7 +182,6 @@
 							</view>
 						</view>
 					</view>
-
 				</view>
 				<view class="not" v-if="!list || list.length==0">
 					暂无内容
@@ -261,7 +260,8 @@
 			},
 			//筛选
 			filter() {
-				tki.ui.showToast('正在开发中...')
+				// tki.ui.showToast('正在开发中...')
+                tki.nav.swTab("/pages/preciseFilter/preciseFilter")
 			},
 			selectHomeByMap() {
 				tki.ui.showToast('正在开发中...')

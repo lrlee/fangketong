@@ -1,16 +1,24 @@
 <template>
 	<view class="tabbarBox">
 		<button class="wechatBox" open-type="share">
-			<image src="../../static/icons/weixin.png"/>
+			<image src="../../static/icons/weixin.png" mode="widthFix"/>
 			<view class="text">分享好友</view>
 		</button>
-		<button open-type="contact" class="advisory">
+		<!-- <button open-type="contact" class="advisory">
 			<image src="../../static/icons/zixun.png"/>
 			<text class="zixun">在线咨询</text>
-		</button>
+		</button> -->
+		<view @click="toChat" class="advisory">
+			<image src="../../static/icons/zixun.png"/>
+			<text class="zixun">在线咨询</text>
+		</view>
 		<view class="reserve" @tap="reserve()">
 			<image src="../../static/icons/yuyue.png"/>
 			<text class="yuyue">预约看房</text>
+		</view>
+		<view class="yijianbohao" @tap="toPhone()">
+			<image src="../../static/icons/tel1.png"/>
+			<text class="yijian">一键拨号</text>
 		</view>
 		<uni-popup ref="popup" type="middle" >
 		    <view class="phoneNumber">
@@ -37,6 +45,9 @@
 		components:{
 			uniPopup
 		},
+        props: {
+            phoneNumber: String
+        },
 		methods: {
 			reserve(){
 				const phone = uni.getStorageSync('phone');
@@ -47,6 +58,11 @@
 			close(){
 				this.$refs.popup.close()
 			},
+            toPhone(){
+                uni.makePhoneCall({
+                    phoneNumber: String(this.phoneNumber)
+                });
+            },
 			apply(){
 				if(!/^(1)((3)|(4)|(5)|(7)|(8)|(9))\d{9}$/.test(this.tel)) {
 					tki.ui.showToast("电话号码有误")
@@ -66,7 +82,10 @@
 					})
 				}
 				
-			}
+			},
+            toChat(v){
+                tki.nav.navTo('/pages/chat/chat?targetId=&projectid=' + uni.getStorageSync("projectid") + '&realname=在线咨询')
+            }
 		}
 	}
 </script>
@@ -75,14 +94,15 @@
 	.tabbarBox{
 		width: 100%;
 		height: 120rpx;
-		padding: 0 80rpx 0 77rpx;
+		padding-left: 40rpx;
 		display: flex;
 		align-items: center;
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		background-color: #fff;
-		border: 1px solid #cdcdcf;
+		border-top: 1px solid #cdcdcf;
+        z-index: 1000000;
 		.phoneNumber{
 			width: 500rpx;
 			height: 400rpx;
@@ -136,7 +156,7 @@
 			align-items: center;
             margin: 0;
             background-color: transparent;
-			margin-right: 30rpx;
+            margin-right: 30rpx;
             border: none;
             line-height: 1;
             outline: none;
@@ -144,46 +164,75 @@
                 border: none;
             }
 			image{
-				width: 72rpx;
-				height: 67rpx;
+				width: 51rpx;
+                margin-bottom: 10rpx;
 			}
 			.text{
 				font-size: 24rpx;
 			}
 		}
 		.advisory{
-			width: 220rpx;
+			width: 188rpx;
 			height: 70rpx;
 			line-height: 70rpx;
 			text-align: center;
 			background-color: #3e96fa;
 			display: flex;
 			align-items: center;
-			justify-content: space-around;
+			justify-content: center;
             margin: 0;
-			margin-right: 20rpx;
+			margin-right: 4rpx;
 			color: #fff;
 			border-radius: 8rpx;
 			image{
-				width: 41rpx;
-				height: 41rpx;
+				width: 36rpx;
+				height: 36rpx;
+                margin-right: 5rpx;
+			}
+			text{
+				font-size: 26rpx;
 			}
 		}
 		.reserve{
-			width: 220rpx;
+			width: 188rpx;
 			height: 70rpx;
 			line-height: 70rpx;
 			text-align: center;
-			justify-content: space-around;
+			justify-content: center;
 			border-radius: 8rpx;
+			margin-right: 4rpx;
 			background-color: #67d59b;
 			display: flex;
 			align-items: center;
 			color: #fff;
 			image{
-				width: 41rpx;
-				height: 41rpx;
+				width: 36rpx;
+				height: 36rpx;
+                margin-right: 5rpx;
+			}
+			text{
+				font-size: 26rpx;
 			}
 		}
+        .yijianbohao{
+			width: 188rpx;
+			height: 70rpx;
+			line-height: 70rpx;
+			text-align: center;
+			justify-content: center;
+			border-radius: 8rpx;
+			display: flex;
+			align-items: center;
+			color: #fff;
+            background-color: #FD9345;
+			image{
+				width: 36rpx;
+				height: 36rpx;
+                margin-right: 5rpx;
+			}
+			text{
+				font-size: 26rpx;
+			}
+        }
 	}
 </style>

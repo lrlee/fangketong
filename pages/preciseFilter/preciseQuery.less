@@ -1,0 +1,135 @@
+.container{
+    font-size: 30rpx;
+}
+.headerImg{
+    width: 100%;
+}
+.content{
+    padding: 0 20rpx;
+}
+.title1{
+    font-size: 36rpx;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #252525;
+    font-size: 30rpx;
+    &::before{
+        content: "";
+        display: inline-block;
+        width:6rpx;
+        height:32rpx;
+        background:linear-gradient(180deg,rgba(28,121,235,1),rgba(0,104,231,1));
+        opacity:0.91;
+        border-radius:3rpx;
+        margin-right: 20rpx;
+    }
+}
+.address{
+    border-top: 1rpx solid #eee;
+    padding-top: 40rpx;
+    padding-bottom: 20rpx;
+}
+.address-input{
+    width: 694rpx;
+    height: 77rpx;
+    background: rgba(238,238,238,1);
+    border-radius: 38rpx;
+    margin: 40rpx auto;
+    padding-left: 40rpx;
+    padding-right: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    image{
+        width: 32rpx;
+        transform: rotateZ(90deg);
+    }
+}
+.price{
+    padding-bottom: 40rpx;
+}
+.range{
+    font-size: 26rpx;
+    line-height: 80rpx;
+    padding-left: 20rpx;
+}
+.minmax{
+    display: flex;
+    justify-content: space-between;
+    line-height: 80rpx;
+    font-size: 26rpx;
+}
+.slider-range{
+    padding-right: 30rpx !important;
+    padding-left: 30rpx !important;
+    border-radius: 18rpx;
+    background-color: #EAEAEC;
+    box-sizing: border-box;
+    padding-top: 0 !important;
+}
+.slider-range-inner{
+    background: transparent !important;
+    box-sizing: border-box;
+}
+.slider-bar-bg{
+    border-radius: 8rpx;
+    box-shadow: 1rpx 2rpx 0rpx 0rpx rgba(255,255,255,0.14), 0rpx 2rpx 2rpx 0rpx rgba(78,78,78,0.33);
+}
+.slider-handle-block{
+    background-image: url(../../static/icons/yanjing.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.area{
+    
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 20rpx;
+    padding-bottom: 50rpx;
+    font-size: 26rpx;
+    color: #3a3a3a;
+    view{
+        width: 155rpx;
+        height: 63rpx;
+        background: rgba(241,244,249,1);
+        border-radius: 6rpx;
+        line-height: 63rpx;
+        text-align: center;
+        margin-top: 20rpx;
+        &.active{
+            background:linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
+            color: #fff;
+        }
+    }
+}
+.area-list{
+    view{
+        width: 155rpx;
+    }
+}
+.house-type-list{
+    view{
+        width: 212rpx;
+    }
+}
+.btn-box{
+    padding: 30rpx 0 80rpx 0;
+    button{
+        margin: 0 auto;
+       width: 628rpx;
+       height: 73rpx;
+       background: linear-gradient(180deg,rgba(51,148,255,1),rgba(0,104,231,1));
+       opacity: 0.91;
+       border-radius: 8rpx; 
+       color: #fff;
+       line-height: 73rpx;
+       font-size: 30rpx;
+    }
+}

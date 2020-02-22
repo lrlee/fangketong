@@ -35,7 +35,7 @@
                         </view>
                     </view>
 					<view class="want-num">
-						<text>{{project.viewcount ? project.viewcount : ""}}</text>人想买
+						<text>{{project.viewcount ? project.viewcount : ""}}</text>人关注
 					</view>
 				</view>
 			</view>
@@ -209,7 +209,7 @@
 				项目
 			</view>
 		</button>
-		<tabbar></tabbar>
+		<tabbar :phoneNumber="project.tell"></tabbar>
 	</view>
 </template>
 
@@ -261,6 +261,10 @@ export default {
 				this.apartment = d.data.apartment.slice(0,2)
 				this.project = d.data.project
 				this.history = d.data.history
+                
+                uni.setNavigationBarTitle({
+                    title: d.data.project.projectname
+                })
 			}
 		}).catch(e => {
 			tki.ui.showToast(e.msg)
@@ -347,9 +351,10 @@ export default {
 			
 		},
 		toSelect () {
-			uni.navigateTo({
-			    url: "../projectSelect/projectSelect"
-			})
+            tki.nav.swTab("../projectSelect/projectSelect");
+			// uni.navigateTo({
+			//     url: "../projectSelect/projectSelect"
+			// })
 		}
 	}
 };
