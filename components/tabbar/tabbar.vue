@@ -9,15 +9,15 @@
 			<text class="zixun">在线咨询</text>
 		</button> -->
 		<view @click="toChat" class="advisory">
-			<image src="../../static/icons/zixun.png"/>
+			<image src="../../static/icons/zixun.png" mode="widthFix"/>
 			<text class="zixun">在线咨询</text>
 		</view>
 		<view class="reserve" @tap="reserve()">
-			<image src="../../static/icons/yuyue.png"/>
+			<image src="../../static/icons/yuyue.png" mode="widthFix"/>
 			<text class="yuyue">预约看房</text>
 		</view>
 		<view class="yijianbohao" @tap="toPhone()">
-			<image src="../../static/icons/tel1.png"/>
+			<image src="../../static/icons/tel1.png" mode="widthFix"/>
 			<text class="yijian">一键拨号</text>
 		</view>
 		<uni-popup ref="popup" type="middle" >
@@ -94,9 +94,12 @@
 	.tabbarBox{
 		width: 100%;
 		height: 120rpx;
-		padding-left: 40rpx;
+		padding-left: 60rpx;
+        padding-left: 60rpx;
+        box-sizing: border-box;
 		display: flex;
 		align-items: center;
+		justify-content: space-around;
 		position: fixed;
 		bottom: 0;
 		left: 0;
@@ -156,7 +159,7 @@
 			align-items: center;
             margin: 0;
             background-color: transparent;
-            margin-right: 30rpx;
+            // margin-right: 10rpx;
             border: none;
             line-height: 1;
             outline: none;
@@ -172,25 +175,25 @@
 			}
 		}
 		.advisory{
-			width: 188rpx;
-			height: 70rpx;
-			line-height: 70rpx;
-			text-align: center;
-			background-color: #3e96fa;
+			// width: 188rpx;
+			// height: 70rpx;
+			// line-height: 70rpx;
+			// text-align: center;
+			// background-color: #3e96fa;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+            flex-direction: column;
             margin: 0;
-			margin-right: 4rpx;
-			color: #fff;
+			// margin-right: 4rpx;
+			// color: #fff;
 			border-radius: 8rpx;
 			image{
-				width: 36rpx;
-				height: 36rpx;
+				width: 42rpx;
                 margin-right: 5rpx;
 			}
 			text{
-				font-size: 26rpx;
+				font-size: 24rpx;
 			}
 		}
 		.reserve{
@@ -200,8 +203,9 @@
 			text-align: center;
 			justify-content: center;
 			border-radius: 8rpx;
-			margin-right: 4rpx;
-			background-color: #67d59b;
+			// margin-right: 4rpx;
+			// background-color: #67d59b;
+			background-color: #3e96fa;
 			display: flex;
 			align-items: center;
 			color: #fff;
@@ -224,7 +228,8 @@
 			display: flex;
 			align-items: center;
 			color: #fff;
-            background-color: #FD9345;
+            // background-color: #FD9345;
+			background-color: #67d59b;
 			image{
 				width: 36rpx;
 				height: 36rpx;
