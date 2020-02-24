@@ -1,15 +1,15 @@
 <template>
 	<view class="tabbarBox">
 		<button class="wechatBox" open-type="share">
-			<image src="../../static/icons/weixin.png" mode="widthFix"/>
-			<view class="text">分享好友</view>
+			<image src="../../static/icons/weixin.png"/>
+			<text class="text">分享好友</text>
 		</button>
 		<!-- <button open-type="contact" class="advisory">
 			<image src="../../static/icons/zixun.png"/>
 			<text class="zixun">在线咨询</text>
 		</button> -->
 		<view @click="toChat" class="advisory">
-			<image src="../../static/icons/zixun.png" mode="widthFix"/>
+			<image src="../../static/icons/zixun.png"/>
 			<text class="zixun">在线咨询</text>
 		</view>
 		<view class="reserve" @tap="reserve()">
@@ -167,10 +167,11 @@
                 border: none;
             }
 			image{
-				width: 51rpx;
-                margin-bottom: 10rpx;
+				width: 50rpx;
+                height: 50rpx;
+                margin-bottom: 2rpx;
 			}
-			.text{
+			text{
 				font-size: 24rpx;
 			}
 		}
@@ -190,7 +191,10 @@
 			border-radius: 8rpx;
 			image{
 				width: 42rpx;
+                height: 42rpx;
                 margin-right: 5rpx;
+                margin-top: 8rpx;
+                margin-bottom: 4rpx;
 			}
 			text{
 				font-size: 24rpx;

@@ -161,7 +161,7 @@
                 </view>
             </view>
         </view>
-		<view class="hotActivity">
+		<view v-if="activity.length>0" class="hotActivity">
 			<view class="topBox">
 				<view class="title1">
 					<view></view>
@@ -172,15 +172,15 @@
 				</navigator>
 			</view>
 			<view class="hotContentBox">
-				<navigator :url="'/pages/news/newsDetails?type=2&id='+ activity.id" hover-class="navigator-hover">
-					<image class="hotImage" :src="activity.thumb" />
+				<navigator :url="'/pages/news/newsDetails?type=2&id='+ activity[0].id" hover-class="navigator-hover">
+					<image class="hotImage" :src="activity[0].thumb" />
 					<view class="hotContent">
 						<view class="hotTitle">
 							<image src="../../static/icons/new.png" />
-							<view class="titleText">{{activity.title}}</view>
+							<view class="titleText">{{activity[0].title}}</view>
 						</view>
 						<view class="dateBox">
-							<view class="date">{{activity.description}}</view>
+							<view class="date">{{activity[0].description}}</view>
 							<!-- <view class="joinBtn">马上参与</view> -->
 						</view>
 					</view>
@@ -393,11 +393,13 @@ export default {
 		//活动
 		getActivity() {
 			let projectId = uni.getStorageSync('projectid')
-			tki.req.get('index/activity',{projectid:projectId}).then(d => {
+			tki.req.get('index/projectActivity',{projectid:projectId}).then(d => {
 				if (d.code == 200) {
-					this.activity = d.data.list[0]
-					this.activity.createtime = new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
-				} else {
+					this.activity = d.data.list.length>0 ? [d.data.list[0]] : [];
+                    if(d.data.list.length>0){
+                        this.activity[0].createtime = new Date(Number(d.data.list[0].createtime * 1000)).format("yyyy-MM-dd")
+                    }
+                } else {
 					tki.ui.showToast(d.message)
 				}
 			}).catch(e => {

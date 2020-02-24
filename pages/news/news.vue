@@ -48,7 +48,8 @@
 				})
 			},
 			getInfo(){
-				tki.req.get('index/activity').then(d => {
+                let projectId = uni.getStorageSync('projectid')
+				tki.req.get('index/projectActivity', {projectId}).then(d => {
 				    if (d.code == 200) {
 						let data = d.data.list
 						data.length && data.map(v=>{

@@ -182,7 +182,7 @@
                             </view>
 							<view class="address">{{ item.sets&&item.sets.address }}</view>
 							<view class="tags">
-								<view v-if="item.area" class="tag">{{ item.area }}</view>
+								<view v-if="i<=3" v-for="(v,i) in item.sets&&item.sets.tags ? item.sets.tags : []" :key="i" class="tag">{{ v }}</view>
 							</view>
 						</view>
 					</view>
