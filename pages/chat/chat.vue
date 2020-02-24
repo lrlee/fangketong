@@ -60,7 +60,7 @@
                 return this.$store.state.user;
             },
             diyavatar(){
-                return this.$store.state.msgList[this.targetId]&&this.$store.state.msgList[this.targetId].oppositeUser ? this.$store.state.msgList[this.targetId].oppositeUser.diyavatar : ''
+                return this.$store.state.msgList[this.targetId]&&this.$store.state.msgList[this.targetId].oppositeUser ? (this.$store.state.msgList[this.targetId].oppositeUser.diyavatar||this.$store.state.msgList[this.targetId].oppositeUser.avatar) : ''
             }
         },
         onUnload(){
@@ -93,7 +93,7 @@
                         this.$store.commit("saveHistory", { targetId: this.targetId, history: d.data.list.length>0 ? [ d.data.list[d.data.list.length-1] ]:[] });
                         this.$store.commit("getOppositeUser", {
                             targetId: this.targetId, 
-                            oppositeUser: this.user.role_type == 1 ? d.data.adviser : d.data.user
+                            oppositeUser: this.user.role_type == 1 ? d.data.adviser : {projectid: this.projectid,...d.data.user}
                         })
                 	}
                 })

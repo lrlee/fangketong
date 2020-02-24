@@ -168,7 +168,7 @@ const store = new Vuex.Store({
                     ctx.commit("saveHistory", { targetId, history: d.data.list.length>0 ? [ d.data.list[d.data.list.length-1] ]:[] });
                     ctx.commit("getOppositeUser", {
                         targetId: targetId, 
-                        oppositeUser: ctx.state.user.role_type == 1 ? d.data.adviser : d.data.client
+                        oppositeUser: ctx.state.user.role_type == 1 ? d.data.adviser : {projectid: msg.projectid,...d.data.user}
                     })
                     ctx.commit("newMessage", msg);
             	}

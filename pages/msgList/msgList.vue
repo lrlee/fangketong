@@ -3,7 +3,7 @@
 		<scroll-view class="scroll-list" scroll-y="true">
 		    <view @click="toChat(v)" class="list_item" v-for="(v,i) in handlelist" :key="i">
                 <view class="head-box">
-                    <image :src="v.oppositeUser.diyavatar" mode="widthFix"></image>
+                    <image :src="v.oppositeUser.diyavatar||v.oppositeUser.avatar" mode="widthFix"></image>
                 </view>
                 <view class="name-box">
                     <view class="item-top">
