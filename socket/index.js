@@ -1,7 +1,8 @@
 import * as tki from '../components/TikiUI/common/js/index.js';
 function Socket(store){
     const socket = uni.connectSocket({
-        url: 'ws://47.92.172.168:47272',
+        // url: 'ws://47.92.172.168:47272',
+        url: 'wss://zhongtie.h-passer.com:47272',
     })
     uni.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！');
