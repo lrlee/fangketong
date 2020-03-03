@@ -19,8 +19,13 @@
 	export default {
 		data() {
 			return {
-				news:[]
+				news:[],
+				type:null
 			}
+		},
+		onLoad(options){
+			console.log(options,"option")
+			this.type = options.type || null
 		},
 		onShow(){
 			this.news=[]
@@ -49,7 +54,8 @@
 			},
 			getInfo(){
                 let projectId = uni.getStorageSync('projectid')
-				tki.req.get('index/projectActivity', {projectId}).then(d => {
+				let url = this.type?'index/activity':'index/projectActivity'
+				tki.req.get(url, {projectId}).then(d => {
 				    if (d.code == 200) {
 						let data = d.data.list
 						data.length && data.map(v=>{

@@ -101,7 +101,7 @@
 						<view></view>
 						<text>热门活动</text>
 					</view>
-					<navigator url="/pages/news/news" hover-class="navigator-hover">
+					<navigator url="/pages/news/news?type=1" hover-class="navigator-hover">
 						<view class="moreBtn">查看更多</view>
 					</navigator>
 				</view>
