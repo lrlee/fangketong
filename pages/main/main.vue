@@ -8,6 +8,9 @@
 				{{sfType ? sfType : ""}}——{{userInfo.nickname ? userInfo.nickname : ""}}
 			</view>
 		</view>
+        <view class="official-account">
+            <official-account style="width: 100%;"></official-account>
+        </view>
 		<view class="main-warp">
 			<navigator url="/pages/myInfo/myInfo" v-if="userInfo.is_agent || userInfo.is_adviser" hover-class="navigator-hover">
 			    <view class="main-item">
@@ -113,7 +116,15 @@
 				} else {
 					return "游客"
 				}
-			}
+			},
+            getLaunchOptionsSync(){
+                const scene = wx.getLaunchOptionsSync().scene;
+                if(scene === 1047 || scene === 1124 || scene === 1089 || scene === 1038 || scene === 1011){
+                    return true;
+                }else{
+                    return false
+                }
+            }
 		}
 	}
 </script>

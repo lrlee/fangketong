@@ -58,6 +58,38 @@
 			</view>
 			<view class="loupan-info-item">
 				<view class="loupan-info-item-left">
+					建筑密度
+				</view>
+				<view class="loupan-info-item-right">
+					{{project.buildingDensity ? project.buildingDensity : ""}}
+				</view>
+			</view>
+			<view class="loupan-info-item">
+				<view class="loupan-info-item-left">
+					绿化率
+				</view>
+				<view class="loupan-info-item-right">
+					{{project.afforestation ? project.afforestation : ""}}
+				</view>
+			</view>
+			<view class="loupan-info-item">
+				<view class="loupan-info-item-left">
+					物业公司
+				</view>
+				<view class="loupan-info-item-right">
+					{{project.management ? project.management : ""}}
+				</view>
+			</view>
+			<view class="loupan-info-item">
+				<view class="loupan-info-item-left">
+					销售状态
+				</view>
+				<view class="loupan-info-item-right">
+					{{project.salesStatus == 0 ? "待售" : "在售"}}
+				</view>
+			</view>
+			<view class="loupan-info-item">
+				<view class="loupan-info-item-left">
 					项目简介
 				</view>
 				<view class="loupan-info-item-right loupan-desc">

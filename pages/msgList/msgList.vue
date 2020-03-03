@@ -39,7 +39,7 @@
                 const l = [...v.history,...v.read,...v.unread];
                 if(l.length>0){
                     const t = l[l.length-1].create_time;
-                    const s = new Date(parseInt(t * 1000)).format("M月d日 H:m");
+                    const s = new Date(parseInt(t * 1000)).format("M月d日 HH:mm");
                     return s;
                 }else{
                     return "";

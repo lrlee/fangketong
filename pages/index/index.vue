@@ -4,9 +4,9 @@
 			<swiper @change="swiperChange" class="swiper banner-swiper" :circular="true" :indicator-dots="false" :indicator-color="'#ffffff'" :indicator-active-color="'#3B95F9'" :autoplay="videoFlag">
 				<swiper-item v-for="(item, index) in banner" :key="index">
 				<!-- 	<image :src="item.thumb" mode="aspectFill" /> -->
-					<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true" :src="'https://zhongtie.h-passer.com/'+item.video"></video>
-					<image v-if="item.thumb" :src="item.thumb" mode="aspectFill" :data-src="item.thumb"  />
-                    <navigator v-if="item.contentType == 3" :url="`../vr/vr?url=${encodeURIComponent('https://m.anjuke.com/xinfang/fuwu/vr/?loupan_id=446778&housetype_id=495221&frompm=copylink')}`">
+					<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.contentType == 2" enable-play-gesture="true" :src="'https://zhongtie.h-passer.com/'+item.video"></video>
+					<image v-if="item.contentType == 1" :src="item.thumb" mode="aspectFill" :data-src="item.thumb"  />
+                    <navigator v-if="item.contentType == 3" :url="`../vr/vr?url=${encodeURIComponent(item.link)}`">
                         <image :src="item.thumb" mode="aspectFill"></image>
                     </navigator>
                 </swiper-item>
@@ -33,19 +33,22 @@
 				{{project.price_range ? project.price_range : "暂无价格"}}
 			</view>
 			<view class="want">
-				<view class="want-avatar">
-					<view>
-                        <view class="want-avatar-item" v-for="(v, i) in history" :key="i">
-                        	<image :src="v.avatar" mode=""></image>
+				<navigator url="/pages/visitorLogs/visitorLogs" hover-class="navigator-hover">
+                    <view class="want-avatar">
+                    	<view>
+                            <view class="want-avatar-item" v-for="(v, i) in history" :key="i">
+                            	<image :src="v.avatar" mode=""></image>
+                            </view>
+                            <view class="want-avatar-omit">
+                                <text></text><text></text><text></text>
+                            </view>
                         </view>
-                        <view class="want-avatar-omit">
-                            <text></text><text></text><text></text>
-                        </view>
+                    	<view class="want-num">
+                            <text>{{ willingMember }}人想买</text>
+                    		<text>{{project.viewcount ? project.viewcount : ""}}</text>人关注
+                    	</view>
                     </view>
-					<view class="want-num">
-						<text>{{project.viewcount ? project.viewcount : ""}}</text>人关注
-					</view>
-				</view>
+                </navigator>
 			</view>
 			<view class="project-loac">
 				<view class="project-loac-icon" @tap="getMap()">
@@ -151,7 +154,7 @@
         <view class="tuijian-box">
             <image class="tuijian" src="../../static/icons/tuijianjiangli.png" mode="widthFix"></image>
             <view class="btn-box">
-                <view class="btn">
+                <view class="btn" @click="requestSubscribeMessage">
                     <image src="../../static/icons/biandong.png" mode="widthFix"></image>
                     <text>变价通知</text>
                 </view>
@@ -241,7 +244,7 @@
 				<view class="more-title">
 					<view class="title">
 						<text>户型鉴赏</text>
-						<navigator url="/pages/moreHx/moreHx" hover-class="navigator-hover">
+						<navigator :url="'/pages/moreHx/moreHx?tel='+project.tell" hover-class="navigator-hover">
 						    <view class="more">
 						    	查看更多
 						    </view>
@@ -320,7 +323,8 @@ export default {
 			activity: [],
             currentType: 0,
             adviserList: [],
-            showAllAdviser: false
+            showAllAdviser: false,
+            willingMember: null
 		};
 	},
 	components: {
@@ -328,17 +332,17 @@ export default {
 	},
 	onLoad() {
 		// 请求弹窗广告
-		tki.req.post('index/popupadv',{}).then(d => {
-			if (d.code === 200) {
-				// 处理数据
-				if(d.data.banner && d.data.banner.length != 0) {
-					this.popupadv = d.data.banner[0].thumb
-					this.$refs.popup.open()
-				}
-			}
-		}).catch(e => {
-			tki.ui.showToast(e.msg)
-		})
+		// tki.req.post('index/popupadv',{}).then(d => {
+		// 	if (d.code === 200) {
+		// 		// 处理数据
+		// 		if(d.data.banner && d.data.banner.length != 0) {
+		// 			this.popupadv = d.data.banner[0].thumb
+		// 			this.$refs.popup.open()
+		// 		}
+		// 	}
+		// }).catch(e => {
+		// 	tki.ui.showToast(e.msg)
+		// })
 	},
 	onShow() {
 		this.getActivity()
@@ -353,6 +357,7 @@ export default {
 				this.project = d.data.project
 				this.history = d.data.history
                 this.currentType = d.data.banner.length>0 ? d.data.banner[0].contentType : 1
+                this.willingMember = d.data.willingMember
                 uni.setNavigationBarTitle({
                     title: d.data.project.projectname
                 })
@@ -489,6 +494,17 @@ export default {
                 return false;
             }
             tki.nav.navTo('/pages/chat/chat?targetId='+ v.id + '&projectid=' + v.projectid + '&realname='+ v.realname)
+        },
+        requestSubscribeMessage(){
+            // wx.requestSubscribeMessage({
+            //     tmplIds: ['-fj3g3ay0W4O5gZDvDqTRy7iTe715UZOAPsupTJo2fU'],
+            //     success(res){
+            //         debugger
+            //     },
+            //     fail(err){
+            //         debugger
+            //     }
+            // })
         }
 	}
 };

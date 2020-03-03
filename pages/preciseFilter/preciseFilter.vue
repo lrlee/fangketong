@@ -19,23 +19,7 @@
                 <text>为您找到以下楼盘</text>
             </view>
             <view>
-                <view class="project-item" v-for="(item, index) in projectList" :key="index" @tap="toProject(item.id)">
-                    <view class="name">{{ item.projectname }}</view>
-                    <view class="item-content">
-                        <view class="tagIcon">在售</view>
-                        <view class="img-box">
-                            <image :src="item.sets.logo" mode="aspectFill"></image>
-                        </view>
-                        <view class="right">
-                            <view class="price">{{ item.sets&&item.sets.price_range ? item.sets.price_range : "暂无报价" }}</view>
-                            <view class="num">{{ item.viewcount }}人想买</view>
-                            <view class="address">{{ item.sets&&item.sets.address }}</view>
-                            <view class="tags">
-                                <view v-if="item.area" class="tag">{{ item.area }}</view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
+                <project-item-card :item="item" v-for="(item, index) in projectList" :key="index"></project-item-card>
                 <uni-load-more :status="more"></uni-load-more>
             </view>
         </view>
@@ -45,8 +29,9 @@
 <script>
 	import * as tki from '../../components/TikiUI/common/js/index.js';
     import { uniLoadMore } from '@dcloudio/uni-ui';
+    import ProjectItemCard from '../../components/project-item-card/project-item-card.vue';
 	export default {
-        components: { uniLoadMore },
+        components: { uniLoadMore, ProjectItemCard },
 		data() {
 			return {
 				city: '',
@@ -72,6 +57,14 @@
                     value: 5,
                     name: '5室及以上'
                 }],
+                buildType: [{
+                    value: 1,
+                    name: "住宅"
+                },{
+                    value: 2,
+                    name: "商铺"
+                }],
+                activeBuildType: [],
                 activeArea: [],
                 activeType: [],
                 projectList: [],
@@ -92,6 +85,7 @@
             this.activeArea = e.activeArea.split(",").filter(v => (v===0 || !!v)).map(v => parseInt(v));
             this.activeType = e.activeType.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
             this.price = e.price.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
+            this.activeBuildType = e.activeBuildType.split(",").filter(v => v===0 || !!v).map(v => parseInt(v));
             this.getList();
         },
         computed:{
@@ -109,7 +103,10 @@
                 const type = this.activeType.map(v => {
                     return this.houseType[v].name
                 })
-                return [this.city || "全部", this.price[0]+"-"+this.price[1]+"万",...area,...type]
+                const buildType = this.activeBuildType.map(v => {
+                    return this.buildType[v].name
+                })
+                return [this.city || "全部", this.price[0]+"-"+this.price[1]+"万",...area,...type,...buildType]
             }
         },
         methods:{
@@ -123,15 +120,20 @@
                 if(!this.isLastPage) this.getList();
             },
             getList() {
-                const data = {
+                let data = {
                     city: this.city,
                     referenceprice: this.price,
                     searchType: 4,
                     floorage: this.activeArea.map(v => this.area[v]),
                     room: this.activeType.map(v => this.houseType[v].value),
+                    type: this.activeBuildType.map(v => this.buildType[v].value),
                     page: this.page
                 }
-            	tki.req.post('index/searchProject', {
+                data.referenceprice = data.referenceprice.length==0 || data.referenceprice[0] === "" || data.referenceprice[0] == -1 ? "" : data.referenceprice
+            	data.floorage = data.floorage.length==0 || data.floorage[0] === "" || data.floorage[0] == -1 ? "" : data.floorage
+                data.room = data.room.length==0 || data.room[0] === "" || data.room[0] == -1 ? "" : data.room
+                data.type = data.type.length==0 || data.type[0] === "" || data.type[0] == -1 ? "" : data.type
+                tki.req.post('index/searchProject', {
             		data: JSON.stringify(data)
             	}).then(d => {
                     if (d.code == 200) {

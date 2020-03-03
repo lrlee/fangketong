@@ -34,7 +34,7 @@
 			</view>
 		</view>
 		<view class="btn-warp">
-			<view class="follow" @click="toPhoen('0871-1234567')">
+			<view class="follow" @click="toPhoen()">
 				电话联系
 			</view>
 			<view class="share" @click="open">
@@ -80,7 +80,8 @@
 				id: '',
 				hxInfo: {},
                 shareImg: '',
-                tempFilePath: ''
+                tempFilePath: '',
+                tel: ''
 			};
 		},
 		onLoad: function (option) { 
@@ -90,6 +91,7 @@
 				})
 			} else {
 				this.id = option.id
+                this.tel = option.tel
 			}
 		},
 		onShow() {
@@ -115,9 +117,9 @@
 				   urls: that.hxInfo.thumb_url || [e.currentTarget.dataset.src]//所有要预览的图片的地址集合 数组形式
 				 })
 			},
-            toPhoen(t) {
+            toPhoen() {
                 uni.makePhoneCall({
-                    phoneNumber: String(t)
+                    phoneNumber: String(this.tel)
                 });
             },
             open(){

@@ -9,8 +9,16 @@
                 // const list = tki.com.json2str(this.$store.state.msgList[data.targetId].read);
                 // debugger
                 if(this.$store.state.msgList[data.targetId].read.length>0){
+                    const fields = ["projectid","uid","adviserid","role_type","msg_type","content","create_time"];
+                    const read = this.$store.state.msgList[data.targetId].read.map((v,i) => {
+                        const obj = {};
+                        fields.map((vv,ii) => {
+                            obj[vv] = v[vv] || "";
+                        })
+                        return obj;
+                    })
                     tki.req.post('consult/saveMessage',{
-                       data: JSON.stringify(this.$store.state.msgList[data.targetId].read)
+                       data: JSON.stringify(read)
                     }).then(d => {
                         if (d.code === 200) {
                             this.$store.commit("submitHistory", { targetId: data.targetId })

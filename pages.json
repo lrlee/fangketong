@@ -3,7 +3,7 @@
 		{
             "path" : "pages/projectSelect/projectSelect",
             "style" : {
-                "navigationBarTitleText": "首页"
+                "navigationBarTitleText": "中铁二局地产云购房"
                 
             }
         },{
@@ -218,9 +218,27 @@
 				"navigationBarTitleText":"消息"
 			}
         }
+        ,{
+            "path" : "pages/dropDownSelection/dropDownSelection",
+            "style" : {
+				"navigationBarTitleText":"精准选房"
+			}
+        }
+        ,{
+            "path" : "pages/visitorLogs/visitorLogs",
+            "style" : {
+				"navigationBarTitleText":"浏览记录"
+            }
+        }
+        ,{
+            "path" : "pages/mapProjectSelect/mapProjectSelect",
+            "style" : {
+				"navigationBarTitleText":"地图选房"
+            }
+        }
     ],
 	"globalStyle": {
-		"navigationBarTitleText": "古怪房客通",
+		"navigationBarTitleText": "中铁二局地产云购房",
 		"backgroundColor": "#ffffff",
         "navigationBarBackgroundColor":"#0161B3",
         "navigationBarTextStyle":"white"
@@ -330,6 +348,21 @@
 			{
 				"name": "城市选择", //模式名称
 				"path": "pages/location/location", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "下拉筛选", //模式名称
+				"path": "pages/dropDownSelection/dropDownSelection", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "浏览记录", //模式名称
+				"path": "pages/visitorLogs/visitorLogs", //启动页面，必选
+				"query": ""
+			},
+			{
+				"name": "地图选房", //模式名称
+				"path": "pages/mapProjectSelect/mapProjectSelect", //启动页面，必选
 				"query": ""
 			}
 	    ]

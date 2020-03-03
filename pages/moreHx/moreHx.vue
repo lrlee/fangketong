@@ -3,7 +3,7 @@
 		<view class="not" v-if="!apartment || apartment.length==0">
 		    暂无内容
 		</view>
-		<navigator v-for="(v,i) in apartment" :key=i :url="v.isquanjing ? '/pages/webView/webView?url=' + v.thumb_link : '/pages/hxDetails/hxDetails?id='+ v.id" hover-class="navigator-hover">
+		<navigator v-for="(v,i) in apartment" :key=i :url="v.isquanjing ? '/pages/webView/webView?url=' + v.thumb_link : '/pages/hxDetails/hxDetails?id='+ v.id + '&tel='+tel" hover-class="navigator-hover">
 			<view class="hx-list-title">
 				<view class="title">
 					{{v.room ? v.room : ""}}室{{v.hall ? v.hall : ""}}厅{{v.kitchen ? v.kitchen : ""}}厨{{v.toilet ? v.toilet : ""}}卫
@@ -39,11 +39,13 @@ import * as tki from '../../components/TikiUI/common/js/index.js';
 export default {
 	data() {
 		return {
-			apartment: []
+			apartment: [],
+            tel: ''
 		};
 	},
-	onLoad() {
+	onLoad(options) {
 		// 请求首页数据
+        this.tel = options.tel;
 		return tki.req.get('apartment/aplist').then(d => {
 			if (d.code === 200) {
 				console.log(d)

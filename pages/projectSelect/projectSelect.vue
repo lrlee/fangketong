@@ -23,10 +23,20 @@
 			<view class="advertising">
 				<swiper class="swiper imagesList" :circular="true" :autoplay="videoFlag">
 					<swiper-item class="imagesItem" v-for="(item, index) in adImages" :key="index">
-						<video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.video" enable-play-gesture="true"
-						 :src="'https://zhongtie.h-passer.com/'+item.video"></video>
-						<image v-if="item.thumb" :src="item.thumb" @tap="toProject(item.projectid)" mode="" :data-src="item.thumb" />
-					</swiper-item>
+                        <block v-if="item.linkType != 2 && item.linkType != 3 && item.linkType != 4">
+                           <video @play="play()" @pause="pause()" @ended="end()" class="video" v-if="item.contentType == 2" enable-play-gesture="true"
+                            :src="'https://zhongtie.h-passer.com/'+item.video"></video>
+                           <image v-if="item.contentType == 1" :src="item.thumb" @tap="toProject(item.projectid)" mode="" :data-src="item.thumb" />
+                           <navigator v-if="item.contentType == 3" :url="`../vr/vr?url=${encodeURIComponent(item.link)}`">
+                               <image :src="item.thumb" mode="aspectFill"></image>
+                           </navigator> 
+                        </block>
+                        <block v-else="item.linkType != 1">
+                            <navigator  :url="'/pages/news/newsDetails?type=' + handleNewType(item.linkType) + '&id='+ item.id">
+                                <image :src="item.thumb" mode="aspectFill"></image>
+                            </navigator>
+                        </block>
+                    </swiper-item>
 				</swiper>
 				<!-- <swiper class="swiper banner-swiper adText"  :vertical="true" :autoplay="true" :circular="true">
 					<swiper-item class="adText-item" v-for="(item, index) in adText" :key="index"  >
@@ -116,8 +126,9 @@
 			<view class="project-box">
 
 				<view class="regionBox">
-					<scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
-					 @scroll="scroll">
+					<!-- <scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X" @scrolltoupper="upper" @scrolltolower="lower"
+					 @scroll="scroll"> -->
+                    <scroll-view :scroll-top="scrollTop" scroll-x="true" class="scroll-X">
 						<view class="topList">
 							<view class="topItem" :class="classArr[0]" @tap="()=>this.changeStatus(0)">
 								<view class="itemText">热门盘</view>
@@ -148,7 +159,7 @@
 								<view class="itemIcon">
 									<image v-if="!flagArr[3]" class="position" src="../../static/icons/daohanggray.png" />
 									<image v-else class="position" src="../../static/icons/daohangblue.png" />
-									<view>ZHOUHAI</view>
+									<view>ZHUHAI</view>
 								</view>
 							</view>
 							<view class="topItem" :class="classArr[4]" @tap="changeStatus(4)">
@@ -168,25 +179,7 @@
 					<view></view>
 					<text>热门楼盘</text>
 				</view>
-				<view class="project-item" v-for="(item, index) in list" :key="index" @tap="toProject(item.id)">
-					<view class="item-content">
-						<view class="tagIcon">在售</view>
-						<view class="img-box">
-							<image :src="item.sets.logo" mode="aspectFill"></image>
-						</view>
-						<view class="right">
-                            <view class="name">{{ item.projectname }}</view>
-							<view class="price">{{ item.sets&&item.sets.price_range ? item.sets.price_range : "暂无报价" }}</view>
-							<view class="num">{{ item.viewcount }}人关注 
-                                <view class="yongjin"><image src="../../static/icons/yongjin.png" mode="widthFix">赚佣金</image></view>
-                            </view>
-							<view class="address">{{ item.sets&&item.sets.address }}</view>
-							<view class="tags">
-								<view v-if="i<=3" v-for="(v,i) in item.sets&&item.sets.tags ? item.sets.tags : []" :key="i" class="tag">{{ v }}</view>
-							</view>
-						</view>
-					</view>
-				</view>
+                <project-item-card :item="item" v-for="(item, index) in list" :key="index"></project-item-card>
 				<view class="not" v-if="!list || list.length==0">
 					暂无内容
 				</view>
@@ -201,6 +194,16 @@
 		</scroll-view>
         <to-msg-list></to-msg-list>
 		<tki-authorize ref="wxat" @result="wxResult" />
+        <uni-popup ref="popup" type="center">
+            <view class="popupadv">
+                <video v-if="popupadv.contentType==2" style="width: 600rpx; height: 400rpx;" :src="popupadv.video" controls></video>
+                <image style="width: 600rpx;" v-if="popupadv.contentType==1" :src="popupadv.thumb" @tap="toProject(popupadv.projectid)" mode="widthFix" :data-src="popupadv.thumb" />
+                <navigator v-if="popupadv.contentType == 3" :url="`../vr/vr?url=${encodeURIComponent(popupadv.link)}`">
+                    <image style="width: 600rpx;" :src="popupadv.thumb" mode="widthFix"></image>
+                </navigator>
+                <image @click="close" class="close" src="../../static/icons/colse_a.png" mode="widthFix"></image>
+            </view>
+        </uni-popup>
 	</view>
 </template>
 
@@ -209,8 +212,11 @@
 	import tkiAuthorize from "../../components/TikiUI/tki-authorize/tki-authorize";
     import toMsgList from '../../components/to-msg-list/to-msg-list.vue';
 	import QQMapWX from "../../utils/mapSdk.min.js";
+    import ProjectItemCard from '../../components/project-item-card/project-item-card.vue';
+	import { uniPopup } from '@dcloudio/uni-ui';
 	const tencentMapKey = 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG'
 	export default {
+        components: { ProjectItemCard, uniPopup },
 		data() {
 			return {
 				city: "",
@@ -236,22 +242,46 @@
 				},
 				cityArr: ['', '成都', '福州', '珠海', '达州'],
 				currentCity: null,
-				activity: []
+				activity: [],
+                popupadv: ''
 			};
 		},
 		onLoad() {
 			this.getLocation()
+            this.getAdvertising()
 		},
 		onShow() {
 			this.getNewsList()
 			this.getHotList()
 			this.getActivity()
 			this.changeStatus(0)
+            this.getBannerList();
 		},
 		components: {
 			tkiAuthorize, toMsgList
 		},
 		methods: {
+            // 获取轮播图列表
+            getBannerList(){
+               tki.req.post("index/getAdInformation",{
+                   type: 4
+               }).then(d => {
+                   if(d.data.banner && d.data.banner.length>0){
+                       this.adImages = d.data.banner;
+                   }
+               }) 
+            },
+            // 获取弹窗广告
+            getAdvertising(){
+                tki.req.post("index/getAdInformation",{
+                    type: 2
+                }).then(d => {
+                    if(d.data.banner && d.data.banner.length>0){
+                        this.popupadv = d.data.banner[0];
+                        this.$refs.popup.open();
+                    }
+                })
+            },
 			//活动
 			getActivity() {
 				tki.req.get('index/activity').then(d => {
@@ -264,6 +294,18 @@
 					tki.ui.showToast(e.message)
 				})
 			},
+            handleNewType(linkType){
+              if(linkType == 2){
+                  return 2;
+              }else if(linkType == 3){
+                  return 1;
+              }else{
+                  return 3
+              }
+            },
+            close(){
+                this.$refs.popup.close();
+            },
 			//筛选
 			filter() {
 				// tki.ui.showToast('正在开发中...')
@@ -448,7 +490,7 @@
 				}).then(d => {
 					if (d.code == 200) {
 						this.list = d.data.list;
-						this.adImages = d.data.banner
+						// this.adImages = d.data.banner
 					} else {
 						tki.ui.showToast(d.message)
 					}

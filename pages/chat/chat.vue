@@ -32,7 +32,7 @@
                 history: [],
                 keyboardHeight: 0,
                 value: '',
-                scrollAnimation: false,
+                scrollAnimation: true,
                 scrollTop: 0
 			};
 		},
@@ -82,7 +82,9 @@
                 }).then(d => {
                 	if (d.code === 200) {
                 		this.history = d.data.list&&d.data.list.sort((a,b) => a.create_time - b.create_time) || [];
-                        this.toBottom();
+                        setTimeout(()=>{
+                            this.toBottom();
+                        }, 100)
                         uni.setNavigationBarTitle({
                             title: this.user.role_type == 1 ? (d.data.adviser.realname || d.data.adviser.nickname) : (d.data.user.realname || d.data.user.nickname) 
                         })

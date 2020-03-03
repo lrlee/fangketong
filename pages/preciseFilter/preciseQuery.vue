@@ -56,6 +56,14 @@
                     <view @click="selectType(i)" :class="{active: activeType.indexOf(i)>-1}" v-for="(v,i) in houseType" :key="i">{{ v.name }}</view>
                 </view>
             </view>
+            <view class="house-type">
+                <view class="title1">
+                    <text>您想买什么类型：</text>
+                </view>
+                <view class="build-type-list list">
+                    <view @click="selectBuildType(i)" :class="{active: activeBuildType.indexOf(i)>-1}" v-for="(v,i) in buildType" :key="i">{{ v.name }}</view>
+                </view>
+            </view>
             <view class="btn-box">
                 <button @click="submit">立即定制</button>
             </view>
@@ -105,6 +113,14 @@
                     value: 5,
                     name: '5室及以上'
                 }],
+                buildType: [{
+                    value: 1,
+                    name: "住宅"
+                },{
+                    value: 2,
+                    name: "商铺"
+                }],
+                activeBuildType: [],
                 activeArea: [],
                 activeType: []
 			};
@@ -147,6 +163,14 @@
                     this.activeArea = [...this.activeArea, v]
                 }
             },
+            selectBuildType(v){
+                const index = this.activeBuildType.indexOf(v);
+                if(index>-1){
+                    this.activeBuildType = [...this.activeBuildType.slice(0,index),...this.activeBuildType.slice(index+1)]
+                }else{
+                    this.activeBuildType = [...this.activeBuildType, v]
+                }
+            },
             selectType(i){
                 const v = this.houseType[i].value;
                 if(v == -1){
@@ -172,7 +196,7 @@
                 //     activeType: this.activeType
                 // })
                 // tki.nav.navBack();
-                tki.nav.navTo(`/pages/preciseFilter/preciseFilter?city=${this.city}&price=${this.rangeValue.join(",")}&activeArea=${this.activeArea.join(",")}&activeType=${this.activeType.join(",")}`);
+                tki.nav.navTo(`/pages/preciseFilter/preciseFilter?city=${this.city}&price=${this.rangeValue.join(",")}&activeArea=${this.activeArea.join(",")}&activeType=${this.activeType.join(",")}&activeBuildType=${this.activeBuildType.join(",")}`);
             }
         }
 	}
