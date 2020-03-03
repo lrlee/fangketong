@@ -63,9 +63,11 @@
 					if (d.code == 200) {
 						let info = d.data
 						const regex = new RegExp('<img', 'gi');
-						const reg = new RegExp('/Uploads','gi')
-						info.detail = info.detail.replace(regex, `<img style="max-width: 100%;height:auto;object-fit: cover"`);
-						info.detail = info.detail.replace(reg,'https://zhongtie.h-passer.com/Uploads')
+						const pReg = new RegExp('<p','gi')
+						const reg = new RegExp("src='/Uploads",'gi')
+						info.detail = info.detail.replace(regex, '<img class="richImg" style="object-fit:cover;max-width:100%;height:auto"');
+						info.detail = info.detail.replace(reg,'src=https://zhongtie.h-passer.com/Uploads')
+						//info.detail = info.detail.replace(pReg,'<p style="width:670rpx;height:auto;max-width:100%;max-height:100%;display:flex;vertical-align: middle;"')
 						console.log(info.detail,"detail")
 						let tp = {
 							content:info.detail,

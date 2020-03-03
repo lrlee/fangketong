@@ -34,3 +34,8 @@
   padding-top: 28upx;
   padding-bottom: 28upx;
 }
+.richImg{
+	width: 100% ;
+	height: auto ;
+  // display: block;
+}
