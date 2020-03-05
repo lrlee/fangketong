@@ -209,7 +209,7 @@
                 const data = {
                     city: this.city.length===1 && this.city[0]==='' ? '' : this.city,
                     // referenceprice: this.price,
-                    searchType: 4,
+                    searchType: 5,
                     floorage: this.area,
                     room: this.roomType,
                     type: this.houseType,
