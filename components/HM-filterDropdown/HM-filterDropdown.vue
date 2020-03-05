@@ -226,7 +226,7 @@
                     this.maskHide = false;
                 }
             },
-            city(val){
+            filterData(val){
                 this.district = ''; 
             }
         },

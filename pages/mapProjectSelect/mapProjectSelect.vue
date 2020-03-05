@@ -114,23 +114,47 @@
                     if(!val){
                         that.filterData[0].submenu = this.allDistrict.map(v => ({name: v.fullname}));
                     }else{
-                        for(let key in that.cityList){
-                            const v = that.cityList[key];
-                            if(v.name.indexOf(val)>-1 || v.fullname.indexOf(val)>-1){
-                               Map.getDistrictByCityId({
-                                   id: v.id,
-                                   success: function(d){
-                                       if(d.status == 0){
-                                           that.filterData[0].submenu = d.result[0].map(vv => ({name: vv.fullname}));
-                                       }
-                                   },
-                                   fail: function(error) {
-                                       console.error(error);
-                                   }
+                        // for(let key in that.cityList){
+                        //     const v = that.cityList[key];
+                        //     if(v.name.indexOf(val)>-1 || v.fullname.indexOf(val)>-1){
+                        //        Map.getDistrictByCityId({
+                        //            id: v.id,
+                        //            success: function(d){
+                        //                if(d.status == 0){
+                        //                    that.filterData[0].submenu = d.result[0].map(vv => ({name: vv.fullname}));
+                        //                }
+                        //            },
+                        //            fail: function(error) {
+                        //                console.error(error);
+                        //            }
+                        //        })
+                        //         break;
+                        //     }
+                        // }
+                        
+                        Map.geocoder({
+                            address: val,
+                            region: val,
+                            success(res){
+                                let id = '';
+                                if(res.result.address_components.province === res.result.address_components.city){
+                                    id = res.result.ad_info.adcode.substr(0,2) + "0000"
+                                }else{
+                                    id = res.result.ad_info.adcode.substr(0,4) + "00"
+                                }
+                                Map.getDistrictByCityId({
+                                    id: id,
+                                    success: function(d){
+                                        if(d.status == 0){
+                                            that.filterData[0].submenu = d.result[0].map(vv => ({name: vv.fullname}));
+                                        }
+                                    },
+                                    fail: function(error) {
+                                        console.error(error);
+                                    }
                                })
-                                break;
                             }
-                        }
+                        })
                     }
                 },
                 immediate: true
@@ -155,7 +179,7 @@
                 Map.getCityList({
                     success: function(res) {//成功后的回调
                         if(res.status == 0){
-                            that.cityList = res.result[1];
+                            // that.cityList = res.result[1];
                             that.allDistrict = res.result[2];
                             that.filterData[0].submenu = res.result[2].map(v => ({name: v.fullname}));
                             that.getLocation();
@@ -193,7 +217,7 @@
 			},
 			changeCity(city) {
 				this.city = city;
-                this.area = '';
+                this.district = '';
                 this.handlerChange();
 			},
             handlerChange(e){

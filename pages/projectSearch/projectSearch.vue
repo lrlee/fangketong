@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-        <view class="header">
+        <!-- <view class="header">
             <view class="search-box">
                 <view class="search">
                     <image v-if='imgUrl' :src="imgUrl + 'projectSelect/search.png'" mode=""></image>
@@ -11,7 +11,21 @@
                 <image v-if='imgUrl' :src="imgUrl + 'projectSelect/location1.png'" mode="aspectFit"></image>
                 <view class="city">{{ city || "全部" }}</view>
             </view>
-        </view>
+        </view> -->
+        <view class="header">
+			<view class="search-box">
+				<view class="area-box" @click="goSelectAddr">
+					<view class="">
+						<image src='../../static/icons/daohang.png' />
+						<text class="area">{{ city || "全部" }}</text>
+					</view>
+				</view>
+				<view class="search">
+					<image src="../../static/icons/sousuo.png" mode=""></image>
+					<input @input="handlerChange" type="text" :value="keywords" placeholder="请输入您要搜索的项目名称" value=""/>
+				</view>
+			</view>
+		</view>
         <scroll-view class="content" scroll-y @scrolltolower="scrolltolower">
             <view v-if="list.length>0" class="project-item" v-for="(item, index) in list" :key="index" @tap="toProject(item.id)">
                 <view class="img-box">

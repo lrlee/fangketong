@@ -247,7 +247,7 @@
 			};
 		},
 		onLoad() {
-			this.getLocation()
+			// this.getLocation()
             this.getAdvertising()
 		},
 		onShow() {
@@ -306,10 +306,11 @@
 			//筛选
 			filter() {
 				// tki.ui.showToast('正在开发中...')
-                tki.nav.swTab("/pages/preciseFilter/preciseQuery")
+                tki.nav.navTo("/pages/preciseFilter/preciseQuery")
 			},
 			selectHomeByMap() {
-				tki.ui.showToast('正在开发中...')
+				// tki.ui.showToast('正在开发中...')
+                tki.nav.navTo("/pages/mapProjectSelect/mapProjectSelect")
 			},
 			getLocation() {
 				const self = this
@@ -438,7 +439,7 @@
 				this.videoFlag = true
 			},
 			changeStatus(index) {
-				this.city = this.cityArr[index]
+				// this.city = this.cityArr[index]
 				if (index) {
 					this.getList(this.cityArr[index], index)
 				} else {
@@ -456,9 +457,12 @@
 				}
 			},
 			goSelectAddr() {
-				uni.navigateTo({
-					url: "../location/location"
-				})
+				// uni.navigateTo({
+				// 	url: "../location/location"
+				// })
+                uni.navigateTo({
+                	url: `../projectSearch/projectSearch?city=${this.city}`
+                })
 			},
 			goProjectSearch() {
 				uni.navigateTo({
