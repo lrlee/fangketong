@@ -1,5 +1,5 @@
 {
-    "name" : "古怪房客通",
+    "name" : "中铁二局地产云购房",
     "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
@@ -67,7 +67,8 @@
             "scope.userLocation" : {
                 "desc" : "我们需要获取你的位置信息进行定位"
             }
-        }
+        },
+        "libVersion" : "2.10.2"
     },
     "mp-alipay" : {
         "usingComponents" : true

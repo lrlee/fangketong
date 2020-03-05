@@ -62,7 +62,7 @@
             this.getList();
             uni.$on("dropDownSelected", e => {
                 this.district = e.district;
-                this.price = e.price.value;
+                this.price = e.price;
                 this.roomType = e.roomType;
                 this.houseType = e.houseType;
                 this.tags = e.tags;
@@ -165,9 +165,9 @@
                 if(!this.isLastPage) this.getList();
             },
             getList() {
-                const data = {
+                let data = {
                     city: this.city.length===1 && this.city[0]==='' ? '' : this.city,
-                    referenceprice: this.price,
+                    // referenceprice: this.price,
                     searchType: 4,
                     floorage: this.area,
                     room: this.roomType,
@@ -175,6 +175,12 @@
                     area: this.district,
                     page: this.page,
                     keywords: this.keywords
+                }
+                if(this.price&&this.price.type==0){
+                    data.totalReferencePrice = this.price.value;
+                }
+                if(this.price&&this.price.type==1){
+                    data.referenceprice = this.price.value;
                 }
             	tki.req.post('index/searchProject', {
             		data: JSON.stringify(data)

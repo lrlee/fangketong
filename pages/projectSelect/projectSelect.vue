@@ -216,7 +216,7 @@
 	import { uniPopup } from '@dcloudio/uni-ui';
 	const tencentMapKey = 'VQVBZ-DLBCU-F2AVZ-4GX6F-DY3SS-2SBCG'
 	export default {
-        components: { ProjectItemCard, uniPopup },
+        components: { ProjectItemCard, uniPopup, toMsgList, tkiAuthorize },
 		data() {
 			return {
 				city: "",
@@ -256,9 +256,6 @@
 			this.getActivity()
 			this.changeStatus(0)
             this.getBannerList();
-		},
-		components: {
-			tkiAuthorize, toMsgList
 		},
 		methods: {
             // 获取轮播图列表

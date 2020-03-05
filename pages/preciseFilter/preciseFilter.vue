@@ -122,14 +122,14 @@
             getList() {
                 let data = {
                     city: this.city,
-                    referenceprice: this.price,
+                    totalReferencePrice: this.price,
                     searchType: 4,
                     floorage: this.activeArea.map(v => this.area[v]),
                     room: this.activeType.map(v => this.houseType[v].value),
                     type: this.activeBuildType.map(v => this.buildType[v].value),
                     page: this.page
                 }
-                data.referenceprice = data.referenceprice.length==0 || data.referenceprice[0] === "" || data.referenceprice[0] == -1 ? "" : data.referenceprice
+                data.totalReferencePrice = data.totalReferencePrice.length==0 || data.totalReferencePrice[0] === "" || data.totalReferencePrice[0] == -1 ? "" : data.totalReferencePrice
             	data.floorage = data.floorage.length==0 || data.floorage[0] === "" || data.floorage[0] == -1 ? "" : data.floorage
                 data.room = data.room.length==0 || data.room[0] === "" || data.room[0] == -1 ? "" : data.room
                 data.type = data.type.length==0 || data.type[0] === "" || data.type[0] == -1 ? "" : data.type
