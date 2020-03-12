@@ -74,9 +74,10 @@
         computed: {
             handleMarkers(){
                 return this.projectList.map(v => {
+                    console.log(tki.req.getConfig().baseUrl)
                     return {
                         id: v.id,
-                        iconPath: dingweiImg,
+                        iconPath: '/static/icons/dingwei1.png',
                         latitude: v.sets.lat,
                         longitude: v.sets.lng,
                         title: v.projectname,

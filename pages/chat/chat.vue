@@ -50,11 +50,21 @@
         computed: {
             // ...mapState(['allMsgList']),
             list(){
-                return [
-                    ...this.history, 
+                let his = [...this.history];
+                let r = [
                     ...this.$store.state.msgList[this.targetId] ? this.$store.state.msgList[this.targetId].read : [],
                     ...this.$store.state.msgList[this.targetId] ? this.$store.state.msgList[this.targetId].unread : []
-                   ]
+                ]
+                let obj = {};
+                his.map(v => {
+                    obj[v.create_time + v.content] = true;
+                })
+                r.map(v => {
+                    if(!obj[v.create_time + v.content]){
+                        his.push(v);
+                    }
+                })
+                return his;
             },
             user(){
                 return this.$store.state.user;
@@ -125,7 +135,9 @@
                         delete data.to_id;
                         this.$store.commit("saveSendNewMessage", data);
                         this.value = '';
-                        this.toBottom();
+                        setTimeout(()=>{
+                            this.toBottom();
+                        },50)
                     }
                 })
             },

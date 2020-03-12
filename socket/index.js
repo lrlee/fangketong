@@ -30,6 +30,7 @@ function Socket(store){
                 })
                 break;
             case "msg":
+                console.log(data.message)
                 let targetId;
                 if(store.state.user.role_type == 1){
                     targetId = data.message.adviserid;

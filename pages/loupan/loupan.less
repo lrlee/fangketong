@@ -93,11 +93,12 @@ page {
 			.text-no-wrap();
 		}
 		&-right {
+            line-height: 40rpx;
 			.m-left(35);
 			.text-wrap();
 			.w(508);
 			&.loupan-desc {
-				.l-h(35rpx);
+				// .l-h(35rpx);
 			}
 		}
 	}
@@ -137,7 +138,9 @@ page {
         display: flex;
         text:first-of-type{
             width: 132rpx;
-            white-space: nowrap;
+            // white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: left;
             display: inline-block;
         }

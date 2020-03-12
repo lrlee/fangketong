@@ -32,7 +32,7 @@
 			};
 		},
         onShow(){
-            console.log(this.$store.state.msgList)
+            // console.log(this.$store.state.msgList)
         },
         methods:{
             time(v){
