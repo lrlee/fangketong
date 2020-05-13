@@ -175,10 +175,6 @@
 			}
         }
         ,{
-            "path" : "components/tabbar/tabbar",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/introduction/introduction",
             "style" : {
 				"navigationBarTitleText":"走进中铁"

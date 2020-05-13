@@ -69,7 +69,10 @@
         </view>
         <view class="type">
             <text>还款方式：</text>
-            <radio-group @change="radioChange2">                <label for="radio7"><radio color="#3394FF" class="radio" id="radio7" value="1" :checked="type == 1"/>等额本息</label>                <label for="radio8"><radio color="#3394FF" class="radio" id="radio8" value="2" :checked="type == 2"/>等额本金</label>            </radio-group>
+            <radio-group @change="radioChange2">
+                <label for="radio7"><radio color="#3394FF" class="radio" id="radio7" value="1" :checked="type == 1"/>等额本息</label>
+                <label for="radio8"><radio color="#3394FF" class="radio" id="radio8" value="2" :checked="type == 2"/>等额本金</label>
+            </radio-group>
         </view>
         <view class="btn-box">
             <button type="default" @click="submit">开始计算</button>
